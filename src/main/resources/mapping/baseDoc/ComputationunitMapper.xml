@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.heda.cy.baseDoc.mapper.ComputationunitMapper">
+  <resultMap id="BaseResultMap" type="com.heda.cy.baseDoc.pojo.Computationunit">
+    <id column="cComunitCode" jdbcType="VARCHAR" property="ccomunitcode" />
+    <result column="cComUnitName" jdbcType="VARCHAR" property="ccomunitname" />
+    <result column="cGroupCode" jdbcType="VARCHAR" property="cgroupcode" />
+    <result column="cBarCode" jdbcType="VARCHAR" property="cbarcode" />
+    <result column="bMainUnit" jdbcType="BIT" property="bmainunit" />
+    <result column="iChangRate" jdbcType="DECIMAL" property="ichangrate" />
+    <result column="iProportion" jdbcType="FLOAT" property="iproportion" />
+    <result column="iNumber" jdbcType="SMALLINT" property="inumber" />
+    <result column="pubufts" jdbcType="BINARY" property="pubufts" />
+    <result column="cEnSingular" jdbcType="VARCHAR" property="censingular" />
+    <result column="cEnPlural" jdbcType="VARCHAR" property="cenplural" />
+    <result column="cUnitRefInvCode" jdbcType="VARCHAR" property="cunitrefinvcode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    cComunitCode, cComUnitName, cGroupCode, cBarCode, bMainUnit, iChangRate, iProportion, 
+    iNumber, pubufts, cEnSingular, cEnPlural, cUnitRefInvCode
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ${u8name}.dbo.ComputationUnit
+    where cComunitCode = #{ccomunitcode,jdbcType=VARCHAR}
+  </select>
+    <select id="computationgroup" resultType="com.heda.cy.baseDoc.pojo.Computationunit">
+      select
+      <include refid="Base_Column_List"></include>
+      from ${u8name}.dbo.ComputationUnit
+      where cComunitCode like '%${ccomunitcode}%' or cComUnitName like '%${ccomunitcode}%'
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from ComputationUnit
+    where cComunitCode = #{ccomunitcode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="cComunitCode" keyProperty="ccomunitcode" parameterType="com.heda.cy.baseDoc.pojo.Computationunit" useGeneratedKeys="true">
+    insert into ComputationUnit (cComUnitName, cGroupCode, cBarCode,
+      bMainUnit, iChangRate, iProportion, 
+      iNumber, pubufts, cEnSingular, 
+      cEnPlural, cUnitRefInvCode)
+    values (#{ccomunitname,jdbcType=VARCHAR}, #{cgroupcode,jdbcType=VARCHAR}, #{cbarcode,jdbcType=VARCHAR}, 
+      #{bmainunit,jdbcType=BIT}, #{ichangrate,jdbcType=DECIMAL}, #{iproportion,jdbcType=FLOAT}, 
+      #{inumber,jdbcType=SMALLINT}, #{pubufts,jdbcType=TIMESTAMP}, #{censingular,jdbcType=VARCHAR}, 
+      #{cenplural,jdbcType=VARCHAR}, #{cunitrefinvcode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="cComunitCode" keyProperty="ccomunitcode" parameterType="com.heda.cy.baseDoc.pojo.Computationunit" useGeneratedKeys="true">
+    insert into ${u8name}.dbo.ComputationUnit
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ccomunitcode != null">
+        cComunitCode,
+      </if>
+      <if test="ccomunitname != null">
+        cComUnitName,
+      </if>
+      <if test="cgroupcode != null">
+        cGroupCode,
+      </if>
+      <if test="cbarcode != null">
+        cBarCode,
+      </if>
+      <if test="bmainunit != null">
+        bMainUnit,
+      </if>
+      <if test="ichangrate != null">
+        iChangRate,
+      </if>
+      <if test="iproportion != null">
+        iProportion,
+      </if>
+      <if test="inumber != null">
+        iNumber,
+      </if>
+      <if test="censingular != null">
+        cEnSingular,
+      </if>
+      <if test="cenplural != null">
+        cEnPlural,
+      </if>
+      <if test="cunitrefinvcode != null">
+        cUnitRefInvCode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ccomunitcode != null">
+        #{ccomunitcode,jdbcType=VARCHAR},
+      </if>
+      <if test="ccomunitname != null">
+        #{ccomunitname,jdbcType=VARCHAR},
+      </if>
+      <if test="cgroupcode != null">
+        #{cgroupcode,jdbcType=VARCHAR},
+      </if>
+      <if test="cbarcode != null">
+        #{cbarcode,jdbcType=VARCHAR},
+      </if>
+      <if test="bmainunit != null">
+        #{bmainunit,jdbcType=BIT},
+      </if>
+      <if test="ichangrate != null">
+        #{ichangrate,jdbcType=DECIMAL},
+      </if>
+      <if test="iproportion != null">
+        #{iproportion,jdbcType=FLOAT},
+      </if>
+      <if test="inumber != null">
+        #{inumber,jdbcType=SMALLINT},
+      </if>
+      <if test="censingular != null">
+        #{censingular,jdbcType=VARCHAR},
+      </if>
+      <if test="cenplural != null">
+        #{cenplural,jdbcType=VARCHAR},
+      </if>
+      <if test="cunitrefinvcode != null">
+        #{cunitrefinvcode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.heda.cy.baseDoc.pojo.Computationunit">
+    update ${u8name}.dbo.ComputationUnit
+    <set>
+      <if test="ccomunitname != null">
+        cComUnitName = #{ccomunitname,jdbcType=VARCHAR},
+      </if>
+      <if test="cgroupcode != null">
+        cGroupCode = #{cgroupcode,jdbcType=VARCHAR},
+      </if>
+      <if test="cbarcode != null">
+        cBarCode = #{cbarcode,jdbcType=VARCHAR},
+      </if>
+      <if test="bmainunit != null">
+        bMainUnit = #{bmainunit,jdbcType=BIT},
+      </if>
+      <if test="ichangrate != null">
+        iChangRate = #{ichangrate,jdbcType=DECIMAL},
+      </if>
+      <if test="iproportion != null">
+        iProportion = #{iproportion,jdbcType=FLOAT},
+      </if>
+      <if test="inumber != null">
+        iNumber = #{inumber,jdbcType=SMALLINT},
+      </if>
+      <if test="censingular != null">
+        cEnSingular = #{censingular,jdbcType=VARCHAR},
+      </if>
+      <if test="cenplural != null">
+        cEnPlural = #{cenplural,jdbcType=VARCHAR},
+      </if>
+      <if test="cunitrefinvcode != null">
+        cUnitRefInvCode = #{cunitrefinvcode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where cComunitCode = #{ccomunitcode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.heda.cy.baseDoc.pojo.Computationunit">
+    update ComputationUnit
+    set cComUnitName = #{ccomunitname,jdbcType=VARCHAR},
+      cGroupCode = #{cgroupcode,jdbcType=VARCHAR},
+      cBarCode = #{cbarcode,jdbcType=VARCHAR},
+      bMainUnit = #{bmainunit,jdbcType=BIT},
+      iChangRate = #{ichangrate,jdbcType=DECIMAL},
+      iProportion = #{iproportion,jdbcType=FLOAT},
+      iNumber = #{inumber,jdbcType=SMALLINT},
+      pubufts = #{pubufts,jdbcType=TIMESTAMP},
+      cEnSingular = #{censingular,jdbcType=VARCHAR},
+      cEnPlural = #{cenplural,jdbcType=VARCHAR},
+      cUnitRefInvCode = #{cunitrefinvcode,jdbcType=VARCHAR}
+    where cComunitCode = #{ccomunitcode,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.heda.cy.system.mapper.ZhangtaoMapper">
+  <resultMap id="BaseResultMap" type="com.heda.cy.system.pojo.Zhangtao">
+    <result column="zhangtao" jdbcType="VARCHAR" property="zhangtao" />
+    <result column="shujuku" jdbcType="VARCHAR" property="shujuku" />
+    <result column="sVenCode" jdbcType="VARCHAR" property="svencode" />
+    <result column="sCusCode" jdbcType="VARCHAR" property="scuscode" />
+    <result column="isMain" jdbcType="BIT" property="ismain" />
+    <result column="factoryType" jdbcType="INTEGER" property="factorytype" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    zhangtao, shujuku, sVenCode, sCusCode, isMain, factoryType
+  </sql>
+  <insert id="insert" parameterType="com.heda.cy.system.pojo.Zhangtao">
+    insert into Bas_zhangtao (zhangtao, shujuku, sVenCode, 
+      sCusCode, isMain, factoryType
+      )
+    values (#{zhangtao,jdbcType=VARCHAR}, #{shujuku,jdbcType=VARCHAR}, #{svencode,jdbcType=VARCHAR}, 
+      #{scuscode,jdbcType=VARCHAR}, #{ismain,jdbcType=BIT}, #{factorytype,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.heda.cy.system.pojo.Zhangtao">
+    insert into Bas_zhangtao
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="zhangtao != null">
+        zhangtao,
+      </if>
+      <if test="shujuku != null">
+        shujuku,
+      </if>
+      <if test="svencode != null">
+        sVenCode,
+      </if>
+      <if test="scuscode != null">
+        sCusCode,
+      </if>
+      <if test="ismain != null">
+        isMain,
+      </if>
+      <if test="factorytype != null">
+        factoryType,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="zhangtao != null">
+        #{zhangtao,jdbcType=VARCHAR},
+      </if>
+      <if test="shujuku != null">
+        #{shujuku,jdbcType=VARCHAR},
+      </if>
+      <if test="svencode != null">
+        #{svencode,jdbcType=VARCHAR},
+      </if>
+      <if test="scuscode != null">
+        #{scuscode,jdbcType=VARCHAR},
+      </if>
+      <if test="ismain != null">
+        #{ismain,jdbcType=BIT},
+      </if>
+      <if test="factorytype != null">
+        #{factorytype,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+    <select id="minorZhangtao" resultType="com.heda.cy.system.pojo.Zhangtao">
+      select
+      <include refid="Base_Column_List"></include>
+      from Bas_zhangtao
+      where ismain = 0
+    </select>
+  <select id="majorZhangtao" resultType="com.heda.cy.system.pojo.Zhangtao">
+    select
+    <include refid="Base_Column_List"></include>
+    from Bas_zhangtao
+    where ismain = 1
+  </select>
+</mapper>

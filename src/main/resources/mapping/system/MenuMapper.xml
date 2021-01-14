@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.heda.cy.system.mapper.MenuMapper">
+  <resultMap id="BaseResultMap" type="com.heda.cy.system.pojo.Menu">
+    <result column="MenuId" jdbcType="INTEGER" property="menuid" />
+    <result column="MenuCode" jdbcType="VARCHAR" property="menucode" />
+    <result column="MenuName" jdbcType="VARCHAR" property="menuname" />
+    <result column="ParentCode" jdbcType="VARCHAR" property="parentcode" />
+    <result column="MenuLevel" jdbcType="INTEGER" property="menulevel" />
+    <result column="Url" jdbcType="VARCHAR" property="url" />
+    <result column="MenuOrder" jdbcType="INTEGER" property="menuorder" />
+    <result column="MenuImage" jdbcType="INTEGER" property="menuimage" />
+    <result column="Icon" jdbcType="VARCHAR" property="icon" />
+    <result column="tabname" jdbcType="VARCHAR" property="tabname" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    MenuId, MenuCode, MenuName, ParentCode, MenuLevel, Url, MenuOrder, MenuImage,Icon,tabname
+  </sql>
+  <insert id="insert" parameterType="com.heda.cy.system.pojo.Menu">
+    insert into T_Menu (MenuId, MenuCode, MenuName, 
+      ParentCode, MenuLevel, Url, 
+      MenuOrder, MenuImage, Icon, 
+      tabname)
+    values (#{menuid,jdbcType=INTEGER}, #{menucode,jdbcType=VARCHAR}, #{menuname,jdbcType=VARCHAR}, 
+      #{parentcode,jdbcType=VARCHAR}, #{menulevel,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, 
+      #{menuorder,jdbcType=INTEGER}, #{menuimage,jdbcType=INTEGER}, #{icon,jdbcType=VARCHAR}, 
+      #{tabname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.heda.cy.system.pojo.Menu">
+    insert into T_Menu
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="menuid != null">
+        MenuId,
+      </if>
+      <if test="menucode != null">
+        MenuCode,
+      </if>
+      <if test="menuname != null">
+        MenuName,
+      </if>
+      <if test="parentcode != null">
+        ParentCode,
+      </if>
+      <if test="menulevel != null">
+        MenuLevel,
+      </if>
+      <if test="url != null">
+        Url,
+      </if>
+      <if test="menuorder != null">
+        MenuOrder,
+      </if>
+      <if test="menuimage != null">
+        MenuImage,
+      </if>
+      <if test="icon != null">
+        Icon,
+      </if>
+      <if test="tabname != null">
+        tabname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="menuid != null">
+        #{menuid,jdbcType=INTEGER},
+      </if>
+      <if test="menucode != null">
+        #{menucode,jdbcType=VARCHAR},
+      </if>
+      <if test="menuname != null">
+        #{menuname,jdbcType=VARCHAR},
+      </if>
+      <if test="parentcode != null">
+        #{parentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="menulevel != null">
+        #{menulevel,jdbcType=INTEGER},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="menuorder != null">
+        #{menuorder,jdbcType=INTEGER},
+      </if>
+      <if test="menuimage != null">
+        #{menuimage,jdbcType=INTEGER},
+      </if>
+      <if test="icon != null">
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="tabname != null">
+        #{tabname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+    <select id="menuList" resultType="com.heda.cy.system.pojo.Menu">
+        select
+        <include refid="Base_Column_List"></include>
+        from T_Menu
+        where parentcode != 0
+    </select>
+  <select id="menuListByRole" resultType="com.heda.cy.system.pojo.Menu">
+    select
+    <include refid="Base_Column_List"/>
+    from T_Menu
+    where menuid  in (select menuid from T_RoleMenu where roleid = #{roleid} )
+  </select>
+  <select id="getMenuList" resultType="com.heda.cy.system.pojo.Menu">
+    select
+    <include refid="Base_Column_List"></include>
+     from  T_menu
+     where menucode
+     in (select parentcode from T_menu where menuid in  (select rm.menuid from T_UserRole ur left join T_RoleMenu rm on ur.roleid = rm.roleid where userid = #{userid}) group by parentcode)
+    order by menucode
+  </select>
+  <select id="getChildrenList" resultType="com.heda.cy.system.pojo.Menu">
+    select <include refid="Base_Column_List"></include>
+    from T_menu
+    where menuid
+    in  (select rm.menuid from T_UserRole ur left join T_RoleMenu rm on ur.roleid = rm.roleid where userid = #{userid} ) and parentcode = #{menucode}
+    order by menucode
+  </select>
+</mapper>

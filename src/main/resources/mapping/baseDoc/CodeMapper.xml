@@ -1,0 +1,720 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.heda.cy.baseDoc.mapper.CodeMapper">
+  <resultMap id="BaseResultMap" type="com.heda.cy.baseDoc.pojo.Code">
+    <id column="iyear" jdbcType="SMALLINT" property="iyear" />
+    <id column="ccode" jdbcType="VARCHAR" property="ccode" />
+    <result column="i_id" jdbcType="INTEGER" property="iId" />
+    <result column="cclass" jdbcType="VARCHAR" property="cclass" />
+    <result column="cclass_engl" jdbcType="VARCHAR" property="cclassEngl" />
+    <result column="cclassany" jdbcType="VARCHAR" property="cclassany" />
+    <result column="cclassany_engl" jdbcType="VARCHAR" property="cclassanyEngl" />
+    <result column="ccode_name" jdbcType="VARCHAR" property="ccodeName" />
+    <result column="ccode_engl" jdbcType="VARCHAR" property="ccodeEngl" />
+    <result column="igrade" jdbcType="TINYINT" property="igrade" />
+    <result column="bproperty" jdbcType="BIT" property="bproperty" />
+    <result column="cbook_type" jdbcType="VARCHAR" property="cbookType" />
+    <result column="cbook_type_engl" jdbcType="VARCHAR" property="cbookTypeEngl" />
+    <result column="chelp" jdbcType="VARCHAR" property="chelp" />
+    <result column="cexch_name" jdbcType="VARCHAR" property="cexchName" />
+    <result column="cmeasure" jdbcType="VARCHAR" property="cmeasure" />
+    <result column="bperson" jdbcType="BIT" property="bperson" />
+    <result column="bcus" jdbcType="BIT" property="bcus" />
+    <result column="bsup" jdbcType="BIT" property="bsup" />
+    <result column="bdept" jdbcType="BIT" property="bdept" />
+    <result column="bitem" jdbcType="BIT" property="bitem" />
+    <result column="cass_item" jdbcType="VARCHAR" property="cassItem" />
+    <result column="br" jdbcType="BIT" property="br" />
+    <result column="be" jdbcType="BIT" property="be" />
+    <result column="cgather" jdbcType="VARCHAR" property="cgather" />
+    <result column="bend" jdbcType="BIT" property="bend" />
+    <result column="bexchange" jdbcType="BIT" property="bexchange" />
+    <result column="bcash" jdbcType="BIT" property="bcash" />
+    <result column="bbank" jdbcType="BIT" property="bbank" />
+    <result column="bused" jdbcType="BIT" property="bused" />
+    <result column="bd_c" jdbcType="BIT" property="bdC" />
+    <result column="dbegin" jdbcType="BINARY" property="dbegin" />
+    <result column="dend" jdbcType="BINARY" property="dend" />
+    <result column="itrans" jdbcType="TINYINT" property="itrans" />
+    <result column="bclose" jdbcType="BIT" property="bclose" />
+    <result column="cother" jdbcType="VARCHAR" property="cother" />
+    <result column="iotherused" jdbcType="INTEGER" property="iotherused" />
+    <result column="bcDefine1" jdbcType="BIT" property="bcdefine1" />
+    <result column="bcDefine2" jdbcType="BIT" property="bcdefine2" />
+    <result column="bcDefine3" jdbcType="BIT" property="bcdefine3" />
+    <result column="bcDefine4" jdbcType="BIT" property="bcdefine4" />
+    <result column="bcDefine5" jdbcType="BIT" property="bcdefine5" />
+    <result column="bcDefine6" jdbcType="BIT" property="bcdefine6" />
+    <result column="bcDefine7" jdbcType="BIT" property="bcdefine7" />
+    <result column="bcDefine8" jdbcType="BIT" property="bcdefine8" />
+    <result column="bcDefine9" jdbcType="BIT" property="bcdefine9" />
+    <result column="bcDefine10" jdbcType="BIT" property="bcdefine10" />
+    <result column="iViewItem" jdbcType="INTEGER" property="iviewitem" />
+    <result column="bGCJS" jdbcType="BIT" property="bgcjs" />
+    <result column="bCashItem" jdbcType="BIT" property="bcashitem" />
+    <result column="pubufts" jdbcType="BINARY" property="pubufts" />
+    <result column="bcDefine11" jdbcType="BIT" property="bcdefine11" />
+    <result column="bcDefine12" jdbcType="BIT" property="bcdefine12" />
+    <result column="bcDefine13" jdbcType="BIT" property="bcdefine13" />
+    <result column="bcDefine14" jdbcType="BIT" property="bcdefine14" />
+    <result column="bcDefine15" jdbcType="BIT" property="bcdefine15" />
+    <result column="bcDefine16" jdbcType="BIT" property="bcdefine16" />
+    <result column="bReport" jdbcType="BIT" property="breport" />
+    <result column="cUserDefineType" jdbcType="VARCHAR" property="cuserdefinetype" />
+    <result column="dModifyDate" jdbcType="BINARY" property="dmodifydate" />
+    <result column="bparacc" jdbcType="BIT" property="bparacc" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    iyear, ccode, i_id, cclass, cclass_engl, cclassany, cclassany_engl, ccode_name, ccode_engl, 
+    igrade, bproperty, cbook_type, cbook_type_engl, chelp, cexch_name, cmeasure, bperson, 
+    bcus, bsup, bdept, bitem, cass_item, br, be, cgather, bend, bexchange, bcash, bbank, 
+    bused, bd_c, dbegin, dend, itrans, bclose, cother, iotherused, bcDefine1, bcDefine2, 
+    bcDefine3, bcDefine4, bcDefine5, bcDefine6, bcDefine7, bcDefine8, bcDefine9, bcDefine10, 
+    iViewItem, bGCJS, bCashItem, pubufts, bcDefine11, bcDefine12, bcDefine13, bcDefine14, 
+    bcDefine15, bcDefine16, bReport, cUserDefineType, dModifyDate, bparacc
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.heda.cy.baseDoc.pojo.CodeKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ${u8name}.dbo.code
+    where ccode = #{ccode}
+  </select>
+  <select id="code" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from ${u8name}.dbo.code
+    <where>
+      and (ccode like '%${ccode}%' or ccode_name like '%${ccode}%' )
+      <if test="iyear != null">
+        and iyear = #{iyear}
+      </if>
+    </where>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.heda.cy.baseDoc.pojo.CodeKey">
+    delete from code
+    where iyear = #{iyear,jdbcType=SMALLINT}
+      and ccode = #{ccode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="ccode" keyProperty="ccode" parameterType="com.heda.cy.baseDoc.pojo.Code" useGeneratedKeys="true">
+    insert into code (iyear, i_id, cclass, 
+      cclass_engl, cclassany, cclassany_engl, 
+      ccode_name, ccode_engl, igrade, 
+      bproperty, cbook_type, cbook_type_engl, 
+      chelp, cexch_name, cmeasure, 
+      bperson, bcus, bsup, bdept, 
+      bitem, cass_item, br, be, 
+      cgather, bend, bexchange, bcash, 
+      bbank, bused, bd_c, dbegin, 
+      dend, itrans, bclose, 
+      cother, iotherused, bcDefine1, 
+      bcDefine2, bcDefine3, bcDefine4, 
+      bcDefine5, bcDefine6, bcDefine7, 
+      bcDefine8, bcDefine9, bcDefine10, 
+      iViewItem, bGCJS, bCashItem, 
+      pubufts, bcDefine11, bcDefine12, 
+      bcDefine13, bcDefine14, bcDefine15, 
+      bcDefine16, bReport, cUserDefineType, 
+      dModifyDate, bparacc)
+    values (#{iyear,jdbcType=SMALLINT}, #{iId,jdbcType=INTEGER}, #{cclass,jdbcType=VARCHAR}, 
+      #{cclassEngl,jdbcType=VARCHAR}, #{cclassany,jdbcType=VARCHAR}, #{cclassanyEngl,jdbcType=VARCHAR}, 
+      #{ccodeName,jdbcType=VARCHAR}, #{ccodeEngl,jdbcType=VARCHAR}, #{igrade,jdbcType=TINYINT}, 
+      #{bproperty,jdbcType=BIT}, #{cbookType,jdbcType=VARCHAR}, #{cbookTypeEngl,jdbcType=VARCHAR}, 
+      #{chelp,jdbcType=VARCHAR}, #{cexchName,jdbcType=VARCHAR}, #{cmeasure,jdbcType=VARCHAR}, 
+      #{bperson,jdbcType=BIT}, #{bcus,jdbcType=BIT}, #{bsup,jdbcType=BIT}, #{bdept,jdbcType=BIT}, 
+      #{bitem,jdbcType=BIT}, #{cassItem,jdbcType=VARCHAR}, #{br,jdbcType=BIT}, #{be,jdbcType=BIT}, 
+      #{cgather,jdbcType=VARCHAR}, #{bend,jdbcType=BIT}, #{bexchange,jdbcType=BIT}, #{bcash,jdbcType=BIT}, 
+      #{bbank,jdbcType=BIT}, #{bused,jdbcType=BIT}, #{bdC,jdbcType=BIT}, #{dbegin,jdbcType=TIMESTAMP}, 
+      #{dend,jdbcType=TIMESTAMP}, #{itrans,jdbcType=TINYINT}, #{bclose,jdbcType=BIT}, 
+      #{cother,jdbcType=VARCHAR}, #{iotherused,jdbcType=INTEGER}, #{bcdefine1,jdbcType=BIT}, 
+      #{bcdefine2,jdbcType=BIT}, #{bcdefine3,jdbcType=BIT}, #{bcdefine4,jdbcType=BIT}, 
+      #{bcdefine5,jdbcType=BIT}, #{bcdefine6,jdbcType=BIT}, #{bcdefine7,jdbcType=BIT}, 
+      #{bcdefine8,jdbcType=BIT}, #{bcdefine9,jdbcType=BIT}, #{bcdefine10,jdbcType=BIT}, 
+      #{iviewitem,jdbcType=INTEGER}, #{bgcjs,jdbcType=BIT}, #{bcashitem,jdbcType=BIT}, 
+      #{pubufts,jdbcType=TIMESTAMP}, #{bcdefine11,jdbcType=BIT}, #{bcdefine12,jdbcType=BIT}, 
+      #{bcdefine13,jdbcType=BIT}, #{bcdefine14,jdbcType=BIT}, #{bcdefine15,jdbcType=BIT}, 
+      #{bcdefine16,jdbcType=BIT}, #{breport,jdbcType=BIT}, #{cuserdefinetype,jdbcType=VARCHAR}, 
+      #{dmodifydate,jdbcType=TIMESTAMP}, #{bparacc,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" keyColumn="ccode" keyProperty="ccode" parameterType="com.heda.cy.baseDoc.pojo.Code" useGeneratedKeys="true">
+    insert into ${u8name}.dbo.code
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="iyear != null">
+        iyear,
+      </if>
+      <if test="cclass != null">
+        cclass,
+      </if>
+      <if test="cclassEngl != null">
+        cclass_engl,
+      </if>
+      <if test="cclassany != null">
+        cclassany,
+      </if>
+      <if test="cclassanyEngl != null">
+        cclassany_engl,
+      </if>
+      <if test="ccodeName != null">
+        ccode_name,
+      </if>
+      <if test="ccodeEngl != null">
+        ccode_engl,
+      </if>
+      <if test="igrade != null">
+        igrade,
+      </if>
+      <if test="bproperty != null">
+        bproperty,
+      </if>
+      <if test="cbookType != null">
+        cbook_type,
+      </if>
+      <if test="cbookTypeEngl != null">
+        cbook_type_engl,
+      </if>
+      <if test="chelp != null">
+        chelp,
+      </if>
+      <if test="cexchName != null">
+        cexch_name,
+      </if>
+      <if test="cmeasure != null">
+        cmeasure,
+      </if>
+      <if test="bperson != null">
+        bperson,
+      </if>
+      <if test="bcus != null">
+        bcus,
+      </if>
+      <if test="bsup != null">
+        bsup,
+      </if>
+      <if test="bdept != null">
+        bdept,
+      </if>
+      <if test="bitem != null">
+        bitem,
+      </if>
+      <if test="cassItem != null">
+        cass_item,
+      </if>
+      <if test="br != null">
+        br,
+      </if>
+      <if test="be != null">
+        be,
+      </if>
+      <if test="cgather != null">
+        cgather,
+      </if>
+      <if test="bend != null">
+        bend,
+      </if>
+      <if test="bexchange != null">
+        bexchange,
+      </if>
+      <if test="bcash != null">
+        bcash,
+      </if>
+      <if test="bbank != null">
+        bbank,
+      </if>
+      <if test="bused != null">
+        bused,
+      </if>
+      <if test="bdC != null">
+        bd_c,
+      </if>
+      <if test="dbegin != null">
+        dbegin,
+      </if>
+      <if test="dend != null">
+        dend,
+      </if>
+      <if test="itrans != null">
+        itrans,
+      </if>
+      <if test="bclose != null">
+        bclose,
+      </if>
+      <if test="cother != null">
+        cother,
+      </if>
+      <if test="iotherused != null">
+        iotherused,
+      </if>
+      <if test="bcdefine1 != null">
+        bcDefine1,
+      </if>
+      <if test="bcdefine2 != null">
+        bcDefine2,
+      </if>
+      <if test="bcdefine3 != null">
+        bcDefine3,
+      </if>
+      <if test="bcdefine4 != null">
+        bcDefine4,
+      </if>
+      <if test="bcdefine5 != null">
+        bcDefine5,
+      </if>
+      <if test="bcdefine6 != null">
+        bcDefine6,
+      </if>
+      <if test="bcdefine7 != null">
+        bcDefine7,
+      </if>
+      <if test="bcdefine8 != null">
+        bcDefine8,
+      </if>
+      <if test="bcdefine9 != null">
+        bcDefine9,
+      </if>
+      <if test="bcdefine10 != null">
+        bcDefine10,
+      </if>
+      <if test="iviewitem != null">
+        iViewItem,
+      </if>
+      <if test="bgcjs != null">
+        bGCJS,
+      </if>
+      <if test="bcashitem != null">
+        bCashItem,
+      </if>
+      <if test="pubufts != null">
+        pubufts,
+      </if>
+      <if test="bcdefine11 != null">
+        bcDefine11,
+      </if>
+      <if test="bcdefine12 != null">
+        bcDefine12,
+      </if>
+      <if test="bcdefine13 != null">
+        bcDefine13,
+      </if>
+      <if test="bcdefine14 != null">
+        bcDefine14,
+      </if>
+      <if test="bcdefine15 != null">
+        bcDefine15,
+      </if>
+      <if test="bcdefine16 != null">
+        bcDefine16,
+      </if>
+      <if test="breport != null">
+        bReport,
+      </if>
+      <if test="cuserdefinetype != null">
+        cUserDefineType,
+      </if>
+      <if test="dmodifydate != null">
+        dModifyDate,
+      </if>
+      <if test="bparacc != null">
+        bparacc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="iyear != null">
+        #{iyear,jdbcType=SMALLINT},
+      </if>
+      <if test="cclass != null">
+        #{cclass,jdbcType=VARCHAR},
+      </if>
+      <if test="cclassEngl != null">
+        #{cclassEngl,jdbcType=VARCHAR},
+      </if>
+      <if test="cclassany != null">
+        #{cclassany,jdbcType=VARCHAR},
+      </if>
+      <if test="cclassanyEngl != null">
+        #{cclassanyEngl,jdbcType=VARCHAR},
+      </if>
+      <if test="ccodeName != null">
+        #{ccodeName,jdbcType=VARCHAR},
+      </if>
+      <if test="ccodeEngl != null">
+        #{ccodeEngl,jdbcType=VARCHAR},
+      </if>
+      <if test="igrade != null">
+        #{igrade,jdbcType=TINYINT},
+      </if>
+      <if test="bproperty != null">
+        #{bproperty,jdbcType=BIT},
+      </if>
+      <if test="cbookType != null">
+        #{cbookType,jdbcType=VARCHAR},
+      </if>
+      <if test="cbookTypeEngl != null">
+        #{cbookTypeEngl,jdbcType=VARCHAR},
+      </if>
+      <if test="chelp != null">
+        #{chelp,jdbcType=VARCHAR},
+      </if>
+      <if test="cexchName != null">
+        #{cexchName,jdbcType=VARCHAR},
+      </if>
+      <if test="cmeasure != null">
+        #{cmeasure,jdbcType=VARCHAR},
+      </if>
+      <if test="bperson != null">
+        #{bperson,jdbcType=BIT},
+      </if>
+      <if test="bcus != null">
+        #{bcus,jdbcType=BIT},
+      </if>
+      <if test="bsup != null">
+        #{bsup,jdbcType=BIT},
+      </if>
+      <if test="bdept != null">
+        #{bdept,jdbcType=BIT},
+      </if>
+      <if test="bitem != null">
+        #{bitem,jdbcType=BIT},
+      </if>
+      <if test="cassItem != null">
+        #{cassItem,jdbcType=VARCHAR},
+      </if>
+      <if test="br != null">
+        #{br,jdbcType=BIT},
+      </if>
+      <if test="be != null">
+        #{be,jdbcType=BIT},
+      </if>
+      <if test="cgather != null">
+        #{cgather,jdbcType=VARCHAR},
+      </if>
+      <if test="bend != null">
+        #{bend,jdbcType=BIT},
+      </if>
+      <if test="bexchange != null">
+        #{bexchange,jdbcType=BIT},
+      </if>
+      <if test="bcash != null">
+        #{bcash,jdbcType=BIT},
+      </if>
+      <if test="bbank != null">
+        #{bbank,jdbcType=BIT},
+      </if>
+      <if test="bused != null">
+        #{bused,jdbcType=BIT},
+      </if>
+      <if test="bdC != null">
+        #{bdC,jdbcType=BIT},
+      </if>
+      <if test="itrans != null">
+        #{itrans,jdbcType=TINYINT},
+      </if>
+      <if test="bclose != null">
+        #{bclose,jdbcType=BIT},
+      </if>
+      <if test="cother != null">
+        #{cother,jdbcType=VARCHAR},
+      </if>
+      <if test="iotherused != null">
+        #{iotherused,jdbcType=INTEGER},
+      </if>
+      <if test="bcdefine1 != null">
+        #{bcdefine1,jdbcType=BIT},
+      </if>
+      <if test="bcdefine2 != null">
+        #{bcdefine2,jdbcType=BIT},
+      </if>
+      <if test="bcdefine3 != null">
+        #{bcdefine3,jdbcType=BIT},
+      </if>
+      <if test="bcdefine4 != null">
+        #{bcdefine4,jdbcType=BIT},
+      </if>
+      <if test="bcdefine5 != null">
+        #{bcdefine5,jdbcType=BIT},
+      </if>
+      <if test="bcdefine6 != null">
+        #{bcdefine6,jdbcType=BIT},
+      </if>
+      <if test="bcdefine7 != null">
+        #{bcdefine7,jdbcType=BIT},
+      </if>
+      <if test="bcdefine8 != null">
+        #{bcdefine8,jdbcType=BIT},
+      </if>
+      <if test="bcdefine9 != null">
+        #{bcdefine9,jdbcType=BIT},
+      </if>
+      <if test="bcdefine10 != null">
+        #{bcdefine10,jdbcType=BIT},
+      </if>
+      <if test="iviewitem != null">
+        #{iviewitem,jdbcType=INTEGER},
+      </if>
+      <if test="bgcjs != null">
+        #{bgcjs,jdbcType=BIT},
+      </if>
+      <if test="bcashitem != null">
+        #{bcashitem,jdbcType=BIT},
+      </if>
+      <if test="bcdefine11 != null">
+        #{bcdefine11,jdbcType=BIT},
+      </if>
+      <if test="bcdefine12 != null">
+        #{bcdefine12,jdbcType=BIT},
+      </if>
+      <if test="bcdefine13 != null">
+        #{bcdefine13,jdbcType=BIT},
+      </if>
+      <if test="bcdefine14 != null">
+        #{bcdefine14,jdbcType=BIT},
+      </if>
+      <if test="bcdefine15 != null">
+        #{bcdefine15,jdbcType=BIT},
+      </if>
+      <if test="bcdefine16 != null">
+        #{bcdefine16,jdbcType=BIT},
+      </if>
+      <if test="breport != null">
+        #{breport,jdbcType=BIT},
+      </if>
+      <if test="cuserdefinetype != null">
+        #{cuserdefinetype,jdbcType=VARCHAR},
+      </if>
+      <if test="bparacc != null">
+        #{bparacc,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.heda.cy.baseDoc.pojo.Code">
+    update ${u8name}.dbo.code
+    <set>
+      <if test="cclass != null">
+        cclass = #{cclass,jdbcType=VARCHAR},
+      </if>
+      <if test="cclassEngl != null">
+        cclass_engl = #{cclassEngl,jdbcType=VARCHAR},
+      </if>
+      <if test="cclassany != null">
+        cclassany = #{cclassany,jdbcType=VARCHAR},
+      </if>
+      <if test="cclassanyEngl != null">
+        cclassany_engl = #{cclassanyEngl,jdbcType=VARCHAR},
+      </if>
+      <if test="ccodeName != null">
+        ccode_name = #{ccodeName,jdbcType=VARCHAR},
+      </if>
+      <if test="ccodeEngl != null">
+        ccode_engl = #{ccodeEngl,jdbcType=VARCHAR},
+      </if>
+      <if test="igrade != null">
+        igrade = #{igrade,jdbcType=TINYINT},
+      </if>
+      <if test="bproperty != null">
+        bproperty = #{bproperty,jdbcType=BIT},
+      </if>
+      <if test="cbookType != null">
+        cbook_type = #{cbookType,jdbcType=VARCHAR},
+      </if>
+      <if test="cbookTypeEngl != null">
+        cbook_type_engl = #{cbookTypeEngl,jdbcType=VARCHAR},
+      </if>
+      <if test="chelp != null">
+        chelp = #{chelp,jdbcType=VARCHAR},
+      </if>
+      <if test="cexchName != null">
+        cexch_name = #{cexchName,jdbcType=VARCHAR},
+      </if>
+      <if test="cmeasure != null">
+        cmeasure = #{cmeasure,jdbcType=VARCHAR},
+      </if>
+      <if test="bperson != null">
+        bperson = #{bperson,jdbcType=BIT},
+      </if>
+      <if test="bcus != null">
+        bcus = #{bcus,jdbcType=BIT},
+      </if>
+      <if test="bsup != null">
+        bsup = #{bsup,jdbcType=BIT},
+      </if>
+      <if test="bdept != null">
+        bdept = #{bdept,jdbcType=BIT},
+      </if>
+      <if test="bitem != null">
+        bitem = #{bitem,jdbcType=BIT},
+      </if>
+      <if test="cassItem != null">
+        cass_item = #{cassItem,jdbcType=VARCHAR},
+      </if>
+      <if test="br != null">
+        br = #{br,jdbcType=BIT},
+      </if>
+      <if test="be != null">
+        be = #{be,jdbcType=BIT},
+      </if>
+      <if test="cgather != null">
+        cgather = #{cgather,jdbcType=VARCHAR},
+      </if>
+      <if test="bend != null">
+        bend = #{bend,jdbcType=BIT},
+      </if>
+      <if test="bexchange != null">
+        bexchange = #{bexchange,jdbcType=BIT},
+      </if>
+      <if test="bcash != null">
+        bcash = #{bcash,jdbcType=BIT},
+      </if>
+      <if test="bbank != null">
+        bbank = #{bbank,jdbcType=BIT},
+      </if>
+      <if test="bused != null">
+        bused = #{bused,jdbcType=BIT},
+      </if>
+      <if test="bdC != null">
+        bd_c = #{bdC,jdbcType=BIT},
+      </if>
+      <if test="itrans != null">
+        itrans = #{itrans,jdbcType=TINYINT},
+      </if>
+      <if test="bclose != null">
+        bclose = #{bclose,jdbcType=BIT},
+      </if>
+      <if test="cother != null">
+        cother = #{cother,jdbcType=VARCHAR},
+      </if>
+      <if test="iotherused != null">
+        iotherused = #{iotherused,jdbcType=INTEGER},
+      </if>
+      <if test="bcdefine1 != null">
+        bcDefine1 = #{bcdefine1,jdbcType=BIT},
+      </if>
+      <if test="bcdefine2 != null">
+        bcDefine2 = #{bcdefine2,jdbcType=BIT},
+      </if>
+      <if test="bcdefine3 != null">
+        bcDefine3 = #{bcdefine3,jdbcType=BIT},
+      </if>
+      <if test="bcdefine4 != null">
+        bcDefine4 = #{bcdefine4,jdbcType=BIT},
+      </if>
+      <if test="bcdefine5 != null">
+        bcDefine5 = #{bcdefine5,jdbcType=BIT},
+      </if>
+      <if test="bcdefine6 != null">
+        bcDefine6 = #{bcdefine6,jdbcType=BIT},
+      </if>
+      <if test="bcdefine7 != null">
+        bcDefine7 = #{bcdefine7,jdbcType=BIT},
+      </if>
+      <if test="bcdefine8 != null">
+        bcDefine8 = #{bcdefine8,jdbcType=BIT},
+      </if>
+      <if test="bcdefine9 != null">
+        bcDefine9 = #{bcdefine9,jdbcType=BIT},
+      </if>
+      <if test="bcdefine10 != null">
+        bcDefine10 = #{bcdefine10,jdbcType=BIT},
+      </if>
+      <if test="iviewitem != null">
+        iViewItem = #{iviewitem,jdbcType=INTEGER},
+      </if>
+      <if test="bgcjs != null">
+        bGCJS = #{bgcjs,jdbcType=BIT},
+      </if>
+      <if test="bcashitem != null">
+        bCashItem = #{bcashitem,jdbcType=BIT},
+      </if>
+      <if test="bcdefine11 != null">
+        bcDefine11 = #{bcdefine11,jdbcType=BIT},
+      </if>
+      <if test="bcdefine12 != null">
+        bcDefine12 = #{bcdefine12,jdbcType=BIT},
+      </if>
+      <if test="bcdefine13 != null">
+        bcDefine13 = #{bcdefine13,jdbcType=BIT},
+      </if>
+      <if test="bcdefine14 != null">
+        bcDefine14 = #{bcdefine14,jdbcType=BIT},
+      </if>
+      <if test="bcdefine15 != null">
+        bcDefine15 = #{bcdefine15,jdbcType=BIT},
+      </if>
+      <if test="bcdefine16 != null">
+        bcDefine16 = #{bcdefine16,jdbcType=BIT},
+      </if>
+      <if test="breport != null">
+        bReport = #{breport,jdbcType=BIT},
+      </if>
+      <if test="cuserdefinetype != null">
+        cUserDefineType = #{cuserdefinetype,jdbcType=VARCHAR},
+      </if>
+      <if test="bparacc != null">
+        bparacc = #{bparacc,jdbcType=BIT},
+      </if>
+    </set>
+    where iyear = #{iyear,jdbcType=SMALLINT}
+      and ccode = #{ccode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.heda.cy.baseDoc.pojo.Code">
+    update code
+    set i_id = #{iId,jdbcType=INTEGER},
+      cclass = #{cclass,jdbcType=VARCHAR},
+      cclass_engl = #{cclassEngl,jdbcType=VARCHAR},
+      cclassany = #{cclassany,jdbcType=VARCHAR},
+      cclassany_engl = #{cclassanyEngl,jdbcType=VARCHAR},
+      ccode_name = #{ccodeName,jdbcType=VARCHAR},
+      ccode_engl = #{ccodeEngl,jdbcType=VARCHAR},
+      igrade = #{igrade,jdbcType=TINYINT},
+      bproperty = #{bproperty,jdbcType=BIT},
+      cbook_type = #{cbookType,jdbcType=VARCHAR},
+      cbook_type_engl = #{cbookTypeEngl,jdbcType=VARCHAR},
+      chelp = #{chelp,jdbcType=VARCHAR},
+      cexch_name = #{cexchName,jdbcType=VARCHAR},
+      cmeasure = #{cmeasure,jdbcType=VARCHAR},
+      bperson = #{bperson,jdbcType=BIT},
+      bcus = #{bcus,jdbcType=BIT},
+      bsup = #{bsup,jdbcType=BIT},
+      bdept = #{bdept,jdbcType=BIT},
+      bitem = #{bitem,jdbcType=BIT},
+      cass_item = #{cassItem,jdbcType=VARCHAR},
+      br = #{br,jdbcType=BIT},
+      be = #{be,jdbcType=BIT},
+      cgather = #{cgather,jdbcType=VARCHAR},
+      bend = #{bend,jdbcType=BIT},
+      bexchange = #{bexchange,jdbcType=BIT},
+      bcash = #{bcash,jdbcType=BIT},
+      bbank = #{bbank,jdbcType=BIT},
+      bused = #{bused,jdbcType=BIT},
+      bd_c = #{bdC,jdbcType=BIT},
+      dbegin = #{dbegin,jdbcType=TIMESTAMP},
+      dend = #{dend,jdbcType=TIMESTAMP},
+      itrans = #{itrans,jdbcType=TINYINT},
+      bclose = #{bclose,jdbcType=BIT},
+      cother = #{cother,jdbcType=VARCHAR},
+      iotherused = #{iotherused,jdbcType=INTEGER},
+      bcDefine1 = #{bcdefine1,jdbcType=BIT},
+      bcDefine2 = #{bcdefine2,jdbcType=BIT},
+      bcDefine3 = #{bcdefine3,jdbcType=BIT},
+      bcDefine4 = #{bcdefine4,jdbcType=BIT},
+      bcDefine5 = #{bcdefine5,jdbcType=BIT},
+      bcDefine6 = #{bcdefine6,jdbcType=BIT},
+      bcDefine7 = #{bcdefine7,jdbcType=BIT},
+      bcDefine8 = #{bcdefine8,jdbcType=BIT},
+      bcDefine9 = #{bcdefine9,jdbcType=BIT},
+      bcDefine10 = #{bcdefine10,jdbcType=BIT},
+      iViewItem = #{iviewitem,jdbcType=INTEGER},
+      bGCJS = #{bgcjs,jdbcType=BIT},
+      bCashItem = #{bcashitem,jdbcType=BIT},
+      pubufts = #{pubufts,jdbcType=TIMESTAMP},
+      bcDefine11 = #{bcdefine11,jdbcType=BIT},
+      bcDefine12 = #{bcdefine12,jdbcType=BIT},
+      bcDefine13 = #{bcdefine13,jdbcType=BIT},
+      bcDefine14 = #{bcdefine14,jdbcType=BIT},
+      bcDefine15 = #{bcdefine15,jdbcType=BIT},
+      bcDefine16 = #{bcdefine16,jdbcType=BIT},
+      bReport = #{breport,jdbcType=BIT},
+      cUserDefineType = #{cuserdefinetype,jdbcType=VARCHAR},
+      dModifyDate = #{dmodifydate,jdbcType=TIMESTAMP},
+      bparacc = #{bparacc,jdbcType=BIT}
+    where iyear = #{iyear,jdbcType=SMALLINT}
+      and ccode = #{ccode,jdbcType=VARCHAR}
+  </update>
+</mapper>

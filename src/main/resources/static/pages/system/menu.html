@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浙江和达科技股份有限公司</title>
+    <script src="/js/vue.js"></script>
+    <script src="/js/index.js"></script>
+    <script src="/js/axios.min.js"></script>
+    <link rel="stylesheet" href="/css/vue.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+<div id="app">
+    <el-form :inline="true" class="demo-form-inline" size="mini"
+             style="width: 97%; margin: 30px 40px 10px;">
+        <el-form-item label="角色:">
+            <el-input v-model="rolename" style="width:200px;"></el-input>
+        </el-form-item>
+        <el-form-item>
+            <el-button type="primary" size="mini" round @click="Query">查询</el-button>
+            <el-button type="success" size="mini" round @click="dialogFormVisible = true;role={rolename: '',memo: ''}">添加</el-button>
+        </el-form-item>
+    </el-form>
+    <el-table :data="roleList" tooltip-effect="dark"  stripe
+              style="width: 100%;float: left;margin-bottom: 15px"  border size="small"
+              :header-cell-style="{'text-align':'center'}" :cell-style="{'text-align':'center'}">
+        <el-table-column prop="rolename" label="角色"></el-table-column>
+        <el-table-column prop="memo" label="描述"></el-table-column>
+        <el-table-column label="操作">
+            <template slot-scope="scope">
+                <el-button type="primary" icon="el-icon-edit" size="small" @click="edit(scope.row)"></el-button>
+                <el-button type="danger" slot="reference" icon="el-icon-delete" size="small" @click="del(scope.row)"></el-button>
+            </template>
+        </el-table-column>
+    </el-table>
+    <el-dialog title="添加新角色" :visible.sync="dialogFormVisible"  width="500px" center>
+        <el-form :model="role" size="small" label-position="left"  ref="form">
+            <el-form-item label="角色:" label-width="90px" >
+                <el-input  type="text" v-model="role.rolename" width="120px" ></el-input>
+            </el-form-item>
+            <el-form-item label="描述:" label-width="90px">
+                <el-input  type="text" v-model="role.memo" width="120px" ></el-input>
+            </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+            <el-button type="primary" @click="add()" size="small">确 定</el-button>
+            <el-button @click="dialogFormVisible = false" size="small">取 消</el-button>
+        </div>
+    </el-dialog>
+
+    <el-dialog title="修改权限" :visible.sync="dialogTreeVisible"  width="650px" center>
+        <template>
+            <el-transfer v-model="active" :props="{ key: 'menuid',label: 'menuname' }" :titles="['未激活菜单', '已激活菜单']" :data="menuList">
+            </el-transfer>
+        </template>
+        <div slot="footer" class="dialog-footer">
+            <el-button type="primary"  size="small" @click="change()">确 定</el-button>
+            <el-button  size="small" @click="dialogTreeVisible=false">取 消</el-button>
+        </div>
+    </el-dialog>
+
+</div>
+</body>
+<script>
+    let vue = new Vue({
+        el: "#app",
+        data: {
+            roleList: [],
+            role: {
+                rolename: '',
+                memo: ''
+            },
+            rolename: '',
+            dialogFormVisible: false,
+            dialogTreeVisible: false,
+            menuList: [],
+            active: []
+        },
+        methods: {
+            Query(){
+                axios.post("/role/roleList?rolename="+this.rolename).then(response => this.roleList = response.data.result).catch(error => this.dialog("网络错误",1000));
+            },
+            add(){
+                axios.post("/role/add",this.role).then(response => {
+                    if(response.data.status === 200){
+                        this.dialogFormVisible = false;
+                        this.Query();
+                        this.dialog("添加成功",1000)
+                    }else this.dialog(response.data.message,0)
+                }).catch(error => this.dialog("网络错误",1000));
+
+            },
+            del(role){
+                axios.post("/role/del",role)
+                    .then(response => {
+                        if(response.data.status === 200) {
+                            this.dialog("删除成功", 1000);
+                            this.Query();
+                        }else this.dialog(response.data.message,0)
+                    }).catch(error => this.dialog("网络错误",1000))
+            },
+            edit(role){
+                this.active = [];
+                this.dialogTreeVisible = true;
+                this.role = role;
+                axios.post("/menu/menuList")
+                    .then(response =>{
+                        this.menuList = response.data.result;
+                        axios.post("/menu/menuListByRole",role).then(response => {
+                            response.data.result.forEach(menu => {this.active.unshift(menu.menuid)})
+                        }).catch(error => this.dialog("网络错误",1000));
+                    }).catch(error => this.dialog("网络错误",1000));
+            },
+            change(){
+                axios.post("/menu/changMenu?roleid="+this.role.roleid,this.active)
+                    .then(response => {
+                        if(response.data.status === 200) {
+                            this.dialog("修改成功", 1000);
+                            this.dialogTreeVisible = false;
+                        }else this.dialog(response.data.message,0)
+                    }).catch(error => this.dialog("网络错误",1000));
+            },
+            dialog(msg,time) {this.$notify({title: '提示', message: msg, duration: time});}
+        },
+        created(){this.Query();}
+    })
+</script>
+</html>

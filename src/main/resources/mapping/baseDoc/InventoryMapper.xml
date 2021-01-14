@@ -1,0 +1,2988 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.heda.cy.baseDoc.mapper.InventoryMapper">
+  <resultMap id="BaseResultMap" type="com.heda.cy.baseDoc.pojo.Inventory">
+    <id column="cInvCode" jdbcType="VARCHAR" property="cinvcode" />
+    <result column="cInvAddCode" jdbcType="VARCHAR" property="cinvaddcode" />
+    <result column="cInvName" jdbcType="VARCHAR" property="cinvname" />
+    <result column="cInvStd" jdbcType="VARCHAR" property="cinvstd" />
+    <result column="cInvCCode" jdbcType="VARCHAR" property="cinvccode" />
+    <result column="cVenCode" jdbcType="VARCHAR" property="cvencode" />
+    <result column="cReplaceItem" jdbcType="VARCHAR" property="creplaceitem" />
+    <result column="cPosition" jdbcType="VARCHAR" property="cposition" />
+    <result column="bSale" jdbcType="BIT" property="bsale" />
+    <result column="bPurchase" jdbcType="BIT" property="bpurchase" />
+    <result column="bSelf" jdbcType="BIT" property="bself" />
+    <result column="bComsume" jdbcType="BIT" property="bcomsume" />
+    <result column="bProducing" jdbcType="BIT" property="bproducing" />
+    <result column="bService" jdbcType="BIT" property="bservice" />
+    <result column="bAccessary" jdbcType="BIT" property="baccessary" />
+    <result column="iTaxRate" jdbcType="FLOAT" property="itaxrate" />
+    <result column="iInvWeight" jdbcType="FLOAT" property="iinvweight" />
+    <result column="iVolume" jdbcType="FLOAT" property="ivolume" />
+    <result column="iInvRCost" jdbcType="FLOAT" property="iinvrcost" />
+    <result column="iInvSPrice" jdbcType="FLOAT" property="iinvsprice" />
+    <result column="iInvSCost" jdbcType="FLOAT" property="iinvscost" />
+    <result column="iInvLSCost" jdbcType="FLOAT" property="iinvlscost" />
+    <result column="iInvNCost" jdbcType="FLOAT" property="iinvncost" />
+    <result column="iInvAdvance" jdbcType="FLOAT" property="iinvadvance" />
+    <result column="iInvBatch" jdbcType="FLOAT" property="iinvbatch" />
+    <result column="iSafeNum" jdbcType="FLOAT" property="isafenum" />
+    <result column="iTopSum" jdbcType="FLOAT" property="itopsum" />
+    <result column="iLowSum" jdbcType="FLOAT" property="ilowsum" />
+    <result column="iOverStock" jdbcType="FLOAT" property="ioverstock" />
+    <result column="cInvABC" jdbcType="VARCHAR" property="cinvabc" />
+    <result column="bInvQuality" jdbcType="BIT" property="binvquality" />
+    <result column="bInvBatch" jdbcType="BIT" property="binvbatch" />
+    <result column="bInvEntrust" jdbcType="BIT" property="binventrust" />
+    <result column="bInvOverStock" jdbcType="BIT" property="binvoverstock" />
+    <result column="dSDate" jdbcType="BINARY" property="dsdate" />
+    <result column="dEDate" jdbcType="BINARY" property="dedate" />
+    <result column="bFree1" jdbcType="BIT" property="bfree1" />
+    <result column="bFree2" jdbcType="BIT" property="bfree2" />
+    <result column="cInvDefine1" jdbcType="VARCHAR" property="cinvdefine1" />
+    <result column="cInvDefine2" jdbcType="VARCHAR" property="cinvdefine2" />
+    <result column="cInvDefine3" jdbcType="VARCHAR" property="cinvdefine3" />
+    <result column="I_id" jdbcType="INTEGER" property="iId" />
+    <result column="bInvType" jdbcType="BIT" property="binvtype" />
+    <result column="iInvMPCost" jdbcType="FLOAT" property="iinvmpcost" />
+    <result column="cQuality" jdbcType="VARCHAR" property="cquality" />
+    <result column="iInvSaleCost" jdbcType="FLOAT" property="iinvsalecost" />
+    <result column="iInvSCost1" jdbcType="FLOAT" property="iinvscost1" />
+    <result column="iInvSCost2" jdbcType="FLOAT" property="iinvscost2" />
+    <result column="iInvSCost3" jdbcType="FLOAT" property="iinvscost3" />
+    <result column="bFree3" jdbcType="BIT" property="bfree3" />
+    <result column="bFree4" jdbcType="BIT" property="bfree4" />
+    <result column="bFree5" jdbcType="BIT" property="bfree5" />
+    <result column="bFree6" jdbcType="BIT" property="bfree6" />
+    <result column="bFree7" jdbcType="BIT" property="bfree7" />
+    <result column="bFree8" jdbcType="BIT" property="bfree8" />
+    <result column="bFree9" jdbcType="BIT" property="bfree9" />
+    <result column="bFree10" jdbcType="BIT" property="bfree10" />
+    <result column="cCreatePerson" jdbcType="VARCHAR" property="ccreateperson" />
+    <result column="cModifyPerson" jdbcType="VARCHAR" property="cmodifyperson" />
+    <result column="dModifyDate" jdbcType="BINARY" property="dmodifydate" />
+    <result column="fSubscribePoint" jdbcType="FLOAT" property="fsubscribepoint" />
+    <result column="fVagQuantity" jdbcType="FLOAT" property="fvagquantity" />
+    <result column="cValueType" jdbcType="VARCHAR" property="cvaluetype" />
+    <result column="bFixExch" jdbcType="BIT" property="bfixexch" />
+    <result column="fOutExcess" jdbcType="FLOAT" property="foutexcess" />
+    <result column="fInExcess" jdbcType="FLOAT" property="finexcess" />
+    <result column="iMassDate" jdbcType="SMALLINT" property="imassdate" />
+    <result column="iWarnDays" jdbcType="SMALLINT" property="iwarndays" />
+    <result column="fExpensesExch" jdbcType="FLOAT" property="fexpensesexch" />
+    <result column="bTrack" jdbcType="BIT" property="btrack" />
+    <result column="bSerial" jdbcType="BIT" property="bserial" />
+    <result column="bBarCode" jdbcType="BIT" property="bbarcode" />
+    <result column="iId" jdbcType="INTEGER" property="iid" />
+    <result column="cBarCode" jdbcType="VARCHAR" property="cbarcode" />
+    <result column="cInvDefine4" jdbcType="VARCHAR" property="cinvdefine4" />
+    <result column="cInvDefine5" jdbcType="VARCHAR" property="cinvdefine5" />
+    <result column="cInvDefine6" jdbcType="VARCHAR" property="cinvdefine6" />
+    <result column="cInvDefine7" jdbcType="VARCHAR" property="cinvdefine7" />
+    <result column="cInvDefine8" jdbcType="VARCHAR" property="cinvdefine8" />
+    <result column="cInvDefine9" jdbcType="VARCHAR" property="cinvdefine9" />
+    <result column="cInvDefine10" jdbcType="VARCHAR" property="cinvdefine10" />
+    <result column="cInvDefine11" jdbcType="INTEGER" property="cinvdefine11" />
+    <result column="cInvDefine12" jdbcType="INTEGER" property="cinvdefine12" />
+    <result column="cInvDefine13" jdbcType="FLOAT" property="cinvdefine13" />
+    <result column="cInvDefine14" jdbcType="FLOAT" property="cinvdefine14" />
+    <result column="cInvDefine15" jdbcType="BINARY" property="cinvdefine15" />
+    <result column="cInvDefine16" jdbcType="BINARY" property="cinvdefine16" />
+    <result column="iGroupType" jdbcType="TINYINT" property="igrouptype" />
+    <result column="cGroupCode" jdbcType="VARCHAR" property="cgroupcode" />
+    <result column="cComUnitCode" jdbcType="VARCHAR" property="ccomunitcode" />
+    <result column="cAssComUnitCode" jdbcType="VARCHAR" property="casscomunitcode" />
+    <result column="cSAComUnitCode" jdbcType="VARCHAR" property="csacomunitcode" />
+    <result column="cPUComUnitCode" jdbcType="VARCHAR" property="cpucomunitcode" />
+    <result column="cSTComUnitCode" jdbcType="VARCHAR" property="cstcomunitcode" />
+    <result column="cCAComUnitCode" jdbcType="VARCHAR" property="ccacomunitcode" />
+    <result column="cFrequency" jdbcType="VARCHAR" property="cfrequency" />
+    <result column="iFrequency" jdbcType="SMALLINT" property="ifrequency" />
+    <result column="iDays" jdbcType="SMALLINT" property="idays" />
+    <result column="dLastDate" jdbcType="BINARY" property="dlastdate" />
+    <result column="iWastage" jdbcType="FLOAT" property="iwastage" />
+    <result column="bSolitude" jdbcType="BIT" property="bsolitude" />
+    <result column="cEnterprise" jdbcType="VARCHAR" property="centerprise" />
+    <result column="cAddress" jdbcType="VARCHAR" property="caddress" />
+    <result column="cFile" jdbcType="VARCHAR" property="cfile" />
+    <result column="cLabel" jdbcType="VARCHAR" property="clabel" />
+    <result column="cCheckOut" jdbcType="VARCHAR" property="ccheckout" />
+    <result column="cLicence" jdbcType="VARCHAR" property="clicence" />
+    <result column="bSpecialties" jdbcType="BIT" property="bspecialties" />
+    <result column="cDefWareHouse" jdbcType="VARCHAR" property="cdefwarehouse" />
+    <result column="iHighPrice" jdbcType="FLOAT" property="ihighprice" />
+    <result column="iExpSaleRate" jdbcType="FLOAT" property="iexpsalerate" />
+    <result column="cPriceGroup" jdbcType="VARCHAR" property="cpricegroup" />
+    <result column="cOfferGrade" jdbcType="VARCHAR" property="coffergrade" />
+    <result column="iOfferRate" jdbcType="FLOAT" property="iofferrate" />
+    <result column="cMonth" jdbcType="VARCHAR" property="cmonth" />
+    <result column="iAdvanceDate" jdbcType="SMALLINT" property="iadvancedate" />
+    <result column="cCurrencyName" jdbcType="VARCHAR" property="ccurrencyname" />
+    <result column="cProduceAddress" jdbcType="VARCHAR" property="cproduceaddress" />
+    <result column="cProduceNation" jdbcType="VARCHAR" property="cproducenation" />
+    <result column="cRegisterNo" jdbcType="VARCHAR" property="cregisterno" />
+    <result column="cEnterNo" jdbcType="VARCHAR" property="centerno" />
+    <result column="cPackingType" jdbcType="VARCHAR" property="cpackingtype" />
+    <result column="cEnglishName" jdbcType="VARCHAR" property="cenglishname" />
+    <result column="bPropertyCheck" jdbcType="BIT" property="bpropertycheck" />
+    <result column="cPreparationType" jdbcType="VARCHAR" property="cpreparationtype" />
+    <result column="cCommodity" jdbcType="VARCHAR" property="ccommodity" />
+    <result column="iRecipeBatch" jdbcType="TINYINT" property="irecipebatch" />
+    <result column="cNotPatentName" jdbcType="VARCHAR" property="cnotpatentname" />
+    <result column="pubufts" jdbcType="BINARY" property="pubufts" />
+    <result column="bPromotSales" jdbcType="BIT" property="bpromotsales" />
+    <result column="iPlanPolicy" jdbcType="SMALLINT" property="iplanpolicy" />
+    <result column="iROPMethod" jdbcType="SMALLINT" property="iropmethod" />
+    <result column="iBatchRule" jdbcType="SMALLINT" property="ibatchrule" />
+    <result column="fBatchIncrement" jdbcType="FLOAT" property="fbatchincrement" />
+    <result column="iAssureProvideDays" jdbcType="INTEGER" property="iassureprovidedays" />
+    <result column="iTestStyle" jdbcType="SMALLINT" property="iteststyle" />
+    <result column="iDTMethod" jdbcType="SMALLINT" property="idtmethod" />
+    <result column="fDTRate" jdbcType="FLOAT" property="fdtrate" />
+    <result column="fDTNum" jdbcType="FLOAT" property="fdtnum" />
+    <result column="cDTUnit" jdbcType="VARCHAR" property="cdtunit" />
+    <result column="iDTStyle" jdbcType="SMALLINT" property="idtstyle" />
+    <result column="iQTMethod" jdbcType="INTEGER" property="iqtmethod" />
+    <result column="PictureGUID" jdbcType="OTHER" property="pictureguid" />
+    <result column="bPlanInv" jdbcType="BIT" property="bplaninv" />
+    <result column="bProxyForeign" jdbcType="BIT" property="bproxyforeign" />
+    <result column="bATOModel" jdbcType="BIT" property="batomodel" />
+    <result column="bCheckItem" jdbcType="BIT" property="bcheckitem" />
+    <result column="bPTOModel" jdbcType="BIT" property="bptomodel" />
+    <result column="bEquipment" jdbcType="BIT" property="bequipment" />
+    <result column="cProductUnit" jdbcType="VARCHAR" property="cproductunit" />
+    <result column="fOrderUpLimit" jdbcType="FLOAT" property="forderuplimit" />
+    <result column="cMassUnit" jdbcType="SMALLINT" property="cmassunit" />
+    <result column="fRetailPrice" jdbcType="FLOAT" property="fretailprice" />
+    <result column="cInvDepCode" jdbcType="VARCHAR" property="cinvdepcode" />
+    <result column="iAlterAdvance" jdbcType="INTEGER" property="ialteradvance" />
+    <result column="fAlterBaseNum" jdbcType="FLOAT" property="falterbasenum" />
+    <result column="cPlanMethod" jdbcType="VARCHAR" property="cplanmethod" />
+    <result column="bMPS" jdbcType="BIT" property="bmps" />
+    <result column="bROP" jdbcType="BIT" property="brop" />
+    <result column="bRePlan" jdbcType="BIT" property="breplan" />
+    <result column="cSRPolicy" jdbcType="VARCHAR" property="csrpolicy" />
+    <result column="bBillUnite" jdbcType="BIT" property="bbillunite" />
+    <result column="iSupplyDay" jdbcType="INTEGER" property="isupplyday" />
+    <result column="fSupplyMulti" jdbcType="FLOAT" property="fsupplymulti" />
+    <result column="fMinSupply" jdbcType="FLOAT" property="fminsupply" />
+    <result column="bCutMantissa" jdbcType="BIT" property="bcutmantissa" />
+    <result column="cInvPersonCode" jdbcType="VARCHAR" property="cinvpersoncode" />
+    <result column="iInvTfId" jdbcType="INTEGER" property="iinvtfid" />
+    <result column="cEngineerFigNo" jdbcType="VARCHAR" property="cengineerfigno" />
+    <result column="bInTotalCost" jdbcType="BIT" property="bintotalcost" />
+    <result column="iSupplyType" jdbcType="SMALLINT" property="isupplytype" />
+    <result column="bConfigFree1" jdbcType="BIT" property="bconfigfree1" />
+    <result column="bConfigFree2" jdbcType="BIT" property="bconfigfree2" />
+    <result column="bConfigFree3" jdbcType="BIT" property="bconfigfree3" />
+    <result column="bConfigFree4" jdbcType="BIT" property="bconfigfree4" />
+    <result column="bConfigFree5" jdbcType="BIT" property="bconfigfree5" />
+    <result column="bConfigFree6" jdbcType="BIT" property="bconfigfree6" />
+    <result column="bConfigFree7" jdbcType="BIT" property="bconfigfree7" />
+    <result column="bConfigFree8" jdbcType="BIT" property="bconfigfree8" />
+    <result column="bConfigFree9" jdbcType="BIT" property="bconfigfree9" />
+    <result column="bConfigFree10" jdbcType="BIT" property="bconfigfree10" />
+    <result column="iDTLevel" jdbcType="SMALLINT" property="idtlevel" />
+    <result column="cDTAQL" jdbcType="VARCHAR" property="cdtaql" />
+    <result column="bPeriodDT" jdbcType="BIT" property="bperioddt" />
+    <result column="cDTPeriod" jdbcType="VARCHAR" property="cdtperiod" />
+    <result column="iBigMonth" jdbcType="INTEGER" property="ibigmonth" />
+    <result column="iBigDay" jdbcType="INTEGER" property="ibigday" />
+    <result column="iSmallMonth" jdbcType="INTEGER" property="ismallmonth" />
+    <result column="iSmallDay" jdbcType="INTEGER" property="ismallday" />
+    <result column="bOutInvDT" jdbcType="BIT" property="boutinvdt" />
+    <result column="bBackInvDT" jdbcType="BIT" property="bbackinvdt" />
+    <result column="iEndDTStyle" jdbcType="SMALLINT" property="ienddtstyle" />
+    <result column="bDTWarnInv" jdbcType="BIT" property="bdtwarninv" />
+    <result column="fBackTaxRate" jdbcType="FLOAT" property="fbacktaxrate" />
+    <result column="cCIQCode" jdbcType="VARCHAR" property="cciqcode" />
+    <result column="cWGroupCode" jdbcType="VARCHAR" property="cwgroupcode" />
+    <result column="cWUnit" jdbcType="VARCHAR" property="cwunit" />
+    <result column="fGrossW" jdbcType="FLOAT" property="fgrossw" />
+    <result column="cVGroupCode" jdbcType="VARCHAR" property="cvgroupcode" />
+    <result column="cVUnit" jdbcType="VARCHAR" property="cvunit" />
+    <result column="fLength" jdbcType="FLOAT" property="flength" />
+    <result column="fWidth" jdbcType="FLOAT" property="fwidth" />
+    <result column="fHeight" jdbcType="FLOAT" property="fheight" />
+    <result column="iDTUCounter" jdbcType="INTEGER" property="idtucounter" />
+    <result column="iDTDCounter" jdbcType="INTEGER" property="idtdcounter" />
+    <result column="iBatchCounter" jdbcType="INTEGER" property="ibatchcounter" />
+    <result column="cShopUnit" jdbcType="VARCHAR" property="cshopunit" />
+    <result column="cPurPersonCode" jdbcType="VARCHAR" property="cpurpersoncode" />
+    <result column="bImportMedicine" jdbcType="BIT" property="bimportmedicine" />
+    <result column="bFirstBusiMedicine" jdbcType="BIT" property="bfirstbusimedicine" />
+    <result column="bForeExpland" jdbcType="BIT" property="bforeexpland" />
+    <result column="cInvPlanCode" jdbcType="VARCHAR" property="cinvplancode" />
+    <result column="fConvertRate" jdbcType="FLOAT" property="fconvertrate" />
+    <result column="dReplaceDate" jdbcType="BINARY" property="dreplacedate" />
+    <result column="bInvModel" jdbcType="BIT" property="binvmodel" />
+    <result column="bKCCutMantissa" jdbcType="BIT" property="bkccutmantissa" />
+    <result column="bReceiptByDT" jdbcType="BIT" property="breceiptbydt" />
+    <result column="iImpTaxRate" jdbcType="FLOAT" property="iimptaxrate" />
+    <result column="iExpTaxRate" jdbcType="FLOAT" property="iexptaxrate" />
+    <result column="bExpSale" jdbcType="BIT" property="bexpsale" />
+    <result column="iDrawBatch" jdbcType="FLOAT" property="idrawbatch" />
+    <result column="bCheckBSATP" jdbcType="BIT" property="bcheckbsatp" />
+    <result column="cInvProjectCode" jdbcType="VARCHAR" property="cinvprojectcode" />
+    <result column="iTestRule" jdbcType="SMALLINT" property="itestrule" />
+    <result column="cRuleCode" jdbcType="VARCHAR" property="crulecode" />
+    <result column="bCheckFree1" jdbcType="BIT" property="bcheckfree1" />
+    <result column="bCheckFree2" jdbcType="BIT" property="bcheckfree2" />
+    <result column="bCheckFree3" jdbcType="BIT" property="bcheckfree3" />
+    <result column="bCheckFree4" jdbcType="BIT" property="bcheckfree4" />
+    <result column="bCheckFree5" jdbcType="BIT" property="bcheckfree5" />
+    <result column="bCheckFree6" jdbcType="BIT" property="bcheckfree6" />
+    <result column="bCheckFree7" jdbcType="BIT" property="bcheckfree7" />
+    <result column="bCheckFree8" jdbcType="BIT" property="bcheckfree8" />
+    <result column="bCheckFree9" jdbcType="BIT" property="bcheckfree9" />
+    <result column="bCheckFree10" jdbcType="BIT" property="bcheckfree10" />
+    <result column="bBomMain" jdbcType="BIT" property="bbommain" />
+    <result column="bBomSub" jdbcType="BIT" property="bbomsub" />
+    <result column="bProductBill" jdbcType="BIT" property="bproductbill" />
+    <result column="iCheckATP" jdbcType="SMALLINT" property="icheckatp" />
+    <result column="iInvATPId" jdbcType="INTEGER" property="iinvatpid" />
+    <result column="iPlanTfDay" jdbcType="INTEGER" property="iplantfday" />
+    <result column="iOverlapDay" jdbcType="INTEGER" property="ioverlapday" />
+    <result column="bPiece" jdbcType="BIT" property="bpiece" />
+    <result column="bSrvItem" jdbcType="BIT" property="bsrvitem" />
+    <result column="bSrvFittings" jdbcType="BIT" property="bsrvfittings" />
+    <result column="fMaxSupply" jdbcType="FLOAT" property="fmaxsupply" />
+    <result column="fMinSplit" jdbcType="FLOAT" property="fminsplit" />
+    <result column="bSpecialOrder" jdbcType="BIT" property="bspecialorder" />
+    <result column="bTrackSaleBill" jdbcType="BIT" property="btracksalebill" />
+    <result column="cInvMnemCode" jdbcType="VARCHAR" property="cinvmnemcode" />
+    <result column="iPlanDefault" jdbcType="SMALLINT" property="iplandefault" />
+    <result column="iPFBatchQty" jdbcType="FLOAT" property="ipfbatchqty" />
+    <result column="iAllocatePrintDgt" jdbcType="INTEGER" property="iallocateprintdgt" />
+    <result column="bCheckBatch" jdbcType="BIT" property="bcheckbatch" />
+    <result column="bMngOldpart" jdbcType="BIT" property="bmngoldpart" />
+    <result column="iOldpartMngRule" jdbcType="SMALLINT" property="ioldpartmngrule" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    cInvCode, cInvAddCode, cInvName, cInvStd, cInvCCode, cVenCode, cReplaceItem, cPosition, 
+    bSale, bPurchase, bSelf, bComsume, bProducing, bService, bAccessary, iTaxRate, iInvWeight, 
+    iVolume, iInvRCost, iInvSPrice, iInvSCost, iInvLSCost, iInvNCost, iInvAdvance, iInvBatch, 
+    iSafeNum, iTopSum, iLowSum, iOverStock, cInvABC, bInvQuality, bInvBatch, bInvEntrust, 
+    bInvOverStock, dSDate, dEDate, bFree1, bFree2, cInvDefine1, cInvDefine2, cInvDefine3, 
+    I_id, bInvType, iInvMPCost, cQuality, iInvSaleCost, iInvSCost1, iInvSCost2, iInvSCost3, 
+    bFree3, bFree4, bFree5, bFree6, bFree7, bFree8, bFree9, bFree10, cCreatePerson, cModifyPerson, 
+    dModifyDate, fSubscribePoint, fVagQuantity, cValueType, bFixExch, fOutExcess, fInExcess, 
+    iMassDate, iWarnDays, fExpensesExch, bTrack, bSerial, bBarCode, iId, cBarCode, cInvDefine4, 
+    cInvDefine5, cInvDefine6, cInvDefine7, cInvDefine8, cInvDefine9, cInvDefine10, cInvDefine11, 
+    cInvDefine12, cInvDefine13, cInvDefine14, cInvDefine15, cInvDefine16, iGroupType, 
+    cGroupCode, cComUnitCode, cAssComUnitCode, cSAComUnitCode, cPUComUnitCode, cSTComUnitCode, 
+    cCAComUnitCode, cFrequency, iFrequency, iDays, dLastDate, iWastage, bSolitude, cEnterprise, 
+    cAddress, cFile, cLabel, cCheckOut, cLicence, bSpecialties, cDefWareHouse, iHighPrice, 
+    iExpSaleRate, cPriceGroup, cOfferGrade, iOfferRate, cMonth, iAdvanceDate, cCurrencyName, 
+    cProduceAddress, cProduceNation, cRegisterNo, cEnterNo, cPackingType, cEnglishName, 
+    bPropertyCheck, cPreparationType, cCommodity, iRecipeBatch, cNotPatentName, pubufts, 
+    bPromotSales, iPlanPolicy, iROPMethod, iBatchRule, fBatchIncrement, iAssureProvideDays, 
+    iTestStyle, iDTMethod, fDTRate, fDTNum, cDTUnit, iDTStyle, iQTMethod, PictureGUID, 
+    bPlanInv, bProxyForeign, bATOModel, bCheckItem, bPTOModel, bEquipment, cProductUnit, 
+    fOrderUpLimit, cMassUnit, fRetailPrice, cInvDepCode, iAlterAdvance, fAlterBaseNum, 
+    cPlanMethod, bMPS, bROP, bRePlan, cSRPolicy, bBillUnite, iSupplyDay, fSupplyMulti, 
+    fMinSupply, bCutMantissa, cInvPersonCode, iInvTfId, cEngineerFigNo, bInTotalCost, 
+    iSupplyType, bConfigFree1, bConfigFree2, bConfigFree3, bConfigFree4, bConfigFree5, 
+    bConfigFree6, bConfigFree7, bConfigFree8, bConfigFree9, bConfigFree10, iDTLevel, 
+    cDTAQL, bPeriodDT, cDTPeriod, iBigMonth, iBigDay, iSmallMonth, iSmallDay, bOutInvDT, 
+    bBackInvDT, iEndDTStyle, bDTWarnInv, fBackTaxRate, cCIQCode, cWGroupCode, cWUnit, 
+    fGrossW, cVGroupCode, cVUnit, fLength, fWidth, fHeight, iDTUCounter, iDTDCounter, 
+    iBatchCounter, cShopUnit, cPurPersonCode, bImportMedicine, bFirstBusiMedicine, bForeExpland, 
+    cInvPlanCode, fConvertRate, dReplaceDate, bInvModel, bKCCutMantissa, bReceiptByDT, 
+    iImpTaxRate, iExpTaxRate, bExpSale, iDrawBatch, bCheckBSATP, cInvProjectCode, iTestRule, 
+    cRuleCode, bCheckFree1, bCheckFree2, bCheckFree3, bCheckFree4, bCheckFree5, bCheckFree6, 
+    bCheckFree7, bCheckFree8, bCheckFree9, bCheckFree10, bBomMain, bBomSub, bProductBill, 
+    iCheckATP, iInvATPId, iPlanTfDay, iOverlapDay, bPiece, bSrvItem, bSrvFittings, fMaxSupply, 
+    fMinSplit, bSpecialOrder, bTrackSaleBill, cInvMnemCode, iPlanDefault, iPFBatchQty, 
+    iAllocatePrintDgt, bCheckBatch, bMngOldpart, iOldpartMngRule
+  </sql>
+  <select id="selectByPrimaryKey"  resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from ${u8name}.dbo.Inventory
+    where cInvCode = #{cinvcode,jdbcType=VARCHAR}
+  </select>
+  <select id="inventory" resultType="com.heda.cy.baseDoc.pojo.Inventory">
+    select
+    i.*,ic.cInvCName as cinvcname
+    from ${u8name}.dbo.Inventory i
+    left join ${u8name}.dbo.InventoryClass ic on i.cInvCCode = ic.cInvCCode
+    where cInvCode like '%${cinvname}%' or cInvName like '%${cinvname}%'
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from Inventory
+    where cInvCode = #{cinvcode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="cInvCode" keyProperty="cinvcode" parameterType="com.heda.cy.baseDoc.pojo.Inventory" useGeneratedKeys="true">
+    insert into Inventory (cInvAddCode, cInvName, cInvStd, 
+      cInvCCode, cVenCode, cReplaceItem, 
+      cPosition, bSale, bPurchase, 
+      bSelf, bComsume, bProducing, bService, 
+      bAccessary, iTaxRate, iInvWeight, 
+      iVolume, iInvRCost, iInvSPrice, 
+      iInvSCost, iInvLSCost, iInvNCost, 
+      iInvAdvance, iInvBatch, iSafeNum, 
+      iTopSum, iLowSum, iOverStock, 
+      cInvABC, bInvQuality, bInvBatch, 
+      bInvEntrust, bInvOverStock, dSDate, 
+      dEDate, bFree1, bFree2, cInvDefine1, 
+      cInvDefine2, cInvDefine3, I_id, 
+      bInvType, iInvMPCost, cQuality, 
+      iInvSaleCost, iInvSCost1, iInvSCost2, 
+      iInvSCost3, bFree3, bFree4, bFree5, 
+      bFree6, bFree7, bFree8, bFree9, 
+      bFree10, cCreatePerson, cModifyPerson, 
+      dModifyDate, fSubscribePoint, fVagQuantity, 
+      cValueType, bFixExch, fOutExcess, 
+      fInExcess, iMassDate, iWarnDays, 
+      fExpensesExch, bTrack, bSerial, 
+      bBarCode, iId, cBarCode, 
+      cInvDefine4, cInvDefine5, cInvDefine6, 
+      cInvDefine7, cInvDefine8, cInvDefine9, 
+      cInvDefine10, cInvDefine11, cInvDefine12, 
+      cInvDefine13, cInvDefine14, cInvDefine15, 
+      cInvDefine16, iGroupType, cGroupCode, 
+      cComUnitCode, cAssComUnitCode, cSAComUnitCode, 
+      cPUComUnitCode, cSTComUnitCode, cCAComUnitCode, 
+      cFrequency, iFrequency, iDays, 
+      dLastDate, iWastage, bSolitude, 
+      cEnterprise, cAddress, cFile, 
+      cLabel, cCheckOut, cLicence, 
+      bSpecialties, cDefWareHouse, iHighPrice, 
+      iExpSaleRate, cPriceGroup, cOfferGrade, 
+      iOfferRate, cMonth, iAdvanceDate, 
+      cCurrencyName, cProduceAddress, cProduceNation, 
+      cRegisterNo, cEnterNo, cPackingType, 
+      cEnglishName, bPropertyCheck, cPreparationType, 
+      cCommodity, iRecipeBatch, cNotPatentName, 
+      pubufts, bPromotSales, iPlanPolicy, 
+      iROPMethod, iBatchRule, fBatchIncrement, 
+      iAssureProvideDays, iTestStyle, iDTMethod, 
+      fDTRate, fDTNum, cDTUnit, 
+      iDTStyle, iQTMethod, PictureGUID, 
+      bPlanInv, bProxyForeign, bATOModel, 
+      bCheckItem, bPTOModel, bEquipment, 
+      cProductUnit, fOrderUpLimit, cMassUnit, 
+      fRetailPrice, cInvDepCode, iAlterAdvance, 
+      fAlterBaseNum, cPlanMethod, bMPS, 
+      bROP, bRePlan, cSRPolicy, bBillUnite, 
+      iSupplyDay, fSupplyMulti, fMinSupply, 
+      bCutMantissa, cInvPersonCode, iInvTfId, 
+      cEngineerFigNo, bInTotalCost, iSupplyType, 
+      bConfigFree1, bConfigFree2, bConfigFree3, 
+      bConfigFree4, bConfigFree5, bConfigFree6, 
+      bConfigFree7, bConfigFree8, bConfigFree9, 
+      bConfigFree10, iDTLevel, cDTAQL, 
+      bPeriodDT, cDTPeriod, iBigMonth, 
+      iBigDay, iSmallMonth, iSmallDay, 
+      bOutInvDT, bBackInvDT, iEndDTStyle, 
+      bDTWarnInv, fBackTaxRate, cCIQCode, 
+      cWGroupCode, cWUnit, fGrossW, 
+      cVGroupCode, cVUnit, fLength, 
+      fWidth, fHeight, iDTUCounter, 
+      iDTDCounter, iBatchCounter, cShopUnit, 
+      cPurPersonCode, bImportMedicine, bFirstBusiMedicine, 
+      bForeExpland, cInvPlanCode, fConvertRate, 
+      dReplaceDate, bInvModel, bKCCutMantissa, 
+      bReceiptByDT, iImpTaxRate, iExpTaxRate, 
+      bExpSale, iDrawBatch, bCheckBSATP, 
+      cInvProjectCode, iTestRule, cRuleCode, 
+      bCheckFree1, bCheckFree2, bCheckFree3, 
+      bCheckFree4, bCheckFree5, bCheckFree6, 
+      bCheckFree7, bCheckFree8, bCheckFree9, 
+      bCheckFree10, bBomMain, bBomSub, 
+      bProductBill, iCheckATP, iInvATPId, 
+      iPlanTfDay, iOverlapDay, bPiece, 
+      bSrvItem, bSrvFittings, fMaxSupply, 
+      fMinSplit, bSpecialOrder, bTrackSaleBill, 
+      cInvMnemCode, iPlanDefault, iPFBatchQty, 
+      iAllocatePrintDgt, bCheckBatch, bMngOldpart, 
+      iOldpartMngRule)
+    values (#{cinvaddcode,jdbcType=VARCHAR}, #{cinvname,jdbcType=VARCHAR}, #{cinvstd,jdbcType=VARCHAR}, 
+      #{cinvccode,jdbcType=VARCHAR}, #{cvencode,jdbcType=VARCHAR}, #{creplaceitem,jdbcType=VARCHAR}, 
+      #{cposition,jdbcType=VARCHAR}, #{bsale,jdbcType=BIT}, #{bpurchase,jdbcType=BIT}, 
+      #{bself,jdbcType=BIT}, #{bcomsume,jdbcType=BIT}, #{bproducing,jdbcType=BIT}, #{bservice,jdbcType=BIT}, 
+      #{baccessary,jdbcType=BIT}, #{itaxrate,jdbcType=FLOAT}, #{iinvweight,jdbcType=FLOAT}, 
+      #{ivolume,jdbcType=FLOAT}, #{iinvrcost,jdbcType=FLOAT}, #{iinvsprice,jdbcType=FLOAT}, 
+      #{iinvscost,jdbcType=FLOAT}, #{iinvlscost,jdbcType=FLOAT}, #{iinvncost,jdbcType=FLOAT}, 
+      #{iinvadvance,jdbcType=FLOAT}, #{iinvbatch,jdbcType=FLOAT}, #{isafenum,jdbcType=FLOAT}, 
+      #{itopsum,jdbcType=FLOAT}, #{ilowsum,jdbcType=FLOAT}, #{ioverstock,jdbcType=FLOAT}, 
+      #{cinvabc,jdbcType=VARCHAR}, #{binvquality,jdbcType=BIT}, #{binvbatch,jdbcType=BIT}, 
+      #{binventrust,jdbcType=BIT}, #{binvoverstock,jdbcType=BIT}, #{dsdate,jdbcType=TIMESTAMP}, 
+      #{dedate,jdbcType=TIMESTAMP}, #{bfree1,jdbcType=BIT}, #{bfree2,jdbcType=BIT}, #{cinvdefine1,jdbcType=VARCHAR}, 
+      #{cinvdefine2,jdbcType=VARCHAR}, #{cinvdefine3,jdbcType=VARCHAR}, #{iId,jdbcType=INTEGER}, 
+      #{binvtype,jdbcType=BIT}, #{iinvmpcost,jdbcType=FLOAT}, #{cquality,jdbcType=VARCHAR}, 
+      #{iinvsalecost,jdbcType=FLOAT}, #{iinvscost1,jdbcType=FLOAT}, #{iinvscost2,jdbcType=FLOAT}, 
+      #{iinvscost3,jdbcType=FLOAT}, #{bfree3,jdbcType=BIT}, #{bfree4,jdbcType=BIT}, #{bfree5,jdbcType=BIT}, 
+      #{bfree6,jdbcType=BIT}, #{bfree7,jdbcType=BIT}, #{bfree8,jdbcType=BIT}, #{bfree9,jdbcType=BIT}, 
+      #{bfree10,jdbcType=BIT}, #{ccreateperson,jdbcType=VARCHAR}, #{cmodifyperson,jdbcType=VARCHAR}, 
+      #{dmodifydate,jdbcType=TIMESTAMP}, #{fsubscribepoint,jdbcType=FLOAT}, #{fvagquantity,jdbcType=FLOAT}, 
+      #{cvaluetype,jdbcType=VARCHAR}, #{bfixexch,jdbcType=BIT}, #{foutexcess,jdbcType=FLOAT}, 
+      #{finexcess,jdbcType=FLOAT}, #{imassdate,jdbcType=SMALLINT}, #{iwarndays,jdbcType=SMALLINT}, 
+      #{fexpensesexch,jdbcType=FLOAT}, #{btrack,jdbcType=BIT}, #{bserial,jdbcType=BIT}, 
+      #{bbarcode,jdbcType=BIT}, #{iid,jdbcType=INTEGER}, #{cbarcode,jdbcType=VARCHAR}, 
+      #{cinvdefine4,jdbcType=VARCHAR}, #{cinvdefine5,jdbcType=VARCHAR}, #{cinvdefine6,jdbcType=VARCHAR}, 
+      #{cinvdefine7,jdbcType=VARCHAR}, #{cinvdefine8,jdbcType=VARCHAR}, #{cinvdefine9,jdbcType=VARCHAR}, 
+      #{cinvdefine10,jdbcType=VARCHAR}, #{cinvdefine11,jdbcType=INTEGER}, #{cinvdefine12,jdbcType=INTEGER}, 
+      #{cinvdefine13,jdbcType=FLOAT}, #{cinvdefine14,jdbcType=FLOAT}, #{cinvdefine15,jdbcType=TIMESTAMP}, 
+      #{cinvdefine16,jdbcType=TIMESTAMP}, #{igrouptype,jdbcType=TINYINT}, #{cgroupcode,jdbcType=VARCHAR}, 
+      #{ccomunitcode,jdbcType=VARCHAR}, #{casscomunitcode,jdbcType=VARCHAR}, #{csacomunitcode,jdbcType=VARCHAR}, 
+      #{cpucomunitcode,jdbcType=VARCHAR}, #{cstcomunitcode,jdbcType=VARCHAR}, #{ccacomunitcode,jdbcType=VARCHAR}, 
+      #{cfrequency,jdbcType=VARCHAR}, #{ifrequency,jdbcType=SMALLINT}, #{idays,jdbcType=SMALLINT}, 
+      #{dlastdate,jdbcType=TIMESTAMP}, #{iwastage,jdbcType=FLOAT}, #{bsolitude,jdbcType=BIT}, 
+      #{centerprise,jdbcType=VARCHAR}, #{caddress,jdbcType=VARCHAR}, #{cfile,jdbcType=VARCHAR}, 
+      #{clabel,jdbcType=VARCHAR}, #{ccheckout,jdbcType=VARCHAR}, #{clicence,jdbcType=VARCHAR}, 
+      #{bspecialties,jdbcType=BIT}, #{cdefwarehouse,jdbcType=VARCHAR}, #{ihighprice,jdbcType=FLOAT}, 
+      #{iexpsalerate,jdbcType=FLOAT}, #{cpricegroup,jdbcType=VARCHAR}, #{coffergrade,jdbcType=VARCHAR}, 
+      #{iofferrate,jdbcType=FLOAT}, #{cmonth,jdbcType=VARCHAR}, #{iadvancedate,jdbcType=SMALLINT}, 
+      #{ccurrencyname,jdbcType=VARCHAR}, #{cproduceaddress,jdbcType=VARCHAR}, #{cproducenation,jdbcType=VARCHAR}, 
+      #{cregisterno,jdbcType=VARCHAR}, #{centerno,jdbcType=VARCHAR}, #{cpackingtype,jdbcType=VARCHAR}, 
+      #{cenglishname,jdbcType=VARCHAR}, #{bpropertycheck,jdbcType=BIT}, #{cpreparationtype,jdbcType=VARCHAR}, 
+      #{ccommodity,jdbcType=VARCHAR}, #{irecipebatch,jdbcType=TINYINT}, #{cnotpatentname,jdbcType=VARCHAR}, 
+      #{pubufts,jdbcType=TIMESTAMP}, #{bpromotsales,jdbcType=BIT}, #{iplanpolicy,jdbcType=SMALLINT}, 
+      #{iropmethod,jdbcType=SMALLINT}, #{ibatchrule,jdbcType=SMALLINT}, #{fbatchincrement,jdbcType=FLOAT}, 
+      #{iassureprovidedays,jdbcType=INTEGER}, #{iteststyle,jdbcType=SMALLINT}, #{idtmethod,jdbcType=SMALLINT}, 
+      #{fdtrate,jdbcType=FLOAT}, #{fdtnum,jdbcType=FLOAT}, #{cdtunit,jdbcType=VARCHAR}, 
+      #{idtstyle,jdbcType=SMALLINT}, #{iqtmethod,jdbcType=INTEGER}, #{pictureguid,jdbcType=OTHER}, 
+      #{bplaninv,jdbcType=BIT}, #{bproxyforeign,jdbcType=BIT}, #{batomodel,jdbcType=BIT}, 
+      #{bcheckitem,jdbcType=BIT}, #{bptomodel,jdbcType=BIT}, #{bequipment,jdbcType=BIT}, 
+      #{cproductunit,jdbcType=VARCHAR}, #{forderuplimit,jdbcType=FLOAT}, #{cmassunit,jdbcType=SMALLINT}, 
+      #{fretailprice,jdbcType=FLOAT}, #{cinvdepcode,jdbcType=VARCHAR}, #{ialteradvance,jdbcType=INTEGER}, 
+      #{falterbasenum,jdbcType=FLOAT}, #{cplanmethod,jdbcType=VARCHAR}, #{bmps,jdbcType=BIT}, 
+      #{brop,jdbcType=BIT}, #{breplan,jdbcType=BIT}, #{csrpolicy,jdbcType=VARCHAR}, #{bbillunite,jdbcType=BIT}, 
+      #{isupplyday,jdbcType=INTEGER}, #{fsupplymulti,jdbcType=FLOAT}, #{fminsupply,jdbcType=FLOAT}, 
+      #{bcutmantissa,jdbcType=BIT}, #{cinvpersoncode,jdbcType=VARCHAR}, #{iinvtfid,jdbcType=INTEGER}, 
+      #{cengineerfigno,jdbcType=VARCHAR}, #{bintotalcost,jdbcType=BIT}, #{isupplytype,jdbcType=SMALLINT}, 
+      #{bconfigfree1,jdbcType=BIT}, #{bconfigfree2,jdbcType=BIT}, #{bconfigfree3,jdbcType=BIT}, 
+      #{bconfigfree4,jdbcType=BIT}, #{bconfigfree5,jdbcType=BIT}, #{bconfigfree6,jdbcType=BIT}, 
+      #{bconfigfree7,jdbcType=BIT}, #{bconfigfree8,jdbcType=BIT}, #{bconfigfree9,jdbcType=BIT}, 
+      #{bconfigfree10,jdbcType=BIT}, #{idtlevel,jdbcType=SMALLINT}, #{cdtaql,jdbcType=VARCHAR}, 
+      #{bperioddt,jdbcType=BIT}, #{cdtperiod,jdbcType=VARCHAR}, #{ibigmonth,jdbcType=INTEGER}, 
+      #{ibigday,jdbcType=INTEGER}, #{ismallmonth,jdbcType=INTEGER}, #{ismallday,jdbcType=INTEGER}, 
+      #{boutinvdt,jdbcType=BIT}, #{bbackinvdt,jdbcType=BIT}, #{ienddtstyle,jdbcType=SMALLINT}, 
+      #{bdtwarninv,jdbcType=BIT}, #{fbacktaxrate,jdbcType=FLOAT}, #{cciqcode,jdbcType=VARCHAR}, 
+      #{cwgroupcode,jdbcType=VARCHAR}, #{cwunit,jdbcType=VARCHAR}, #{fgrossw,jdbcType=FLOAT}, 
+      #{cvgroupcode,jdbcType=VARCHAR}, #{cvunit,jdbcType=VARCHAR}, #{flength,jdbcType=FLOAT}, 
+      #{fwidth,jdbcType=FLOAT}, #{fheight,jdbcType=FLOAT}, #{idtucounter,jdbcType=INTEGER}, 
+      #{idtdcounter,jdbcType=INTEGER}, #{ibatchcounter,jdbcType=INTEGER}, #{cshopunit,jdbcType=VARCHAR}, 
+      #{cpurpersoncode,jdbcType=VARCHAR}, #{bimportmedicine,jdbcType=BIT}, #{bfirstbusimedicine,jdbcType=BIT}, 
+      #{bforeexpland,jdbcType=BIT}, #{cinvplancode,jdbcType=VARCHAR}, #{fconvertrate,jdbcType=FLOAT}, 
+      #{dreplacedate,jdbcType=TIMESTAMP}, #{binvmodel,jdbcType=BIT}, #{bkccutmantissa,jdbcType=BIT}, 
+      #{breceiptbydt,jdbcType=BIT}, #{iimptaxrate,jdbcType=FLOAT}, #{iexptaxrate,jdbcType=FLOAT}, 
+      #{bexpsale,jdbcType=BIT}, #{idrawbatch,jdbcType=FLOAT}, #{bcheckbsatp,jdbcType=BIT}, 
+      #{cinvprojectcode,jdbcType=VARCHAR}, #{itestrule,jdbcType=SMALLINT}, #{crulecode,jdbcType=VARCHAR}, 
+      #{bcheckfree1,jdbcType=BIT}, #{bcheckfree2,jdbcType=BIT}, #{bcheckfree3,jdbcType=BIT}, 
+      #{bcheckfree4,jdbcType=BIT}, #{bcheckfree5,jdbcType=BIT}, #{bcheckfree6,jdbcType=BIT}, 
+      #{bcheckfree7,jdbcType=BIT}, #{bcheckfree8,jdbcType=BIT}, #{bcheckfree9,jdbcType=BIT}, 
+      #{bcheckfree10,jdbcType=BIT}, #{bbommain,jdbcType=BIT}, #{bbomsub,jdbcType=BIT}, 
+      #{bproductbill,jdbcType=BIT}, #{icheckatp,jdbcType=SMALLINT}, #{iinvatpid,jdbcType=INTEGER}, 
+      #{iplantfday,jdbcType=INTEGER}, #{ioverlapday,jdbcType=INTEGER}, #{bpiece,jdbcType=BIT}, 
+      #{bsrvitem,jdbcType=BIT}, #{bsrvfittings,jdbcType=BIT}, #{fmaxsupply,jdbcType=FLOAT}, 
+      #{fminsplit,jdbcType=FLOAT}, #{bspecialorder,jdbcType=BIT}, #{btracksalebill,jdbcType=BIT}, 
+      #{cinvmnemcode,jdbcType=VARCHAR}, #{iplandefault,jdbcType=SMALLINT}, #{ipfbatchqty,jdbcType=FLOAT}, 
+      #{iallocateprintdgt,jdbcType=INTEGER}, #{bcheckbatch,jdbcType=BIT}, #{bmngoldpart,jdbcType=BIT}, 
+      #{ioldpartmngrule,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" keyColumn="cInvCode" keyProperty="cinvcode" parameterType="com.heda.cy.baseDoc.pojo.Inventory" useGeneratedKeys="true">
+    insert into ${u8name}.dbo.Inventory
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cinvcode != null">
+        cInvCode,
+      </if>
+      <if test="cinvaddcode != null">
+        cInvAddCode,
+      </if>
+      <if test="cinvname != null">
+        cInvName,
+      </if>
+      <if test="cinvstd != null">
+        cInvStd,
+      </if>
+      <if test="cinvccode != null">
+        cInvCCode,
+      </if>
+      <if test="cvencode != null">
+        cVenCode,
+      </if>
+      <if test="creplaceitem != null">
+        cReplaceItem,
+      </if>
+      <if test="cposition != null">
+        cPosition,
+      </if>
+      <if test="bsale != null">
+        bSale,
+      </if>
+      <if test="bpurchase != null">
+        bPurchase,
+      </if>
+      <if test="bself != null">
+        bSelf,
+      </if>
+      <if test="bcomsume != null">
+        bComsume,
+      </if>
+      <if test="bproducing != null">
+        bProducing,
+      </if>
+      <if test="bservice != null">
+        bService,
+      </if>
+      <if test="baccessary != null">
+        bAccessary,
+      </if>
+      <if test="itaxrate != null">
+        iTaxRate,
+      </if>
+      <if test="iinvweight != null">
+        iInvWeight,
+      </if>
+      <if test="ivolume != null">
+        iVolume,
+      </if>
+      <if test="iinvrcost != null">
+        iInvRCost,
+      </if>
+      <if test="iinvsprice != null">
+        iInvSPrice,
+      </if>
+      <if test="iinvscost != null">
+        iInvSCost,
+      </if>
+      <if test="iinvlscost != null">
+        iInvLSCost,
+      </if>
+      <if test="iinvncost != null">
+        iInvNCost,
+      </if>
+      <if test="iinvadvance != null">
+        iInvAdvance,
+      </if>
+      <if test="iinvbatch != null">
+        iInvBatch,
+      </if>
+      <if test="isafenum != null">
+        iSafeNum,
+      </if>
+      <if test="itopsum != null">
+        iTopSum,
+      </if>
+      <if test="ilowsum != null">
+        iLowSum,
+      </if>
+      <if test="ioverstock != null">
+        iOverStock,
+      </if>
+      <if test="cinvabc != null">
+        cInvABC,
+      </if>
+      <if test="binvquality != null">
+        bInvQuality,
+      </if>
+      <if test="binvbatch != null">
+        bInvBatch,
+      </if>
+      <if test="binventrust != null">
+        bInvEntrust,
+      </if>
+      <if test="binvoverstock != null">
+        bInvOverStock,
+      </if>
+      <if test="bfree1 != null">
+        bFree1,
+      </if>
+      <if test="bfree2 != null">
+        bFree2,
+      </if>
+      <if test="cinvdefine1 != null">
+        cInvDefine1,
+      </if>
+      <if test="cinvdefine2 != null">
+        cInvDefine2,
+      </if>
+      <if test="cinvdefine3 != null">
+        cInvDefine3,
+      </if>
+      <if test="iId != null">
+        I_id,
+      </if>
+      <if test="binvtype != null">
+        bInvType,
+      </if>
+      <if test="iinvmpcost != null">
+        iInvMPCost,
+      </if>
+      <if test="cquality != null">
+        cQuality,
+      </if>
+      <if test="iinvsalecost != null">
+        iInvSaleCost,
+      </if>
+      <if test="iinvscost1 != null">
+        iInvSCost1,
+      </if>
+      <if test="iinvscost2 != null">
+        iInvSCost2,
+      </if>
+      <if test="iinvscost3 != null">
+        iInvSCost3,
+      </if>
+      <if test="bfree3 != null">
+        bFree3,
+      </if>
+      <if test="bfree4 != null">
+        bFree4,
+      </if>
+      <if test="bfree5 != null">
+        bFree5,
+      </if>
+      <if test="bfree6 != null">
+        bFree6,
+      </if>
+      <if test="bfree7 != null">
+        bFree7,
+      </if>
+      <if test="bfree8 != null">
+        bFree8,
+      </if>
+      <if test="bfree9 != null">
+        bFree9,
+      </if>
+      <if test="bfree10 != null">
+        bFree10,
+      </if>
+      <if test="ccreateperson != null">
+        cCreatePerson,
+      </if>
+      <if test="cmodifyperson != null">
+        cModifyPerson,
+      </if>
+      <if test="fsubscribepoint != null">
+        fSubscribePoint,
+      </if>
+      <if test="fvagquantity != null">
+        fVagQuantity,
+      </if>
+      <if test="cvaluetype != null">
+        cValueType,
+      </if>
+      <if test="bfixexch != null">
+        bFixExch,
+      </if>
+      <if test="foutexcess != null">
+        fOutExcess,
+      </if>
+      <if test="finexcess != null">
+        fInExcess,
+      </if>
+      <if test="imassdate != null">
+        iMassDate,
+      </if>
+      <if test="iwarndays != null">
+        iWarnDays,
+      </if>
+      <if test="fexpensesexch != null">
+        fExpensesExch,
+      </if>
+      <if test="btrack != null">
+        bTrack,
+      </if>
+      <if test="bserial != null">
+        bSerial,
+      </if>
+      <if test="bbarcode != null">
+        bBarCode,
+      </if>
+      <if test="iid != null">
+        iId,
+      </if>
+      <if test="cbarcode != null">
+        cBarCode,
+      </if>
+      <if test="cinvdefine4 != null">
+        cInvDefine4,
+      </if>
+      <if test="cinvdefine5 != null">
+        cInvDefine5,
+      </if>
+      <if test="cinvdefine6 != null">
+        cInvDefine6,
+      </if>
+      <if test="cinvdefine7 != null">
+        cInvDefine7,
+      </if>
+      <if test="cinvdefine8 != null">
+        cInvDefine8,
+      </if>
+      <if test="cinvdefine9 != null">
+        cInvDefine9,
+      </if>
+      <if test="cinvdefine10 != null">
+        cInvDefine10,
+      </if>
+      <if test="cinvdefine11 != null">
+        cInvDefine11,
+      </if>
+      <if test="cinvdefine12 != null">
+        cInvDefine12,
+      </if>
+      <if test="cinvdefine13 != null">
+        cInvDefine13,
+      </if>
+      <if test="cinvdefine14 != null">
+        cInvDefine14,
+      </if>
+      <if test="igrouptype != null">
+        iGroupType,
+      </if>
+      <if test="cgroupcode != null">
+        cGroupCode,
+      </if>
+      <if test="ccomunitcode != null">
+        cComUnitCode,
+      </if>
+      <if test="casscomunitcode != null">
+        cAssComUnitCode,
+      </if>
+      <if test="csacomunitcode != null">
+        cSAComUnitCode,
+      </if>
+      <if test="cpucomunitcode != null">
+        cPUComUnitCode,
+      </if>
+      <if test="cstcomunitcode != null">
+        cSTComUnitCode,
+      </if>
+      <if test="ccacomunitcode != null">
+        cCAComUnitCode,
+      </if>
+      <if test="cfrequency != null">
+        cFrequency,
+      </if>
+      <if test="ifrequency != null">
+        iFrequency,
+      </if>
+      <if test="idays != null">
+        iDays,
+      </if>
+      <if test="iwastage != null">
+        iWastage,
+      </if>
+      <if test="bsolitude != null">
+        bSolitude,
+      </if>
+      <if test="centerprise != null">
+        cEnterprise,
+      </if>
+      <if test="caddress != null">
+        cAddress,
+      </if>
+      <if test="cfile != null">
+        cFile,
+      </if>
+      <if test="clabel != null">
+        cLabel,
+      </if>
+      <if test="ccheckout != null">
+        cCheckOut,
+      </if>
+      <if test="clicence != null">
+        cLicence,
+      </if>
+      <if test="bspecialties != null">
+        bSpecialties,
+      </if>
+      <if test="cdefwarehouse != null">
+        cDefWareHouse,
+      </if>
+      <if test="ihighprice != null">
+        iHighPrice,
+      </if>
+      <if test="iexpsalerate != null">
+        iExpSaleRate,
+      </if>
+      <if test="cpricegroup != null">
+        cPriceGroup,
+      </if>
+      <if test="coffergrade != null">
+        cOfferGrade,
+      </if>
+      <if test="iofferrate != null">
+        iOfferRate,
+      </if>
+      <if test="cmonth != null">
+        cMonth,
+      </if>
+      <if test="iadvancedate != null">
+        iAdvanceDate,
+      </if>
+      <if test="ccurrencyname != null">
+        cCurrencyName,
+      </if>
+      <if test="cproduceaddress != null">
+        cProduceAddress,
+      </if>
+      <if test="cproducenation != null">
+        cProduceNation,
+      </if>
+      <if test="cregisterno != null">
+        cRegisterNo,
+      </if>
+      <if test="centerno != null">
+        cEnterNo,
+      </if>
+      <if test="cpackingtype != null">
+        cPackingType,
+      </if>
+      <if test="cenglishname != null">
+        cEnglishName,
+      </if>
+      <if test="bpropertycheck != null">
+        bPropertyCheck,
+      </if>
+      <if test="cpreparationtype != null">
+        cPreparationType,
+      </if>
+      <if test="ccommodity != null">
+        cCommodity,
+      </if>
+      <if test="irecipebatch != null">
+        iRecipeBatch,
+      </if>
+      <if test="cnotpatentname != null">
+        cNotPatentName,
+      </if>
+      <if test="bpromotsales != null">
+        bPromotSales,
+      </if>
+      <if test="iplanpolicy != null">
+        iPlanPolicy,
+      </if>
+      <if test="iropmethod != null">
+        iROPMethod,
+      </if>
+      <if test="ibatchrule != null">
+        iBatchRule,
+      </if>
+      <if test="fbatchincrement != null">
+        fBatchIncrement,
+      </if>
+      <if test="iassureprovidedays != null">
+        iAssureProvideDays,
+      </if>
+      <if test="iteststyle != null">
+        iTestStyle,
+      </if>
+      <if test="idtmethod != null">
+        iDTMethod,
+      </if>
+      <if test="fdtrate != null">
+        fDTRate,
+      </if>
+      <if test="fdtnum != null">
+        fDTNum,
+      </if>
+      <if test="cdtunit != null">
+        cDTUnit,
+      </if>
+      <if test="idtstyle != null">
+        iDTStyle,
+      </if>
+      <if test="iqtmethod != null">
+        iQTMethod,
+      </if>
+      <if test="pictureguid != null">
+        PictureGUID,
+      </if>
+      <if test="bplaninv != null">
+        bPlanInv,
+      </if>
+      <if test="bproxyforeign != null">
+        bProxyForeign,
+      </if>
+      <if test="batomodel != null">
+        bATOModel,
+      </if>
+      <if test="bcheckitem != null">
+        bCheckItem,
+      </if>
+      <if test="bptomodel != null">
+        bPTOModel,
+      </if>
+      <if test="bequipment != null">
+        bEquipment,
+      </if>
+      <if test="cproductunit != null">
+        cProductUnit,
+      </if>
+      <if test="forderuplimit != null">
+        fOrderUpLimit,
+      </if>
+      <if test="cmassunit != null">
+        cMassUnit,
+      </if>
+      <if test="fretailprice != null">
+        fRetailPrice,
+      </if>
+      <if test="cinvdepcode != null">
+        cInvDepCode,
+      </if>
+      <if test="ialteradvance != null">
+        iAlterAdvance,
+      </if>
+      <if test="falterbasenum != null">
+        fAlterBaseNum,
+      </if>
+      <if test="cplanmethod != null">
+        cPlanMethod,
+      </if>
+      <if test="bmps != null">
+        bMPS,
+      </if>
+      <if test="brop != null">
+        bROP,
+      </if>
+      <if test="breplan != null">
+        bRePlan,
+      </if>
+      <if test="csrpolicy != null">
+        cSRPolicy,
+      </if>
+      <if test="bbillunite != null">
+        bBillUnite,
+      </if>
+      <if test="isupplyday != null">
+        iSupplyDay,
+      </if>
+      <if test="fsupplymulti != null">
+        fSupplyMulti,
+      </if>
+      <if test="fminsupply != null">
+        fMinSupply,
+      </if>
+      <if test="bcutmantissa != null">
+        bCutMantissa,
+      </if>
+      <if test="cinvpersoncode != null">
+        cInvPersonCode,
+      </if>
+      <if test="iinvtfid != null">
+        iInvTfId,
+      </if>
+      <if test="cengineerfigno != null">
+        cEngineerFigNo,
+      </if>
+      <if test="bintotalcost != null">
+        bInTotalCost,
+      </if>
+      <if test="isupplytype != null">
+        iSupplyType,
+      </if>
+      <if test="bconfigfree1 != null">
+        bConfigFree1,
+      </if>
+      <if test="bconfigfree2 != null">
+        bConfigFree2,
+      </if>
+      <if test="bconfigfree3 != null">
+        bConfigFree3,
+      </if>
+      <if test="bconfigfree4 != null">
+        bConfigFree4,
+      </if>
+      <if test="bconfigfree5 != null">
+        bConfigFree5,
+      </if>
+      <if test="bconfigfree6 != null">
+        bConfigFree6,
+      </if>
+      <if test="bconfigfree7 != null">
+        bConfigFree7,
+      </if>
+      <if test="bconfigfree8 != null">
+        bConfigFree8,
+      </if>
+      <if test="bconfigfree9 != null">
+        bConfigFree9,
+      </if>
+      <if test="bconfigfree10 != null">
+        bConfigFree10,
+      </if>
+      <if test="idtlevel != null">
+        iDTLevel,
+      </if>
+      <if test="cdtaql != null">
+        cDTAQL,
+      </if>
+      <if test="bperioddt != null">
+        bPeriodDT,
+      </if>
+      <if test="cdtperiod != null">
+        cDTPeriod,
+      </if>
+      <if test="ibigmonth != null">
+        iBigMonth,
+      </if>
+      <if test="ibigday != null">
+        iBigDay,
+      </if>
+      <if test="ismallmonth != null">
+        iSmallMonth,
+      </if>
+      <if test="ismallday != null">
+        iSmallDay,
+      </if>
+      <if test="boutinvdt != null">
+        bOutInvDT,
+      </if>
+      <if test="bbackinvdt != null">
+        bBackInvDT,
+      </if>
+      <if test="ienddtstyle != null">
+        iEndDTStyle,
+      </if>
+      <if test="bdtwarninv != null">
+        bDTWarnInv,
+      </if>
+      <if test="fbacktaxrate != null">
+        fBackTaxRate,
+      </if>
+      <if test="cciqcode != null">
+        cCIQCode,
+      </if>
+      <if test="cwgroupcode != null">
+        cWGroupCode,
+      </if>
+      <if test="cwunit != null">
+        cWUnit,
+      </if>
+      <if test="fgrossw != null">
+        fGrossW,
+      </if>
+      <if test="cvgroupcode != null">
+        cVGroupCode,
+      </if>
+      <if test="cvunit != null">
+        cVUnit,
+      </if>
+      <if test="flength != null">
+        fLength,
+      </if>
+      <if test="fwidth != null">
+        fWidth,
+      </if>
+      <if test="fheight != null">
+        fHeight,
+      </if>
+      <if test="idtucounter != null">
+        iDTUCounter,
+      </if>
+      <if test="idtdcounter != null">
+        iDTDCounter,
+      </if>
+      <if test="ibatchcounter != null">
+        iBatchCounter,
+      </if>
+      <if test="cshopunit != null">
+        cShopUnit,
+      </if>
+      <if test="cpurpersoncode != null">
+        cPurPersonCode,
+      </if>
+      <if test="bimportmedicine != null">
+        bImportMedicine,
+      </if>
+      <if test="bfirstbusimedicine != null">
+        bFirstBusiMedicine,
+      </if>
+      <if test="bforeexpland != null">
+        bForeExpland,
+      </if>
+      <if test="cinvplancode != null">
+        cInvPlanCode,
+      </if>
+      <if test="fconvertrate != null">
+        fConvertRate,
+      </if>
+      <if test="binvmodel != null">
+        bInvModel,
+      </if>
+      <if test="bkccutmantissa != null">
+        bKCCutMantissa,
+      </if>
+      <if test="breceiptbydt != null">
+        bReceiptByDT,
+      </if>
+      <if test="iimptaxrate != null">
+        iImpTaxRate,
+      </if>
+      <if test="iexptaxrate != null">
+        iExpTaxRate,
+      </if>
+      <if test="bexpsale != null">
+        bExpSale,
+      </if>
+      <if test="idrawbatch != null">
+        iDrawBatch,
+      </if>
+      <if test="bcheckbsatp != null">
+        bCheckBSATP,
+      </if>
+      <if test="cinvprojectcode != null">
+        cInvProjectCode,
+      </if>
+      <if test="itestrule != null">
+        iTestRule,
+      </if>
+      <if test="crulecode != null">
+        cRuleCode,
+      </if>
+      <if test="bcheckfree1 != null">
+        bCheckFree1,
+      </if>
+      <if test="bcheckfree2 != null">
+        bCheckFree2,
+      </if>
+      <if test="bcheckfree3 != null">
+        bCheckFree3,
+      </if>
+      <if test="bcheckfree4 != null">
+        bCheckFree4,
+      </if>
+      <if test="bcheckfree5 != null">
+        bCheckFree5,
+      </if>
+      <if test="bcheckfree6 != null">
+        bCheckFree6,
+      </if>
+      <if test="bcheckfree7 != null">
+        bCheckFree7,
+      </if>
+      <if test="bcheckfree8 != null">
+        bCheckFree8,
+      </if>
+      <if test="bcheckfree9 != null">
+        bCheckFree9,
+      </if>
+      <if test="bcheckfree10 != null">
+        bCheckFree10,
+      </if>
+      <if test="bbommain != null">
+        bBomMain,
+      </if>
+      <if test="bbomsub != null">
+        bBomSub,
+      </if>
+      <if test="bproductbill != null">
+        bProductBill,
+      </if>
+      <if test="icheckatp != null">
+        iCheckATP,
+      </if>
+      <if test="iinvatpid != null">
+        iInvATPId,
+      </if>
+      <if test="iplantfday != null">
+        iPlanTfDay,
+      </if>
+      <if test="ioverlapday != null">
+        iOverlapDay,
+      </if>
+      <if test="bpiece != null">
+        bPiece,
+      </if>
+      <if test="bsrvitem != null">
+        bSrvItem,
+      </if>
+      <if test="bsrvfittings != null">
+        bSrvFittings,
+      </if>
+      <if test="fmaxsupply != null">
+        fMaxSupply,
+      </if>
+      <if test="fminsplit != null">
+        fMinSplit,
+      </if>
+      <if test="bspecialorder != null">
+        bSpecialOrder,
+      </if>
+      <if test="btracksalebill != null">
+        bTrackSaleBill,
+      </if>
+      <if test="cinvmnemcode != null">
+        cInvMnemCode,
+      </if>
+      <if test="iplandefault != null">
+        iPlanDefault,
+      </if>
+      <if test="ipfbatchqty != null">
+        iPFBatchQty,
+      </if>
+      <if test="iallocateprintdgt != null">
+        iAllocatePrintDgt,
+      </if>
+      <if test="bcheckbatch != null">
+        bCheckBatch,
+      </if>
+      <if test="bmngoldpart != null">
+        bMngOldpart,
+      </if>
+      <if test="ioldpartmngrule != null">
+        iOldpartMngRule,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cinvcode != null">
+        #{cinvcode,jdbcType=VARCHAR},
+      </if>
+      <if test="cinvaddcode != null">
+        #{cinvaddcode,jdbcType=VARCHAR},
+      </if>
+      <if test="cinvname != null">
+        #{cinvname,jdbcType=VARCHAR},
+      </if>
+      <if test="cinvstd != null">
+        #{cinvstd,jdbcType=VARCHAR},
+      </if>
+      <if test="cinvccode != null">
+        #{cinvccode,jdbcType=VARCHAR},
+      </if>
+      <if test="cvencode != null">
+        #{cvencode,jdbcType=VARCHAR},
+      </if>
+      <if test="creplaceitem != null">
+        #{creplaceitem,jdbcType=VARCHAR},
+      </if>
+      <if test="cposition != null">
+        #{cposition,jdbcType=VARCHAR},
+      </if>
+      <if test="bsale != null">
+        #{bsale,jdbcType=BIT},
+      </if>
+      <if test="bpurchase != null">
+        #{bpurchase,jdbcType=BIT},
+      </if>
+      <if test="bself != null">
+        #{bself,jdbcType=BIT},
+      </if>
+      <if test="bcomsume != null">
+        #{bcomsume,jdbcType=BIT},
+      </if>
+      <if test="bproducing != null">
+        #{bproducing,jdbcType=BIT},
+      </if>
+      <if test="bservice != null">
+        #{bservice,jdbcType=BIT},
+      </if>
+      <if test="baccessary != null">
+        #{baccessary,jdbcType=BIT},
+      </if>
+      <if test="itaxrate != null">
+        #{itaxrate,jdbcType=FLOAT},
+      </if>
+      <if test="iinvweight != null">
+        #{iinvweight,jdbcType=FLOAT},
+      </if>
+      <if test="ivolume != null">
+        #{ivolume,jdbcType=FLOAT},
+      </if>
+      <if test="iinvrcost != null">
+        #{iinvrcost,jdbcType=FLOAT},
+      </if>
+      <if test="iinvsprice != null">
+        #{iinvsprice,jdbcType=FLOAT},
+      </if>
+      <if test="iinvscost != null">
+        #{iinvscost,jdbcType=FLOAT},
+      </if>
+      <if test="iinvlscost != null">
+        #{iinvlscost,jdbcType=FLOAT},
+      </if>
+      <if test="iinvncost != null">
+        #{iinvncost,jdbcType=FLOAT},
+      </if>
+      <if test="iinvadvance != null">
+        #{iinvadvance,jdbcType=FLOAT},
+      </if>
+      <if test="iinvbatch != null">
+        #{iinvbatch,jdbcType=FLOAT},
+      </if>
+      <if test="isafenum != null">
+        #{isafenum,jdbcType=FLOAT},
+      </if>
+      <if test="itopsum != null">
+        #{itopsum,jdbcType=FLOAT},
+      </if>
+      <if test="ilowsum != null">
+        #{ilowsum,jdbcType=FLOAT},
+      </if>
+      <if test="ioverstock != null">
+        #{ioverstock,jdbcType=FLOAT},
+      </if>
+      <if test="cinvabc != null">
+        #{cinvabc,jdbcType=VARCHAR},
+      </if>
+      <if test="binvquality != null">
+        #{binvquality,jdbcType=BIT},
+      </if>
+      <if test="binvbatch != null">
+        #{binvbatch,jdbcType=BIT},
+      </if>
+      <if test="binventrust != null">
+        #{binventrust,jdbcType=BIT},
+      </if>
+      <if test="binvoverstock != null">
+        #{binvoverstock,jdbcType=BIT},
+      </if>
+      <if test="bfree1 != null">
+        #{bfree1,jdbcType=BIT},
+      </if>
+      <if test="bfree2 != null">
+        #{bfree2,jdbcType=BIT},
+      </if>
+      <if test="cinvdefine1 != null">
+        #{cinvdefine1,jdbcType=VARCHAR},
+      </if>
+      <if test="cinvdefine2 != null">
+        #{cinvdefine2,jdbcType=VARCHAR},
+      </if>
+      <if test="cinvdefine3 != null">
+        #{cinvdefine3,jdbcType=VARCHAR},
+      </if>
+      <if test="iId != null">
+        #{iId,jdbcType=INTEGER},
+      </if>
+      <if test="binvtype != null">
+        #{binvtype,jdbcType=BIT},
+      </if>
+      <if test="iinvmpcost != null">
+        #{iinvmpcost,jdbcType=FLOAT},
+      </if>
+      <if test="cquality != null">
+        #{cquality,jdbcType=VARCHAR},
+      </if>
+      <if test="iinvsalecost != null">
+        #{iinvsalecost,jdbcType=FLOAT},
+      </if>
+      <if test="iinvscost1 != null">
+        #{iinvscost1,jdbcType=FLOAT},
+      </if>
+      <if test="iinvscost2 != null">
+        #{iinvscost2,jdbcType=FLOAT},
+      </if>
+      <if test="iinvscost3 != null">
+        #{iinvscost3,jdbcType=FLOAT},
+      </if>
+      <if test="bfree3 != null">
+        #{bfree3,jdbcType=BIT},
+      </if>
+      <if test="bfree4 != null">
+        #{bfree4,jdbcType=BIT},
+      </if>
+      <if test="bfree5 != null">
+        #{bfree5,jdbcType=BIT},
+      </if>
+      <if test="bfree6 != null">
+        #{bfree6,jdbcType=BIT},
+      </if>
+      <if test="bfree7 != null">
+        #{bfree7,jdbcType=BIT},
+      </if>
+      <if test="bfree8 != null">
+        #{bfree8,jdbcType=BIT},
+      </if>
+      <if test="bfree9 != null">
+        #{bfree9,jdbcType=BIT},
+      </if>
+      <if test="bfree10 != null">
+        #{bfree10,jdbcType=BIT},
+      </if>
+      <if test="ccreateperson != null">
+        #{ccreateperson,jdbcType=VARCHAR},
+      </if>
+      <if test="cmodifyperson != null">
+        #{cmodifyperson,jdbcType=VARCHAR},
+      </if>
+      <if test="fsubscribepoint != null">
+        #{fsubscribepoint,jdbcType=FLOAT},
+      </if>
+      <if test="fvagquantity != null">
+        #{fvagquantity,jdbcType=FLOAT},
+      </if>
+      <if test="cvaluetype != null">
+        #{cvaluetype,jdbcType=VARCHAR},
+      </if>
+      <if test="bfixexch != null">
+        #{bfixexch,jdbcType=BIT},
+      </if>
+      <if test="foutexcess != null">
+        #{foutexcess,jdbcType=FLOAT},
+      </if>
+      <if test="finexcess != null">
+        #{finexcess,jdbcType=FLOAT},
+      </if>
+      <if test="imassdate != null">
+        #{imassdate,jdbcType=SMALLINT},
+      </if>
+      <if test="iwarndays != null">
+        #{iwarndays,jdbcType=SMALLINT},
+      </if>
+      <if test="fexpensesexch != null">
+        #{fexpensesexch,jdbcType=FLOAT},
+      </if>
+      <if test="btrack != null">
+        #{btrack,jdbcType=BIT},
+      </if>
+      <if test="bserial != null">
+        #{bserial,jdbcType=BIT},
+      </if>
+      <if test="bbarcode != null">
+        #{bbarcode,jdbcType=BIT},
+      </if>
+      <if test="iid != null">
+        #{iid,jdbcType=INTEGER},
+      </if>
+      <if test="cbarcode != null">
+        #{cbarcode,jdbcType=VARCHAR},
+      </if>
+      <if test="cinvdefine4 != null">
+        #{cinvdefine4,jdbcType=VARCHAR},
+      </if>
+      <if test="cinvdefine5 != null">
+        #{cinvdefine5,jdbcType=VARCHAR},
+      </if>
+      <if test="cinvdefine6 != null">
+        #{cinvdefine6,jdbcType=VARCHAR},
+      </if>
+      <if test="cinvdefine7 != null">
+        #{cinvdefine7,jdbcType=VARCHAR},
+      </if>
+      <if test="cinvdefine8 != null">
+        #{cinvdefine8,jdbcType=VARCHAR},
+      </if>
+      <if test="cinvdefine9 != null">
+        #{cinvdefine9,jdbcType=VARCHAR},
+      </if>
+      <if test="cinvdefine10 != null">
+        #{cinvdefine10,jdbcType=VARCHAR},
+      </if>
+      <if test="cinvdefine11 != null">
+        #{cinvdefine11,jdbcType=INTEGER},
+      </if>
+      <if test="cinvdefine12 != null">
+        #{cinvdefine12,jdbcType=INTEGER},
+      </if>
+      <if test="cinvdefine13 != null">
+        #{cinvdefine13,jdbcType=FLOAT},
+      </if>
+      <if test="cinvdefine14 != null">
+        #{cinvdefine14,jdbcType=FLOAT},
+      </if>
+      <if test="igrouptype != null">
+        #{igrouptype,jdbcType=TINYINT},
+      </if>
+      <if test="cgroupcode != null">
+        #{cgroupcode,jdbcType=VARCHAR},
+      </if>
+      <if test="ccomunitcode != null">
+        #{ccomunitcode,jdbcType=VARCHAR},
+      </if>
+      <if test="casscomunitcode != null">
+        #{casscomunitcode,jdbcType=VARCHAR},
+      </if>
+      <if test="csacomunitcode != null">
+        #{csacomunitcode,jdbcType=VARCHAR},
+      </if>
+      <if test="cpucomunitcode != null">
+        #{cpucomunitcode,jdbcType=VARCHAR},
+      </if>
+      <if test="cstcomunitcode != null">
+        #{cstcomunitcode,jdbcType=VARCHAR},
+      </if>
+      <if test="ccacomunitcode != null">
+        #{ccacomunitcode,jdbcType=VARCHAR},
+      </if>
+      <if test="cfrequency != null">
+        #{cfrequency,jdbcType=VARCHAR},
+      </if>
+      <if test="ifrequency != null">
+        #{ifrequency,jdbcType=SMALLINT},
+      </if>
+      <if test="idays != null">
+        #{idays,jdbcType=SMALLINT},
+      </if>
+      <if test="iwastage != null">
+        #{iwastage,jdbcType=FLOAT},
+      </if>
+      <if test="bsolitude != null">
+        #{bsolitude,jdbcType=BIT},
+      </if>
+      <if test="centerprise != null">
+        #{centerprise,jdbcType=VARCHAR},
+      </if>
+      <if test="caddress != null">
+        #{caddress,jdbcType=VARCHAR},
+      </if>
+      <if test="cfile != null">
+        #{cfile,jdbcType=VARCHAR},
+      </if>
+      <if test="clabel != null">
+        #{clabel,jdbcType=VARCHAR},
+      </if>
+      <if test="ccheckout != null">
+        #{ccheckout,jdbcType=VARCHAR},
+      </if>
+      <if test="clicence != null">
+        #{clicence,jdbcType=VARCHAR},
+      </if>
+      <if test="bspecialties != null">
+        #{bspecialties,jdbcType=BIT},
+      </if>
+      <if test="cdefwarehouse != null">
+        #{cdefwarehouse,jdbcType=VARCHAR},
+      </if>
+      <if test="ihighprice != null">
+        #{ihighprice,jdbcType=FLOAT},
+      </if>
+      <if test="iexpsalerate != null">
+        #{iexpsalerate,jdbcType=FLOAT},
+      </if>
+      <if test="cpricegroup != null">
+        #{cpricegroup,jdbcType=VARCHAR},
+      </if>
+      <if test="coffergrade != null">
+        #{coffergrade,jdbcType=VARCHAR},
+      </if>
+      <if test="iofferrate != null">
+        #{iofferrate,jdbcType=FLOAT},
+      </if>
+      <if test="cmonth != null">
+        #{cmonth,jdbcType=VARCHAR},
+      </if>
+      <if test="iadvancedate != null">
+        #{iadvancedate,jdbcType=SMALLINT},
+      </if>
+      <if test="ccurrencyname != null">
+        #{ccurrencyname,jdbcType=VARCHAR},
+      </if>
+      <if test="cproduceaddress != null">
+        #{cproduceaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="cproducenation != null">
+        #{cproducenation,jdbcType=VARCHAR},
+      </if>
+      <if test="cregisterno != null">
+        #{cregisterno,jdbcType=VARCHAR},
+      </if>
+      <if test="centerno != null">
+        #{centerno,jdbcType=VARCHAR},
+      </if>
+      <if test="cpackingtype != null">
+        #{cpackingtype,jdbcType=VARCHAR},
+      </if>
+      <if test="cenglishname != null">
+        #{cenglishname,jdbcType=VARCHAR},
+      </if>
+      <if test="bpropertycheck != null">
+        #{bpropertycheck,jdbcType=BIT},
+      </if>
+      <if test="cpreparationtype != null">
+        #{cpreparationtype,jdbcType=VARCHAR},
+      </if>
+      <if test="ccommodity != null">
+        #{ccommodity,jdbcType=VARCHAR},
+      </if>
+      <if test="irecipebatch != null">
+        #{irecipebatch,jdbcType=TINYINT},
+      </if>
+      <if test="cnotpatentname != null">
+        #{cnotpatentname,jdbcType=VARCHAR},
+      </if>
+      <if test="bpromotsales != null">
+        #{bpromotsales,jdbcType=BIT},
+      </if>
+      <if test="iplanpolicy != null">
+        #{iplanpolicy,jdbcType=SMALLINT},
+      </if>
+      <if test="iropmethod != null">
+        #{iropmethod,jdbcType=SMALLINT},
+      </if>
+      <if test="ibatchrule != null">
+        #{ibatchrule,jdbcType=SMALLINT},
+      </if>
+      <if test="fbatchincrement != null">
+        #{fbatchincrement,jdbcType=FLOAT},
+      </if>
+      <if test="iassureprovidedays != null">
+        #{iassureprovidedays,jdbcType=INTEGER},
+      </if>
+      <if test="iteststyle != null">
+        #{iteststyle,jdbcType=SMALLINT},
+      </if>
+      <if test="idtmethod != null">
+        #{idtmethod,jdbcType=SMALLINT},
+      </if>
+      <if test="fdtrate != null">
+        #{fdtrate,jdbcType=FLOAT},
+      </if>
+      <if test="fdtnum != null">
+        #{fdtnum,jdbcType=FLOAT},
+      </if>
+      <if test="cdtunit != null">
+        #{cdtunit,jdbcType=VARCHAR},
+      </if>
+      <if test="idtstyle != null">
+        #{idtstyle,jdbcType=SMALLINT},
+      </if>
+      <if test="iqtmethod != null">
+        #{iqtmethod,jdbcType=INTEGER},
+      </if>
+      <if test="pictureguid != null">
+        #{pictureguid,jdbcType=OTHER},
+      </if>
+      <if test="bplaninv != null">
+        #{bplaninv,jdbcType=BIT},
+      </if>
+      <if test="bproxyforeign != null">
+        #{bproxyforeign,jdbcType=BIT},
+      </if>
+      <if test="batomodel != null">
+        #{batomodel,jdbcType=BIT},
+      </if>
+      <if test="bcheckitem != null">
+        #{bcheckitem,jdbcType=BIT},
+      </if>
+      <if test="bptomodel != null">
+        #{bptomodel,jdbcType=BIT},
+      </if>
+      <if test="bequipment != null">
+        #{bequipment,jdbcType=BIT},
+      </if>
+      <if test="cproductunit != null">
+        #{cproductunit,jdbcType=VARCHAR},
+      </if>
+      <if test="forderuplimit != null">
+        #{forderuplimit,jdbcType=FLOAT},
+      </if>
+      <if test="cmassunit != null">
+        #{cmassunit,jdbcType=SMALLINT},
+      </if>
+      <if test="fretailprice != null">
+        #{fretailprice,jdbcType=FLOAT},
+      </if>
+      <if test="cinvdepcode != null">
+        #{cinvdepcode,jdbcType=VARCHAR},
+      </if>
+      <if test="ialteradvance != null">
+        #{ialteradvance,jdbcType=INTEGER},
+      </if>
+      <if test="falterbasenum != null">
+        #{falterbasenum,jdbcType=FLOAT},
+      </if>
+      <if test="cplanmethod != null">
+        #{cplanmethod,jdbcType=VARCHAR},
+      </if>
+      <if test="bmps != null">
+        #{bmps,jdbcType=BIT},
+      </if>
+      <if test="brop != null">
+        #{brop,jdbcType=BIT},
+      </if>
+      <if test="breplan != null">
+        #{breplan,jdbcType=BIT},
+      </if>
+      <if test="csrpolicy != null">
+        #{csrpolicy,jdbcType=VARCHAR},
+      </if>
+      <if test="bbillunite != null">
+        #{bbillunite,jdbcType=BIT},
+      </if>
+      <if test="isupplyday != null">
+        #{isupplyday,jdbcType=INTEGER},
+      </if>
+      <if test="fsupplymulti != null">
+        #{fsupplymulti,jdbcType=FLOAT},
+      </if>
+      <if test="fminsupply != null">
+        #{fminsupply,jdbcType=FLOAT},
+      </if>
+      <if test="bcutmantissa != null">
+        #{bcutmantissa,jdbcType=BIT},
+      </if>
+      <if test="cinvpersoncode != null">
+        #{cinvpersoncode,jdbcType=VARCHAR},
+      </if>
+      <if test="iinvtfid != null">
+        #{iinvtfid,jdbcType=INTEGER},
+      </if>
+      <if test="cengineerfigno != null">
+        #{cengineerfigno,jdbcType=VARCHAR},
+      </if>
+      <if test="bintotalcost != null">
+        #{bintotalcost,jdbcType=BIT},
+      </if>
+      <if test="isupplytype != null">
+        #{isupplytype,jdbcType=SMALLINT},
+      </if>
+      <if test="bconfigfree1 != null">
+        #{bconfigfree1,jdbcType=BIT},
+      </if>
+      <if test="bconfigfree2 != null">
+        #{bconfigfree2,jdbcType=BIT},
+      </if>
+      <if test="bconfigfree3 != null">
+        #{bconfigfree3,jdbcType=BIT},
+      </if>
+      <if test="bconfigfree4 != null">
+        #{bconfigfree4,jdbcType=BIT},
+      </if>
+      <if test="bconfigfree5 != null">
+        #{bconfigfree5,jdbcType=BIT},
+      </if>
+      <if test="bconfigfree6 != null">
+        #{bconfigfree6,jdbcType=BIT},
+      </if>
+      <if test="bconfigfree7 != null">
+        #{bconfigfree7,jdbcType=BIT},
+      </if>
+      <if test="bconfigfree8 != null">
+        #{bconfigfree8,jdbcType=BIT},
+      </if>
+      <if test="bconfigfree9 != null">
+        #{bconfigfree9,jdbcType=BIT},
+      </if>
+      <if test="bconfigfree10 != null">
+        #{bconfigfree10,jdbcType=BIT},
+      </if>
+      <if test="idtlevel != null">
+        #{idtlevel,jdbcType=SMALLINT},
+      </if>
+      <if test="cdtaql != null">
+        #{cdtaql,jdbcType=VARCHAR},
+      </if>
+      <if test="bperioddt != null">
+        #{bperioddt,jdbcType=BIT},
+      </if>
+      <if test="cdtperiod != null">
+        #{cdtperiod,jdbcType=VARCHAR},
+      </if>
+      <if test="ibigmonth != null">
+        #{ibigmonth,jdbcType=INTEGER},
+      </if>
+      <if test="ibigday != null">
+        #{ibigday,jdbcType=INTEGER},
+      </if>
+      <if test="ismallmonth != null">
+        #{ismallmonth,jdbcType=INTEGER},
+      </if>
+      <if test="ismallday != null">
+        #{ismallday,jdbcType=INTEGER},
+      </if>
+      <if test="boutinvdt != null">
+        #{boutinvdt,jdbcType=BIT},
+      </if>
+      <if test="bbackinvdt != null">
+        #{bbackinvdt,jdbcType=BIT},
+      </if>
+      <if test="ienddtstyle != null">
+        #{ienddtstyle,jdbcType=SMALLINT},
+      </if>
+      <if test="bdtwarninv != null">
+        #{bdtwarninv,jdbcType=BIT},
+      </if>
+      <if test="fbacktaxrate != null">
+        #{fbacktaxrate,jdbcType=FLOAT},
+      </if>
+      <if test="cciqcode != null">
+        #{cciqcode,jdbcType=VARCHAR},
+      </if>
+      <if test="cwgroupcode != null">
+        #{cwgroupcode,jdbcType=VARCHAR},
+      </if>
+      <if test="cwunit != null">
+        #{cwunit,jdbcType=VARCHAR},
+      </if>
+      <if test="fgrossw != null">
+        #{fgrossw,jdbcType=FLOAT},
+      </if>
+      <if test="cvgroupcode != null">
+        #{cvgroupcode,jdbcType=VARCHAR},
+      </if>
+      <if test="cvunit != null">
+        #{cvunit,jdbcType=VARCHAR},
+      </if>
+      <if test="flength != null">
+        #{flength,jdbcType=FLOAT},
+      </if>
+      <if test="fwidth != null">
+        #{fwidth,jdbcType=FLOAT},
+      </if>
+      <if test="fheight != null">
+        #{fheight,jdbcType=FLOAT},
+      </if>
+      <if test="idtucounter != null">
+        #{idtucounter,jdbcType=INTEGER},
+      </if>
+      <if test="idtdcounter != null">
+        #{idtdcounter,jdbcType=INTEGER},
+      </if>
+      <if test="ibatchcounter != null">
+        #{ibatchcounter,jdbcType=INTEGER},
+      </if>
+      <if test="cshopunit != null">
+        #{cshopunit,jdbcType=VARCHAR},
+      </if>
+      <if test="cpurpersoncode != null">
+        #{cpurpersoncode,jdbcType=VARCHAR},
+      </if>
+      <if test="bimportmedicine != null">
+        #{bimportmedicine,jdbcType=BIT},
+      </if>
+      <if test="bfirstbusimedicine != null">
+        #{bfirstbusimedicine,jdbcType=BIT},
+      </if>
+      <if test="bforeexpland != null">
+        #{bforeexpland,jdbcType=BIT},
+      </if>
+      <if test="cinvplancode != null">
+        #{cinvplancode,jdbcType=VARCHAR},
+      </if>
+      <if test="fconvertrate != null">
+        #{fconvertrate,jdbcType=FLOAT},
+      </if>
+      <if test="binvmodel != null">
+        #{binvmodel,jdbcType=BIT},
+      </if>
+      <if test="bkccutmantissa != null">
+        #{bkccutmantissa,jdbcType=BIT},
+      </if>
+      <if test="breceiptbydt != null">
+        #{breceiptbydt,jdbcType=BIT},
+      </if>
+      <if test="iimptaxrate != null">
+        #{iimptaxrate,jdbcType=FLOAT},
+      </if>
+      <if test="iexptaxrate != null">
+        #{iexptaxrate,jdbcType=FLOAT},
+      </if>
+      <if test="bexpsale != null">
+        #{bexpsale,jdbcType=BIT},
+      </if>
+      <if test="idrawbatch != null">
+        #{idrawbatch,jdbcType=FLOAT},
+      </if>
+      <if test="bcheckbsatp != null">
+        #{bcheckbsatp,jdbcType=BIT},
+      </if>
+      <if test="cinvprojectcode != null">
+        #{cinvprojectcode,jdbcType=VARCHAR},
+      </if>
+      <if test="itestrule != null">
+        #{itestrule,jdbcType=SMALLINT},
+      </if>
+      <if test="crulecode != null">
+        #{crulecode,jdbcType=VARCHAR},
+      </if>
+      <if test="bcheckfree1 != null">
+        #{bcheckfree1,jdbcType=BIT},
+      </if>
+      <if test="bcheckfree2 != null">
+        #{bcheckfree2,jdbcType=BIT},
+      </if>
+      <if test="bcheckfree3 != null">
+        #{bcheckfree3,jdbcType=BIT},
+      </if>
+      <if test="bcheckfree4 != null">
+        #{bcheckfree4,jdbcType=BIT},
+      </if>
+      <if test="bcheckfree5 != null">
+        #{bcheckfree5,jdbcType=BIT},
+      </if>
+      <if test="bcheckfree6 != null">
+        #{bcheckfree6,jdbcType=BIT},
+      </if>
+      <if test="bcheckfree7 != null">
+        #{bcheckfree7,jdbcType=BIT},
+      </if>
+      <if test="bcheckfree8 != null">
+        #{bcheckfree8,jdbcType=BIT},
+      </if>
+      <if test="bcheckfree9 != null">
+        #{bcheckfree9,jdbcType=BIT},
+      </if>
+      <if test="bcheckfree10 != null">
+        #{bcheckfree10,jdbcType=BIT},
+      </if>
+      <if test="bbommain != null">
+        #{bbommain,jdbcType=BIT},
+      </if>
+      <if test="bbomsub != null">
+        #{bbomsub,jdbcType=BIT},
+      </if>
+      <if test="bproductbill != null">
+        #{bproductbill,jdbcType=BIT},
+      </if>
+      <if test="icheckatp != null">
+        #{icheckatp,jdbcType=SMALLINT},
+      </if>
+      <if test="iinvatpid != null">
+        #{iinvatpid,jdbcType=INTEGER},
+      </if>
+      <if test="iplantfday != null">
+        #{iplantfday,jdbcType=INTEGER},
+      </if>
+      <if test="ioverlapday != null">
+        #{ioverlapday,jdbcType=INTEGER},
+      </if>
+      <if test="bpiece != null">
+        #{bpiece,jdbcType=BIT},
+      </if>
+      <if test="bsrvitem != null">
+        #{bsrvitem,jdbcType=BIT},
+      </if>
+      <if test="bsrvfittings != null">
+        #{bsrvfittings,jdbcType=BIT},
+      </if>
+      <if test="fmaxsupply != null">
+        #{fmaxsupply,jdbcType=FLOAT},
+      </if>
+      <if test="fminsplit != null">
+        #{fminsplit,jdbcType=FLOAT},
+      </if>
+      <if test="bspecialorder != null">
+        #{bspecialorder,jdbcType=BIT},
+      </if>
+      <if test="btracksalebill != null">
+        #{btracksalebill,jdbcType=BIT},
+      </if>
+      <if test="cinvmnemcode != null">
+        #{cinvmnemcode,jdbcType=VARCHAR},
+      </if>
+      <if test="iplandefault != null">
+        #{iplandefault,jdbcType=SMALLINT},
+      </if>
+      <if test="ipfbatchqty != null">
+        #{ipfbatchqty,jdbcType=FLOAT},
+      </if>
+      <if test="iallocateprintdgt != null">
+        #{iallocateprintdgt,jdbcType=INTEGER},
+      </if>
+      <if test="bcheckbatch != null">
+        #{bcheckbatch,jdbcType=BIT},
+      </if>
+      <if test="bmngoldpart != null">
+        #{bmngoldpart,jdbcType=BIT},
+      </if>
+      <if test="ioldpartmngrule != null">
+        #{ioldpartmngrule,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.heda.cy.baseDoc.pojo.Inventory">
+    update ${u8name}.u8name.Inventory
+    <set>
+      <if test="cinvaddcode != null">
+        cInvAddCode = #{cinvaddcode,jdbcType=VARCHAR},
+      </if>
+      <if test="cinvname != null">
+        cInvName = #{cinvname,jdbcType=VARCHAR},
+      </if>
+      <if test="cinvstd != null">
+        cInvStd = #{cinvstd,jdbcType=VARCHAR},
+      </if>
+      <if test="cinvccode != null">
+        cInvCCode = #{cinvccode,jdbcType=VARCHAR},
+      </if>
+      <if test="cvencode != null">
+        cVenCode = #{cvencode,jdbcType=VARCHAR},
+      </if>
+      <if test="creplaceitem != null">
+        cReplaceItem = #{creplaceitem,jdbcType=VARCHAR},
+      </if>
+      <if test="cposition != null">
+        cPosition = #{cposition,jdbcType=VARCHAR},
+      </if>
+      <if test="bsale != null">
+        bSale = #{bsale,jdbcType=BIT},
+      </if>
+      <if test="bpurchase != null">
+        bPurchase = #{bpurchase,jdbcType=BIT},
+      </if>
+      <if test="bself != null">
+        bSelf = #{bself,jdbcType=BIT},
+      </if>
+      <if test="bcomsume != null">
+        bComsume = #{bcomsume,jdbcType=BIT},
+      </if>
+      <if test="bproducing != null">
+        bProducing = #{bproducing,jdbcType=BIT},
+      </if>
+      <if test="bservice != null">
+        bService = #{bservice,jdbcType=BIT},
+      </if>
+      <if test="baccessary != null">
+        bAccessary = #{baccessary,jdbcType=BIT},
+      </if>
+      <if test="itaxrate != null">
+        iTaxRate = #{itaxrate,jdbcType=FLOAT},
+      </if>
+      <if test="iinvweight != null">
+        iInvWeight = #{iinvweight,jdbcType=FLOAT},
+      </if>
+      <if test="ivolume != null">
+        iVolume = #{ivolume,jdbcType=FLOAT},
+      </if>
+      <if test="iinvrcost != null">
+        iInvRCost = #{iinvrcost,jdbcType=FLOAT},
+      </if>
+      <if test="iinvsprice != null">
+        iInvSPrice = #{iinvsprice,jdbcType=FLOAT},
+      </if>
+      <if test="iinvscost != null">
+        iInvSCost = #{iinvscost,jdbcType=FLOAT},
+      </if>
+      <if test="iinvlscost != null">
+        iInvLSCost = #{iinvlscost,jdbcType=FLOAT},
+      </if>
+      <if test="iinvncost != null">
+        iInvNCost = #{iinvncost,jdbcType=FLOAT},
+      </if>
+      <if test="iinvadvance != null">
+        iInvAdvance = #{iinvadvance,jdbcType=FLOAT},
+      </if>
+      <if test="iinvbatch != null">
+        iInvBatch = #{iinvbatch,jdbcType=FLOAT},
+      </if>
+      <if test="isafenum != null">
+        iSafeNum = #{isafenum,jdbcType=FLOAT},
+      </if>
+      <if test="itopsum != null">
+        iTopSum = #{itopsum,jdbcType=FLOAT},
+      </if>
+      <if test="ilowsum != null">
+        iLowSum = #{ilowsum,jdbcType=FLOAT},
+      </if>
+      <if test="ioverstock != null">
+        iOverStock = #{ioverstock,jdbcType=FLOAT},
+      </if>
+      <if test="cinvabc != null">
+        cInvABC = #{cinvabc,jdbcType=VARCHAR},
+      </if>
+      <if test="binvquality != null">
+        bInvQuality = #{binvquality,jdbcType=BIT},
+      </if>
+      <if test="binvbatch != null">
+        bInvBatch = #{binvbatch,jdbcType=BIT},
+      </if>
+      <if test="binventrust != null">
+        bInvEntrust = #{binventrust,jdbcType=BIT},
+      </if>
+      <if test="binvoverstock != null">
+        bInvOverStock = #{binvoverstock,jdbcType=BIT},
+      </if>
+      <if test="bfree1 != null">
+        bFree1 = #{bfree1,jdbcType=BIT},
+      </if>
+      <if test="bfree2 != null">
+        bFree2 = #{bfree2,jdbcType=BIT},
+      </if>
+      <if test="cinvdefine1 != null">
+        cInvDefine1 = #{cinvdefine1,jdbcType=VARCHAR},
+      </if>
+      <if test="cinvdefine2 != null">
+        cInvDefine2 = #{cinvdefine2,jdbcType=VARCHAR},
+      </if>
+      <if test="cinvdefine3 != null">
+        cInvDefine3 = #{cinvdefine3,jdbcType=VARCHAR},
+      </if>
+      <if test="iId != null">
+        I_id = #{iId,jdbcType=INTEGER},
+      </if>
+      <if test="binvtype != null">
+        bInvType = #{binvtype,jdbcType=BIT},
+      </if>
+      <if test="iinvmpcost != null">
+        iInvMPCost = #{iinvmpcost,jdbcType=FLOAT},
+      </if>
+      <if test="cquality != null">
+        cQuality = #{cquality,jdbcType=VARCHAR},
+      </if>
+      <if test="iinvsalecost != null">
+        iInvSaleCost = #{iinvsalecost,jdbcType=FLOAT},
+      </if>
+      <if test="iinvscost1 != null">
+        iInvSCost1 = #{iinvscost1,jdbcType=FLOAT},
+      </if>
+      <if test="iinvscost2 != null">
+        iInvSCost2 = #{iinvscost2,jdbcType=FLOAT},
+      </if>
+      <if test="iinvscost3 != null">
+        iInvSCost3 = #{iinvscost3,jdbcType=FLOAT},
+      </if>
+      <if test="bfree3 != null">
+        bFree3 = #{bfree3,jdbcType=BIT},
+      </if>
+      <if test="bfree4 != null">
+        bFree4 = #{bfree4,jdbcType=BIT},
+      </if>
+      <if test="bfree5 != null">
+        bFree5 = #{bfree5,jdbcType=BIT},
+      </if>
+      <if test="bfree6 != null">
+        bFree6 = #{bfree6,jdbcType=BIT},
+      </if>
+      <if test="bfree7 != null">
+        bFree7 = #{bfree7,jdbcType=BIT},
+      </if>
+      <if test="bfree8 != null">
+        bFree8 = #{bfree8,jdbcType=BIT},
+      </if>
+      <if test="bfree9 != null">
+        bFree9 = #{bfree9,jdbcType=BIT},
+      </if>
+      <if test="bfree10 != null">
+        bFree10 = #{bfree10,jdbcType=BIT},
+      </if>
+      <if test="ccreateperson != null">
+        cCreatePerson = #{ccreateperson,jdbcType=VARCHAR},
+      </if>
+      <if test="cmodifyperson != null">
+        cModifyPerson = #{cmodifyperson,jdbcType=VARCHAR},
+      </if>
+      <if test="fsubscribepoint != null">
+        fSubscribePoint = #{fsubscribepoint,jdbcType=FLOAT},
+      </if>
+      <if test="fvagquantity != null">
+        fVagQuantity = #{fvagquantity,jdbcType=FLOAT},
+      </if>
+      <if test="cvaluetype != null">
+        cValueType = #{cvaluetype,jdbcType=VARCHAR},
+      </if>
+      <if test="bfixexch != null">
+        bFixExch = #{bfixexch,jdbcType=BIT},
+      </if>
+      <if test="foutexcess != null">
+        fOutExcess = #{foutexcess,jdbcType=FLOAT},
+      </if>
+      <if test="finexcess != null">
+        fInExcess = #{finexcess,jdbcType=FLOAT},
+      </if>
+      <if test="imassdate != null">
+        iMassDate = #{imassdate,jdbcType=SMALLINT},
+      </if>
+      <if test="iwarndays != null">
+        iWarnDays = #{iwarndays,jdbcType=SMALLINT},
+      </if>
+      <if test="fexpensesexch != null">
+        fExpensesExch = #{fexpensesexch,jdbcType=FLOAT},
+      </if>
+      <if test="btrack != null">
+        bTrack = #{btrack,jdbcType=BIT},
+      </if>
+      <if test="bserial != null">
+        bSerial = #{bserial,jdbcType=BIT},
+      </if>
+      <if test="bbarcode != null">
+        bBarCode = #{bbarcode,jdbcType=BIT},
+      </if>
+      <if test="iid != null">
+        iId = #{iid,jdbcType=INTEGER},
+      </if>
+      <if test="cbarcode != null">
+        cBarCode = #{cbarcode,jdbcType=VARCHAR},
+      </if>
+      <if test="cinvdefine4 != null">
+        cInvDefine4 = #{cinvdefine4,jdbcType=VARCHAR},
+      </if>
+      <if test="cinvdefine5 != null">
+        cInvDefine5 = #{cinvdefine5,jdbcType=VARCHAR},
+      </if>
+      <if test="cinvdefine6 != null">
+        cInvDefine6 = #{cinvdefine6,jdbcType=VARCHAR},
+      </if>
+      <if test="cinvdefine7 != null">
+        cInvDefine7 = #{cinvdefine7,jdbcType=VARCHAR},
+      </if>
+      <if test="cinvdefine8 != null">
+        cInvDefine8 = #{cinvdefine8,jdbcType=VARCHAR},
+      </if>
+      <if test="cinvdefine9 != null">
+        cInvDefine9 = #{cinvdefine9,jdbcType=VARCHAR},
+      </if>
+      <if test="cinvdefine10 != null">
+        cInvDefine10 = #{cinvdefine10,jdbcType=VARCHAR},
+      </if>
+      <if test="cinvdefine11 != null">
+        cInvDefine11 = #{cinvdefine11,jdbcType=INTEGER},
+      </if>
+      <if test="cinvdefine12 != null">
+        cInvDefine12 = #{cinvdefine12,jdbcType=INTEGER},
+      </if>
+      <if test="cinvdefine13 != null">
+        cInvDefine13 = #{cinvdefine13,jdbcType=FLOAT},
+      </if>
+      <if test="cinvdefine14 != null">
+        cInvDefine14 = #{cinvdefine14,jdbcType=FLOAT},
+      </if>
+      <if test="igrouptype != null">
+        iGroupType = #{igrouptype,jdbcType=TINYINT},
+      </if>
+      <if test="cgroupcode != null">
+        cGroupCode = #{cgroupcode,jdbcType=VARCHAR},
+      </if>
+      <if test="ccomunitcode != null">
+        cComUnitCode = #{ccomunitcode,jdbcType=VARCHAR},
+      </if>
+      <if test="casscomunitcode != null">
+        cAssComUnitCode = #{casscomunitcode,jdbcType=VARCHAR},
+      </if>
+      <if test="csacomunitcode != null">
+        cSAComUnitCode = #{csacomunitcode,jdbcType=VARCHAR},
+      </if>
+      <if test="cpucomunitcode != null">
+        cPUComUnitCode = #{cpucomunitcode,jdbcType=VARCHAR},
+      </if>
+      <if test="cstcomunitcode != null">
+        cSTComUnitCode = #{cstcomunitcode,jdbcType=VARCHAR},
+      </if>
+      <if test="ccacomunitcode != null">
+        cCAComUnitCode = #{ccacomunitcode,jdbcType=VARCHAR},
+      </if>
+      <if test="cfrequency != null">
+        cFrequency = #{cfrequency,jdbcType=VARCHAR},
+      </if>
+      <if test="ifrequency != null">
+        iFrequency = #{ifrequency,jdbcType=SMALLINT},
+      </if>
+      <if test="idays != null">
+        iDays = #{idays,jdbcType=SMALLINT},
+      </if>
+      <if test="iwastage != null">
+        iWastage = #{iwastage,jdbcType=FLOAT},
+      </if>
+      <if test="bsolitude != null">
+        bSolitude = #{bsolitude,jdbcType=BIT},
+      </if>
+      <if test="centerprise != null">
+        cEnterprise = #{centerprise,jdbcType=VARCHAR},
+      </if>
+      <if test="caddress != null">
+        cAddress = #{caddress,jdbcType=VARCHAR},
+      </if>
+      <if test="cfile != null">
+        cFile = #{cfile,jdbcType=VARCHAR},
+      </if>
+      <if test="clabel != null">
+        cLabel = #{clabel,jdbcType=VARCHAR},
+      </if>
+      <if test="ccheckout != null">
+        cCheckOut = #{ccheckout,jdbcType=VARCHAR},
+      </if>
+      <if test="clicence != null">
+        cLicence = #{clicence,jdbcType=VARCHAR},
+      </if>
+      <if test="bspecialties != null">
+        bSpecialties = #{bspecialties,jdbcType=BIT},
+      </if>
+      <if test="cdefwarehouse != null">
+        cDefWareHouse = #{cdefwarehouse,jdbcType=VARCHAR},
+      </if>
+      <if test="ihighprice != null">
+        iHighPrice = #{ihighprice,jdbcType=FLOAT},
+      </if>
+      <if test="iexpsalerate != null">
+        iExpSaleRate = #{iexpsalerate,jdbcType=FLOAT},
+      </if>
+      <if test="cpricegroup != null">
+        cPriceGroup = #{cpricegroup,jdbcType=VARCHAR},
+      </if>
+      <if test="coffergrade != null">
+        cOfferGrade = #{coffergrade,jdbcType=VARCHAR},
+      </if>
+      <if test="iofferrate != null">
+        iOfferRate = #{iofferrate,jdbcType=FLOAT},
+      </if>
+      <if test="cmonth != null">
+        cMonth = #{cmonth,jdbcType=VARCHAR},
+      </if>
+      <if test="iadvancedate != null">
+        iAdvanceDate = #{iadvancedate,jdbcType=SMALLINT},
+      </if>
+      <if test="ccurrencyname != null">
+        cCurrencyName = #{ccurrencyname,jdbcType=VARCHAR},
+      </if>
+      <if test="cproduceaddress != null">
+        cProduceAddress = #{cproduceaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="cproducenation != null">
+        cProduceNation = #{cproducenation,jdbcType=VARCHAR},
+      </if>
+      <if test="cregisterno != null">
+        cRegisterNo = #{cregisterno,jdbcType=VARCHAR},
+      </if>
+      <if test="centerno != null">
+        cEnterNo = #{centerno,jdbcType=VARCHAR},
+      </if>
+      <if test="cpackingtype != null">
+        cPackingType = #{cpackingtype,jdbcType=VARCHAR},
+      </if>
+      <if test="cenglishname != null">
+        cEnglishName = #{cenglishname,jdbcType=VARCHAR},
+      </if>
+      <if test="bpropertycheck != null">
+        bPropertyCheck = #{bpropertycheck,jdbcType=BIT},
+      </if>
+      <if test="cpreparationtype != null">
+        cPreparationType = #{cpreparationtype,jdbcType=VARCHAR},
+      </if>
+      <if test="ccommodity != null">
+        cCommodity = #{ccommodity,jdbcType=VARCHAR},
+      </if>
+      <if test="irecipebatch != null">
+        iRecipeBatch = #{irecipebatch,jdbcType=TINYINT},
+      </if>
+      <if test="cnotpatentname != null">
+        cNotPatentName = #{cnotpatentname,jdbcType=VARCHAR},
+      </if>
+      <if test="bpromotsales != null">
+        bPromotSales = #{bpromotsales,jdbcType=BIT},
+      </if>
+      <if test="iplanpolicy != null">
+        iPlanPolicy = #{iplanpolicy,jdbcType=SMALLINT},
+      </if>
+      <if test="iropmethod != null">
+        iROPMethod = #{iropmethod,jdbcType=SMALLINT},
+      </if>
+      <if test="ibatchrule != null">
+        iBatchRule = #{ibatchrule,jdbcType=SMALLINT},
+      </if>
+      <if test="fbatchincrement != null">
+        fBatchIncrement = #{fbatchincrement,jdbcType=FLOAT},
+      </if>
+      <if test="iassureprovidedays != null">
+        iAssureProvideDays = #{iassureprovidedays,jdbcType=INTEGER},
+      </if>
+      <if test="iteststyle != null">
+        iTestStyle = #{iteststyle,jdbcType=SMALLINT},
+      </if>
+      <if test="idtmethod != null">
+        iDTMethod = #{idtmethod,jdbcType=SMALLINT},
+      </if>
+      <if test="fdtrate != null">
+        fDTRate = #{fdtrate,jdbcType=FLOAT},
+      </if>
+      <if test="fdtnum != null">
+        fDTNum = #{fdtnum,jdbcType=FLOAT},
+      </if>
+      <if test="cdtunit != null">
+        cDTUnit = #{cdtunit,jdbcType=VARCHAR},
+      </if>
+      <if test="idtstyle != null">
+        iDTStyle = #{idtstyle,jdbcType=SMALLINT},
+      </if>
+      <if test="iqtmethod != null">
+        iQTMethod = #{iqtmethod,jdbcType=INTEGER},
+      </if>
+      <if test="pictureguid != null">
+        PictureGUID = #{pictureguid,jdbcType=OTHER},
+      </if>
+      <if test="bplaninv != null">
+        bPlanInv = #{bplaninv,jdbcType=BIT},
+      </if>
+      <if test="bproxyforeign != null">
+        bProxyForeign = #{bproxyforeign,jdbcType=BIT},
+      </if>
+      <if test="batomodel != null">
+        bATOModel = #{batomodel,jdbcType=BIT},
+      </if>
+      <if test="bcheckitem != null">
+        bCheckItem = #{bcheckitem,jdbcType=BIT},
+      </if>
+      <if test="bptomodel != null">
+        bPTOModel = #{bptomodel,jdbcType=BIT},
+      </if>
+      <if test="bequipment != null">
+        bEquipment = #{bequipment,jdbcType=BIT},
+      </if>
+      <if test="cproductunit != null">
+        cProductUnit = #{cproductunit,jdbcType=VARCHAR},
+      </if>
+      <if test="forderuplimit != null">
+        fOrderUpLimit = #{forderuplimit,jdbcType=FLOAT},
+      </if>
+      <if test="cmassunit != null">
+        cMassUnit = #{cmassunit,jdbcType=SMALLINT},
+      </if>
+      <if test="fretailprice != null">
+        fRetailPrice = #{fretailprice,jdbcType=FLOAT},
+      </if>
+      <if test="cinvdepcode != null">
+        cInvDepCode = #{cinvdepcode,jdbcType=VARCHAR},
+      </if>
+      <if test="ialteradvance != null">
+        iAlterAdvance = #{ialteradvance,jdbcType=INTEGER},
+      </if>
+      <if test="falterbasenum != null">
+        fAlterBaseNum = #{falterbasenum,jdbcType=FLOAT},
+      </if>
+      <if test="cplanmethod != null">
+        cPlanMethod = #{cplanmethod,jdbcType=VARCHAR},
+      </if>
+      <if test="bmps != null">
+        bMPS = #{bmps,jdbcType=BIT},
+      </if>
+      <if test="brop != null">
+        bROP = #{brop,jdbcType=BIT},
+      </if>
+      <if test="breplan != null">
+        bRePlan = #{breplan,jdbcType=BIT},
+      </if>
+      <if test="csrpolicy != null">
+        cSRPolicy = #{csrpolicy,jdbcType=VARCHAR},
+      </if>
+      <if test="bbillunite != null">
+        bBillUnite = #{bbillunite,jdbcType=BIT},
+      </if>
+      <if test="isupplyday != null">
+        iSupplyDay = #{isupplyday,jdbcType=INTEGER},
+      </if>
+      <if test="fsupplymulti != null">
+        fSupplyMulti = #{fsupplymulti,jdbcType=FLOAT},
+      </if>
+      <if test="fminsupply != null">
+        fMinSupply = #{fminsupply,jdbcType=FLOAT},
+      </if>
+      <if test="bcutmantissa != null">
+        bCutMantissa = #{bcutmantissa,jdbcType=BIT},
+      </if>
+      <if test="cinvpersoncode != null">
+        cInvPersonCode = #{cinvpersoncode,jdbcType=VARCHAR},
+      </if>
+      <if test="iinvtfid != null">
+        iInvTfId = #{iinvtfid,jdbcType=INTEGER},
+      </if>
+      <if test="cengineerfigno != null">
+        cEngineerFigNo = #{cengineerfigno,jdbcType=VARCHAR},
+      </if>
+      <if test="bintotalcost != null">
+        bInTotalCost = #{bintotalcost,jdbcType=BIT},
+      </if>
+      <if test="isupplytype != null">
+        iSupplyType = #{isupplytype,jdbcType=SMALLINT},
+      </if>
+      <if test="bconfigfree1 != null">
+        bConfigFree1 = #{bconfigfree1,jdbcType=BIT},
+      </if>
+      <if test="bconfigfree2 != null">
+        bConfigFree2 = #{bconfigfree2,jdbcType=BIT},
+      </if>
+      <if test="bconfigfree3 != null">
+        bConfigFree3 = #{bconfigfree3,jdbcType=BIT},
+      </if>
+      <if test="bconfigfree4 != null">
+        bConfigFree4 = #{bconfigfree4,jdbcType=BIT},
+      </if>
+      <if test="bconfigfree5 != null">
+        bConfigFree5 = #{bconfigfree5,jdbcType=BIT},
+      </if>
+      <if test="bconfigfree6 != null">
+        bConfigFree6 = #{bconfigfree6,jdbcType=BIT},
+      </if>
+      <if test="bconfigfree7 != null">
+        bConfigFree7 = #{bconfigfree7,jdbcType=BIT},
+      </if>
+      <if test="bconfigfree8 != null">
+        bConfigFree8 = #{bconfigfree8,jdbcType=BIT},
+      </if>
+      <if test="bconfigfree9 != null">
+        bConfigFree9 = #{bconfigfree9,jdbcType=BIT},
+      </if>
+      <if test="bconfigfree10 != null">
+        bConfigFree10 = #{bconfigfree10,jdbcType=BIT},
+      </if>
+      <if test="idtlevel != null">
+        iDTLevel = #{idtlevel,jdbcType=SMALLINT},
+      </if>
+      <if test="cdtaql != null">
+        cDTAQL = #{cdtaql,jdbcType=VARCHAR},
+      </if>
+      <if test="bperioddt != null">
+        bPeriodDT = #{bperioddt,jdbcType=BIT},
+      </if>
+      <if test="cdtperiod != null">
+        cDTPeriod = #{cdtperiod,jdbcType=VARCHAR},
+      </if>
+      <if test="ibigmonth != null">
+        iBigMonth = #{ibigmonth,jdbcType=INTEGER},
+      </if>
+      <if test="ibigday != null">
+        iBigDay = #{ibigday,jdbcType=INTEGER},
+      </if>
+      <if test="ismallmonth != null">
+        iSmallMonth = #{ismallmonth,jdbcType=INTEGER},
+      </if>
+      <if test="ismallday != null">
+        iSmallDay = #{ismallday,jdbcType=INTEGER},
+      </if>
+      <if test="boutinvdt != null">
+        bOutInvDT = #{boutinvdt,jdbcType=BIT},
+      </if>
+      <if test="bbackinvdt != null">
+        bBackInvDT = #{bbackinvdt,jdbcType=BIT},
+      </if>
+      <if test="ienddtstyle != null">
+        iEndDTStyle = #{ienddtstyle,jdbcType=SMALLINT},
+      </if>
+      <if test="bdtwarninv != null">
+        bDTWarnInv = #{bdtwarninv,jdbcType=BIT},
+      </if>
+      <if test="fbacktaxrate != null">
+        fBackTaxRate = #{fbacktaxrate,jdbcType=FLOAT},
+      </if>
+      <if test="cciqcode != null">
+        cCIQCode = #{cciqcode,jdbcType=VARCHAR},
+      </if>
+      <if test="cwgroupcode != null">
+        cWGroupCode = #{cwgroupcode,jdbcType=VARCHAR},
+      </if>
+      <if test="cwunit != null">
+        cWUnit = #{cwunit,jdbcType=VARCHAR},
+      </if>
+      <if test="fgrossw != null">
+        fGrossW = #{fgrossw,jdbcType=FLOAT},
+      </if>
+      <if test="cvgroupcode != null">
+        cVGroupCode = #{cvgroupcode,jdbcType=VARCHAR},
+      </if>
+      <if test="cvunit != null">
+        cVUnit = #{cvunit,jdbcType=VARCHAR},
+      </if>
+      <if test="flength != null">
+        fLength = #{flength,jdbcType=FLOAT},
+      </if>
+      <if test="fwidth != null">
+        fWidth = #{fwidth,jdbcType=FLOAT},
+      </if>
+      <if test="fheight != null">
+        fHeight = #{fheight,jdbcType=FLOAT},
+      </if>
+      <if test="idtucounter != null">
+        iDTUCounter = #{idtucounter,jdbcType=INTEGER},
+      </if>
+      <if test="idtdcounter != null">
+        iDTDCounter = #{idtdcounter,jdbcType=INTEGER},
+      </if>
+      <if test="ibatchcounter != null">
+        iBatchCounter = #{ibatchcounter,jdbcType=INTEGER},
+      </if>
+      <if test="cshopunit != null">
+        cShopUnit = #{cshopunit,jdbcType=VARCHAR},
+      </if>
+      <if test="cpurpersoncode != null">
+        cPurPersonCode = #{cpurpersoncode,jdbcType=VARCHAR},
+      </if>
+      <if test="bimportmedicine != null">
+        bImportMedicine = #{bimportmedicine,jdbcType=BIT},
+      </if>
+      <if test="bfirstbusimedicine != null">
+        bFirstBusiMedicine = #{bfirstbusimedicine,jdbcType=BIT},
+      </if>
+      <if test="bforeexpland != null">
+        bForeExpland = #{bforeexpland,jdbcType=BIT},
+      </if>
+      <if test="cinvplancode != null">
+        cInvPlanCode = #{cinvplancode,jdbcType=VARCHAR},
+      </if>
+      <if test="fconvertrate != null">
+        fConvertRate = #{fconvertrate,jdbcType=FLOAT},
+      </if>
+      <if test="binvmodel != null">
+        bInvModel = #{binvmodel,jdbcType=BIT},
+      </if>
+      <if test="bkccutmantissa != null">
+        bKCCutMantissa = #{bkccutmantissa,jdbcType=BIT},
+      </if>
+      <if test="breceiptbydt != null">
+        bReceiptByDT = #{breceiptbydt,jdbcType=BIT},
+      </if>
+      <if test="iimptaxrate != null">
+        iImpTaxRate = #{iimptaxrate,jdbcType=FLOAT},
+      </if>
+      <if test="iexptaxrate != null">
+        iExpTaxRate = #{iexptaxrate,jdbcType=FLOAT},
+      </if>
+      <if test="bexpsale != null">
+        bExpSale = #{bexpsale,jdbcType=BIT},
+      </if>
+      <if test="idrawbatch != null">
+        iDrawBatch = #{idrawbatch,jdbcType=FLOAT},
+      </if>
+      <if test="bcheckbsatp != null">
+        bCheckBSATP = #{bcheckbsatp,jdbcType=BIT},
+      </if>
+      <if test="cinvprojectcode != null">
+        cInvProjectCode = #{cinvprojectcode,jdbcType=VARCHAR},
+      </if>
+      <if test="itestrule != null">
+        iTestRule = #{itestrule,jdbcType=SMALLINT},
+      </if>
+      <if test="crulecode != null">
+        cRuleCode = #{crulecode,jdbcType=VARCHAR},
+      </if>
+      <if test="bcheckfree1 != null">
+        bCheckFree1 = #{bcheckfree1,jdbcType=BIT},
+      </if>
+      <if test="bcheckfree2 != null">
+        bCheckFree2 = #{bcheckfree2,jdbcType=BIT},
+      </if>
+      <if test="bcheckfree3 != null">
+        bCheckFree3 = #{bcheckfree3,jdbcType=BIT},
+      </if>
+      <if test="bcheckfree4 != null">
+        bCheckFree4 = #{bcheckfree4,jdbcType=BIT},
+      </if>
+      <if test="bcheckfree5 != null">
+        bCheckFree5 = #{bcheckfree5,jdbcType=BIT},
+      </if>
+      <if test="bcheckfree6 != null">
+        bCheckFree6 = #{bcheckfree6,jdbcType=BIT},
+      </if>
+      <if test="bcheckfree7 != null">
+        bCheckFree7 = #{bcheckfree7,jdbcType=BIT},
+      </if>
+      <if test="bcheckfree8 != null">
+        bCheckFree8 = #{bcheckfree8,jdbcType=BIT},
+      </if>
+      <if test="bcheckfree9 != null">
+        bCheckFree9 = #{bcheckfree9,jdbcType=BIT},
+      </if>
+      <if test="bcheckfree10 != null">
+        bCheckFree10 = #{bcheckfree10,jdbcType=BIT},
+      </if>
+      <if test="bbommain != null">
+        bBomMain = #{bbommain,jdbcType=BIT},
+      </if>
+      <if test="bbomsub != null">
+        bBomSub = #{bbomsub,jdbcType=BIT},
+      </if>
+      <if test="bproductbill != null">
+        bProductBill = #{bproductbill,jdbcType=BIT},
+      </if>
+      <if test="icheckatp != null">
+        iCheckATP = #{icheckatp,jdbcType=SMALLINT},
+      </if>
+      <if test="iinvatpid != null">
+        iInvATPId = #{iinvatpid,jdbcType=INTEGER},
+      </if>
+      <if test="iplantfday != null">
+        iPlanTfDay = #{iplantfday,jdbcType=INTEGER},
+      </if>
+      <if test="ioverlapday != null">
+        iOverlapDay = #{ioverlapday,jdbcType=INTEGER},
+      </if>
+      <if test="bpiece != null">
+        bPiece = #{bpiece,jdbcType=BIT},
+      </if>
+      <if test="bsrvitem != null">
+        bSrvItem = #{bsrvitem,jdbcType=BIT},
+      </if>
+      <if test="bsrvfittings != null">
+        bSrvFittings = #{bsrvfittings,jdbcType=BIT},
+      </if>
+      <if test="fmaxsupply != null">
+        fMaxSupply = #{fmaxsupply,jdbcType=FLOAT},
+      </if>
+      <if test="fminsplit != null">
+        fMinSplit = #{fminsplit,jdbcType=FLOAT},
+      </if>
+      <if test="bspecialorder != null">
+        bSpecialOrder = #{bspecialorder,jdbcType=BIT},
+      </if>
+      <if test="btracksalebill != null">
+        bTrackSaleBill = #{btracksalebill,jdbcType=BIT},
+      </if>
+      <if test="cinvmnemcode != null">
+        cInvMnemCode = #{cinvmnemcode,jdbcType=VARCHAR},
+      </if>
+      <if test="iplandefault != null">
+        iPlanDefault = #{iplandefault,jdbcType=SMALLINT},
+      </if>
+      <if test="ipfbatchqty != null">
+        iPFBatchQty = #{ipfbatchqty,jdbcType=FLOAT},
+      </if>
+      <if test="iallocateprintdgt != null">
+        iAllocatePrintDgt = #{iallocateprintdgt,jdbcType=INTEGER},
+      </if>
+      <if test="bcheckbatch != null">
+        bCheckBatch = #{bcheckbatch,jdbcType=BIT},
+      </if>
+      <if test="bmngoldpart != null">
+        bMngOldpart = #{bmngoldpart,jdbcType=BIT},
+      </if>
+      <if test="ioldpartmngrule != null">
+        iOldpartMngRule = #{ioldpartmngrule,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where cInvCode = #{cinvcode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.heda.cy.baseDoc.pojo.Inventory">
+    update Inventory
+    set cInvAddCode = #{cinvaddcode,jdbcType=VARCHAR},
+      cInvName = #{cinvname,jdbcType=VARCHAR},
+      cInvStd = #{cinvstd,jdbcType=VARCHAR},
+      cInvCCode = #{cinvccode,jdbcType=VARCHAR},
+      cVenCode = #{cvencode,jdbcType=VARCHAR},
+      cReplaceItem = #{creplaceitem,jdbcType=VARCHAR},
+      cPosition = #{cposition,jdbcType=VARCHAR},
+      bSale = #{bsale,jdbcType=BIT},
+      bPurchase = #{bpurchase,jdbcType=BIT},
+      bSelf = #{bself,jdbcType=BIT},
+      bComsume = #{bcomsume,jdbcType=BIT},
+      bProducing = #{bproducing,jdbcType=BIT},
+      bService = #{bservice,jdbcType=BIT},
+      bAccessary = #{baccessary,jdbcType=BIT},
+      iTaxRate = #{itaxrate,jdbcType=FLOAT},
+      iInvWeight = #{iinvweight,jdbcType=FLOAT},
+      iVolume = #{ivolume,jdbcType=FLOAT},
+      iInvRCost = #{iinvrcost,jdbcType=FLOAT},
+      iInvSPrice = #{iinvsprice,jdbcType=FLOAT},
+      iInvSCost = #{iinvscost,jdbcType=FLOAT},
+      iInvLSCost = #{iinvlscost,jdbcType=FLOAT},
+      iInvNCost = #{iinvncost,jdbcType=FLOAT},
+      iInvAdvance = #{iinvadvance,jdbcType=FLOAT},
+      iInvBatch = #{iinvbatch,jdbcType=FLOAT},
+      iSafeNum = #{isafenum,jdbcType=FLOAT},
+      iTopSum = #{itopsum,jdbcType=FLOAT},
+      iLowSum = #{ilowsum,jdbcType=FLOAT},
+      iOverStock = #{ioverstock,jdbcType=FLOAT},
+      cInvABC = #{cinvabc,jdbcType=VARCHAR},
+      bInvQuality = #{binvquality,jdbcType=BIT},
+      bInvBatch = #{binvbatch,jdbcType=BIT},
+      bInvEntrust = #{binventrust,jdbcType=BIT},
+      bInvOverStock = #{binvoverstock,jdbcType=BIT},
+      dSDate = #{dsdate,jdbcType=TIMESTAMP},
+      dEDate = #{dedate,jdbcType=TIMESTAMP},
+      bFree1 = #{bfree1,jdbcType=BIT},
+      bFree2 = #{bfree2,jdbcType=BIT},
+      cInvDefine1 = #{cinvdefine1,jdbcType=VARCHAR},
+      cInvDefine2 = #{cinvdefine2,jdbcType=VARCHAR},
+      cInvDefine3 = #{cinvdefine3,jdbcType=VARCHAR},
+      I_id = #{iId,jdbcType=INTEGER},
+      bInvType = #{binvtype,jdbcType=BIT},
+      iInvMPCost = #{iinvmpcost,jdbcType=FLOAT},
+      cQuality = #{cquality,jdbcType=VARCHAR},
+      iInvSaleCost = #{iinvsalecost,jdbcType=FLOAT},
+      iInvSCost1 = #{iinvscost1,jdbcType=FLOAT},
+      iInvSCost2 = #{iinvscost2,jdbcType=FLOAT},
+      iInvSCost3 = #{iinvscost3,jdbcType=FLOAT},
+      bFree3 = #{bfree3,jdbcType=BIT},
+      bFree4 = #{bfree4,jdbcType=BIT},
+      bFree5 = #{bfree5,jdbcType=BIT},
+      bFree6 = #{bfree6,jdbcType=BIT},
+      bFree7 = #{bfree7,jdbcType=BIT},
+      bFree8 = #{bfree8,jdbcType=BIT},
+      bFree9 = #{bfree9,jdbcType=BIT},
+      bFree10 = #{bfree10,jdbcType=BIT},
+      cCreatePerson = #{ccreateperson,jdbcType=VARCHAR},
+      cModifyPerson = #{cmodifyperson,jdbcType=VARCHAR},
+      dModifyDate = #{dmodifydate,jdbcType=TIMESTAMP},
+      fSubscribePoint = #{fsubscribepoint,jdbcType=FLOAT},
+      fVagQuantity = #{fvagquantity,jdbcType=FLOAT},
+      cValueType = #{cvaluetype,jdbcType=VARCHAR},
+      bFixExch = #{bfixexch,jdbcType=BIT},
+      fOutExcess = #{foutexcess,jdbcType=FLOAT},
+      fInExcess = #{finexcess,jdbcType=FLOAT},
+      iMassDate = #{imassdate,jdbcType=SMALLINT},
+      iWarnDays = #{iwarndays,jdbcType=SMALLINT},
+      fExpensesExch = #{fexpensesexch,jdbcType=FLOAT},
+      bTrack = #{btrack,jdbcType=BIT},
+      bSerial = #{bserial,jdbcType=BIT},
+      bBarCode = #{bbarcode,jdbcType=BIT},
+      iId = #{iid,jdbcType=INTEGER},
+      cBarCode = #{cbarcode,jdbcType=VARCHAR},
+      cInvDefine4 = #{cinvdefine4,jdbcType=VARCHAR},
+      cInvDefine5 = #{cinvdefine5,jdbcType=VARCHAR},
+      cInvDefine6 = #{cinvdefine6,jdbcType=VARCHAR},
+      cInvDefine7 = #{cinvdefine7,jdbcType=VARCHAR},
+      cInvDefine8 = #{cinvdefine8,jdbcType=VARCHAR},
+      cInvDefine9 = #{cinvdefine9,jdbcType=VARCHAR},
+      cInvDefine10 = #{cinvdefine10,jdbcType=VARCHAR},
+      cInvDefine11 = #{cinvdefine11,jdbcType=INTEGER},
+      cInvDefine12 = #{cinvdefine12,jdbcType=INTEGER},
+      cInvDefine13 = #{cinvdefine13,jdbcType=FLOAT},
+      cInvDefine14 = #{cinvdefine14,jdbcType=FLOAT},
+      cInvDefine15 = #{cinvdefine15,jdbcType=TIMESTAMP},
+      cInvDefine16 = #{cinvdefine16,jdbcType=TIMESTAMP},
+      iGroupType = #{igrouptype,jdbcType=TINYINT},
+      cGroupCode = #{cgroupcode,jdbcType=VARCHAR},
+      cComUnitCode = #{ccomunitcode,jdbcType=VARCHAR},
+      cAssComUnitCode = #{casscomunitcode,jdbcType=VARCHAR},
+      cSAComUnitCode = #{csacomunitcode,jdbcType=VARCHAR},
+      cPUComUnitCode = #{cpucomunitcode,jdbcType=VARCHAR},
+      cSTComUnitCode = #{cstcomunitcode,jdbcType=VARCHAR},
+      cCAComUnitCode = #{ccacomunitcode,jdbcType=VARCHAR},
+      cFrequency = #{cfrequency,jdbcType=VARCHAR},
+      iFrequency = #{ifrequency,jdbcType=SMALLINT},
+      iDays = #{idays,jdbcType=SMALLINT},
+      dLastDate = #{dlastdate,jdbcType=TIMESTAMP},
+      iWastage = #{iwastage,jdbcType=FLOAT},
+      bSolitude = #{bsolitude,jdbcType=BIT},
+      cEnterprise = #{centerprise,jdbcType=VARCHAR},
+      cAddress = #{caddress,jdbcType=VARCHAR},
+      cFile = #{cfile,jdbcType=VARCHAR},
+      cLabel = #{clabel,jdbcType=VARCHAR},
+      cCheckOut = #{ccheckout,jdbcType=VARCHAR},
+      cLicence = #{clicence,jdbcType=VARCHAR},
+      bSpecialties = #{bspecialties,jdbcType=BIT},
+      cDefWareHouse = #{cdefwarehouse,jdbcType=VARCHAR},
+      iHighPrice = #{ihighprice,jdbcType=FLOAT},
+      iExpSaleRate = #{iexpsalerate,jdbcType=FLOAT},
+      cPriceGroup = #{cpricegroup,jdbcType=VARCHAR},
+      cOfferGrade = #{coffergrade,jdbcType=VARCHAR},
+      iOfferRate = #{iofferrate,jdbcType=FLOAT},
+      cMonth = #{cmonth,jdbcType=VARCHAR},
+      iAdvanceDate = #{iadvancedate,jdbcType=SMALLINT},
+      cCurrencyName = #{ccurrencyname,jdbcType=VARCHAR},
+      cProduceAddress = #{cproduceaddress,jdbcType=VARCHAR},
+      cProduceNation = #{cproducenation,jdbcType=VARCHAR},
+      cRegisterNo = #{cregisterno,jdbcType=VARCHAR},
+      cEnterNo = #{centerno,jdbcType=VARCHAR},
+      cPackingType = #{cpackingtype,jdbcType=VARCHAR},
+      cEnglishName = #{cenglishname,jdbcType=VARCHAR},
+      bPropertyCheck = #{bpropertycheck,jdbcType=BIT},
+      cPreparationType = #{cpreparationtype,jdbcType=VARCHAR},
+      cCommodity = #{ccommodity,jdbcType=VARCHAR},
+      iRecipeBatch = #{irecipebatch,jdbcType=TINYINT},
+      cNotPatentName = #{cnotpatentname,jdbcType=VARCHAR},
+      pubufts = #{pubufts,jdbcType=TIMESTAMP},
+      bPromotSales = #{bpromotsales,jdbcType=BIT},
+      iPlanPolicy = #{iplanpolicy,jdbcType=SMALLINT},
+      iROPMethod = #{iropmethod,jdbcType=SMALLINT},
+      iBatchRule = #{ibatchrule,jdbcType=SMALLINT},
+      fBatchIncrement = #{fbatchincrement,jdbcType=FLOAT},
+      iAssureProvideDays = #{iassureprovidedays,jdbcType=INTEGER},
+      iTestStyle = #{iteststyle,jdbcType=SMALLINT},
+      iDTMethod = #{idtmethod,jdbcType=SMALLINT},
+      fDTRate = #{fdtrate,jdbcType=FLOAT},
+      fDTNum = #{fdtnum,jdbcType=FLOAT},
+      cDTUnit = #{cdtunit,jdbcType=VARCHAR},
+      iDTStyle = #{idtstyle,jdbcType=SMALLINT},
+      iQTMethod = #{iqtmethod,jdbcType=INTEGER},
+      PictureGUID = #{pictureguid,jdbcType=OTHER},
+      bPlanInv = #{bplaninv,jdbcType=BIT},
+      bProxyForeign = #{bproxyforeign,jdbcType=BIT},
+      bATOModel = #{batomodel,jdbcType=BIT},
+      bCheckItem = #{bcheckitem,jdbcType=BIT},
+      bPTOModel = #{bptomodel,jdbcType=BIT},
+      bEquipment = #{bequipment,jdbcType=BIT},
+      cProductUnit = #{cproductunit,jdbcType=VARCHAR},
+      fOrderUpLimit = #{forderuplimit,jdbcType=FLOAT},
+      cMassUnit = #{cmassunit,jdbcType=SMALLINT},
+      fRetailPrice = #{fretailprice,jdbcType=FLOAT},
+      cInvDepCode = #{cinvdepcode,jdbcType=VARCHAR},
+      iAlterAdvance = #{ialteradvance,jdbcType=INTEGER},
+      fAlterBaseNum = #{falterbasenum,jdbcType=FLOAT},
+      cPlanMethod = #{cplanmethod,jdbcType=VARCHAR},
+      bMPS = #{bmps,jdbcType=BIT},
+      bROP = #{brop,jdbcType=BIT},
+      bRePlan = #{breplan,jdbcType=BIT},
+      cSRPolicy = #{csrpolicy,jdbcType=VARCHAR},
+      bBillUnite = #{bbillunite,jdbcType=BIT},
+      iSupplyDay = #{isupplyday,jdbcType=INTEGER},
+      fSupplyMulti = #{fsupplymulti,jdbcType=FLOAT},
+      fMinSupply = #{fminsupply,jdbcType=FLOAT},
+      bCutMantissa = #{bcutmantissa,jdbcType=BIT},
+      cInvPersonCode = #{cinvpersoncode,jdbcType=VARCHAR},
+      iInvTfId = #{iinvtfid,jdbcType=INTEGER},
+      cEngineerFigNo = #{cengineerfigno,jdbcType=VARCHAR},
+      bInTotalCost = #{bintotalcost,jdbcType=BIT},
+      iSupplyType = #{isupplytype,jdbcType=SMALLINT},
+      bConfigFree1 = #{bconfigfree1,jdbcType=BIT},
+      bConfigFree2 = #{bconfigfree2,jdbcType=BIT},
+      bConfigFree3 = #{bconfigfree3,jdbcType=BIT},
+      bConfigFree4 = #{bconfigfree4,jdbcType=BIT},
+      bConfigFree5 = #{bconfigfree5,jdbcType=BIT},
+      bConfigFree6 = #{bconfigfree6,jdbcType=BIT},
+      bConfigFree7 = #{bconfigfree7,jdbcType=BIT},
+      bConfigFree8 = #{bconfigfree8,jdbcType=BIT},
+      bConfigFree9 = #{bconfigfree9,jdbcType=BIT},
+      bConfigFree10 = #{bconfigfree10,jdbcType=BIT},
+      iDTLevel = #{idtlevel,jdbcType=SMALLINT},
+      cDTAQL = #{cdtaql,jdbcType=VARCHAR},
+      bPeriodDT = #{bperioddt,jdbcType=BIT},
+      cDTPeriod = #{cdtperiod,jdbcType=VARCHAR},
+      iBigMonth = #{ibigmonth,jdbcType=INTEGER},
+      iBigDay = #{ibigday,jdbcType=INTEGER},
+      iSmallMonth = #{ismallmonth,jdbcType=INTEGER},
+      iSmallDay = #{ismallday,jdbcType=INTEGER},
+      bOutInvDT = #{boutinvdt,jdbcType=BIT},
+      bBackInvDT = #{bbackinvdt,jdbcType=BIT},
+      iEndDTStyle = #{ienddtstyle,jdbcType=SMALLINT},
+      bDTWarnInv = #{bdtwarninv,jdbcType=BIT},
+      fBackTaxRate = #{fbacktaxrate,jdbcType=FLOAT},
+      cCIQCode = #{cciqcode,jdbcType=VARCHAR},
+      cWGroupCode = #{cwgroupcode,jdbcType=VARCHAR},
+      cWUnit = #{cwunit,jdbcType=VARCHAR},
+      fGrossW = #{fgrossw,jdbcType=FLOAT},
+      cVGroupCode = #{cvgroupcode,jdbcType=VARCHAR},
+      cVUnit = #{cvunit,jdbcType=VARCHAR},
+      fLength = #{flength,jdbcType=FLOAT},
+      fWidth = #{fwidth,jdbcType=FLOAT},
+      fHeight = #{fheight,jdbcType=FLOAT},
+      iDTUCounter = #{idtucounter,jdbcType=INTEGER},
+      iDTDCounter = #{idtdcounter,jdbcType=INTEGER},
+      iBatchCounter = #{ibatchcounter,jdbcType=INTEGER},
+      cShopUnit = #{cshopunit,jdbcType=VARCHAR},
+      cPurPersonCode = #{cpurpersoncode,jdbcType=VARCHAR},
+      bImportMedicine = #{bimportmedicine,jdbcType=BIT},
+      bFirstBusiMedicine = #{bfirstbusimedicine,jdbcType=BIT},
+      bForeExpland = #{bforeexpland,jdbcType=BIT},
+      cInvPlanCode = #{cinvplancode,jdbcType=VARCHAR},
+      fConvertRate = #{fconvertrate,jdbcType=FLOAT},
+      dReplaceDate = #{dreplacedate,jdbcType=TIMESTAMP},
+      bInvModel = #{binvmodel,jdbcType=BIT},
+      bKCCutMantissa = #{bkccutmantissa,jdbcType=BIT},
+      bReceiptByDT = #{breceiptbydt,jdbcType=BIT},
+      iImpTaxRate = #{iimptaxrate,jdbcType=FLOAT},
+      iExpTaxRate = #{iexptaxrate,jdbcType=FLOAT},
+      bExpSale = #{bexpsale,jdbcType=BIT},
+      iDrawBatch = #{idrawbatch,jdbcType=FLOAT},
+      bCheckBSATP = #{bcheckbsatp,jdbcType=BIT},
+      cInvProjectCode = #{cinvprojectcode,jdbcType=VARCHAR},
+      iTestRule = #{itestrule,jdbcType=SMALLINT},
+      cRuleCode = #{crulecode,jdbcType=VARCHAR},
+      bCheckFree1 = #{bcheckfree1,jdbcType=BIT},
+      bCheckFree2 = #{bcheckfree2,jdbcType=BIT},
+      bCheckFree3 = #{bcheckfree3,jdbcType=BIT},
+      bCheckFree4 = #{bcheckfree4,jdbcType=BIT},
+      bCheckFree5 = #{bcheckfree5,jdbcType=BIT},
+      bCheckFree6 = #{bcheckfree6,jdbcType=BIT},
+      bCheckFree7 = #{bcheckfree7,jdbcType=BIT},
+      bCheckFree8 = #{bcheckfree8,jdbcType=BIT},
+      bCheckFree9 = #{bcheckfree9,jdbcType=BIT},
+      bCheckFree10 = #{bcheckfree10,jdbcType=BIT},
+      bBomMain = #{bbommain,jdbcType=BIT},
+      bBomSub = #{bbomsub,jdbcType=BIT},
+      bProductBill = #{bproductbill,jdbcType=BIT},
+      iCheckATP = #{icheckatp,jdbcType=SMALLINT},
+      iInvATPId = #{iinvatpid,jdbcType=INTEGER},
+      iPlanTfDay = #{iplantfday,jdbcType=INTEGER},
+      iOverlapDay = #{ioverlapday,jdbcType=INTEGER},
+      bPiece = #{bpiece,jdbcType=BIT},
+      bSrvItem = #{bsrvitem,jdbcType=BIT},
+      bSrvFittings = #{bsrvfittings,jdbcType=BIT},
+      fMaxSupply = #{fmaxsupply,jdbcType=FLOAT},
+      fMinSplit = #{fminsplit,jdbcType=FLOAT},
+      bSpecialOrder = #{bspecialorder,jdbcType=BIT},
+      bTrackSaleBill = #{btracksalebill,jdbcType=BIT},
+      cInvMnemCode = #{cinvmnemcode,jdbcType=VARCHAR},
+      iPlanDefault = #{iplandefault,jdbcType=SMALLINT},
+      iPFBatchQty = #{ipfbatchqty,jdbcType=FLOAT},
+      iAllocatePrintDgt = #{iallocateprintdgt,jdbcType=INTEGER},
+      bCheckBatch = #{bcheckbatch,jdbcType=BIT},
+      bMngOldpart = #{bmngoldpart,jdbcType=BIT},
+      iOldpartMngRule = #{ioldpartmngrule,jdbcType=SMALLINT}
+    where cInvCode = #{cinvcode,jdbcType=VARCHAR}
+  </update>
+</mapper>

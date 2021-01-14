@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.heda.cy.baseDoc.mapper.ComputationgroupMapper">
+  <resultMap id="BaseResultMap" type="com.heda.cy.baseDoc.pojo.Computationgroup">
+    <id column="cGroupCode" jdbcType="VARCHAR" property="cgroupcode" />
+    <result column="cGroupName" jdbcType="VARCHAR" property="cgroupname" />
+    <result column="iGroupType" jdbcType="TINYINT" property="igrouptype" />
+    <result column="pubufts" jdbcType="BINARY" property="pubufts" />
+    <result column="cGrpRelInvCode" jdbcType="VARCHAR" property="cgrprelinvcode" />
+    <result column="bDefaultGroup" jdbcType="BIT" property="bdefaultgroup" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    cGroupCode, cGroupName, iGroupType, pubufts, cGrpRelInvCode, bDefaultGroup
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ${u8name}.dbo.ComputationGroup
+    where cGroupCode = #{cgroupcode,jdbcType=VARCHAR}
+  </select>
+    <select id="computationGroup" resultType="com.heda.cy.baseDoc.pojo.Computationgroup">
+      select
+      <include refid="Base_Column_List"></include>
+      from ${u8name}.dbo.ComputationGroup
+      where cGroupCode like '%${cgroupcode}%' or cGroupName like '%${cgroupcode}%'
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from ComputationGroup
+    where cGroupCode = #{cgroupcode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="cGroupCode" keyProperty="cgroupcode" parameterType="com.heda.cy.baseDoc.pojo.Computationgroup" useGeneratedKeys="true">
+    insert into ComputationGroup (cGroupName, iGroupType, pubufts, 
+      cGrpRelInvCode, bDefaultGroup)
+    values (#{cgroupname,jdbcType=VARCHAR}, #{igrouptype,jdbcType=TINYINT}, #{pubufts,jdbcType=TIMESTAMP}, 
+      #{cgrprelinvcode,jdbcType=VARCHAR}, #{bdefaultgroup,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" keyColumn="cGroupCode" keyProperty="cgroupcode" parameterType="com.heda.cy.baseDoc.pojo.Computationgroup" useGeneratedKeys="true">
+    insert into ${u8name}.dbo.ComputationGroup
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cgroupcode != null">
+        cGroupCode,
+      </if>
+      <if test="cgroupname != null">
+        cGroupName,
+      </if>
+      <if test="igrouptype != null">
+        iGroupType,
+      </if>
+      <if test="cgrprelinvcode != null">
+        cGrpRelInvCode,
+      </if>
+      <if test="bdefaultgroup != null">
+        bDefaultGroup,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cgroupcode != null">
+        #{cgroupcode,jdbcType=VARCHAR},
+      </if>
+      <if test="cgroupname != null">
+        #{cgroupname,jdbcType=VARCHAR},
+      </if>
+      <if test="igrouptype != null">
+        #{igrouptype,jdbcType=TINYINT},
+      </if>
+      <if test="cgrprelinvcode != null">
+        #{cgrprelinvcode,jdbcType=VARCHAR},
+      </if>
+      <if test="bdefaultgroup != null">
+        #{bdefaultgroup,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.heda.cy.baseDoc.pojo.Computationgroup">
+    update ${u8name}.dbo.ComputationGroup
+    <set>
+      <if test="cgroupname != null">
+        cGroupName = #{cgroupname,jdbcType=VARCHAR},
+      </if>
+      <if test="igrouptype != null">
+        iGroupType = #{igrouptype,jdbcType=TINYINT},
+      </if>
+      <if test="cgrprelinvcode != null">
+        cGrpRelInvCode = #{cgrprelinvcode,jdbcType=VARCHAR},
+      </if>
+      <if test="bdefaultgroup != null">
+        bDefaultGroup = #{bdefaultgroup,jdbcType=BIT},
+      </if>
+    </set>
+    where cGroupCode = #{cgroupcode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.heda.cy.baseDoc.pojo.Computationgroup">
+    update ComputationGroup
+    set cGroupName = #{cgroupname,jdbcType=VARCHAR},
+      iGroupType = #{igrouptype,jdbcType=TINYINT},
+      pubufts = #{pubufts,jdbcType=TIMESTAMP},
+      cGrpRelInvCode = #{cgrprelinvcode,jdbcType=VARCHAR},
+      bDefaultGroup = #{bdefaultgroup,jdbcType=BIT}
+    where cGroupCode = #{cgroupcode,jdbcType=VARCHAR}
+  </update>
+</mapper>

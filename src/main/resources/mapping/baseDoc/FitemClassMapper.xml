@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.heda.cy.baseDoc.mapper.FitemClassMapper">
+  <resultMap id="BaseResultMap" type="com.heda.cy.baseDoc.pojo.FitemClass">
+    <id column="i_id" jdbcType="INTEGER" property="iId" />
+    <result column="cItemCcode" jdbcType="VARCHAR" property="citemccode" />
+    <result column="cItemCname" jdbcType="VARCHAR" property="citemcname" />
+    <result column="iItemCgrade" jdbcType="TINYINT" property="iitemcgrade" />
+    <result column="bItemCend" jdbcType="BIT" property="bitemcend" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    i_id, cItemCcode, cItemCname, iItemCgrade, bItemCend
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ${u8name}.dbo.${cclasstable}
+    where cItemCcode = #{citemccode}
+  </select>
+    <select id="fitemclass" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List"></include>
+      from ${u8name}.dbo.${cclasstable}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from fitemss00class
+    where i_id = #{iId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="i_id" keyProperty="iId" parameterType="com.heda.cy.baseDoc.pojo.FitemClass" useGeneratedKeys="true">
+    insert into fitemss00class (cItemCcode, cItemCname, iItemCgrade, 
+      bItemCend)
+    values (#{citemccode,jdbcType=VARCHAR}, #{citemcname,jdbcType=VARCHAR}, #{iitemcgrade,jdbcType=TINYINT}, 
+      #{bitemcend,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" keyColumn="i_id" keyProperty="iId" parameterType="com.heda.cy.baseDoc.pojo.FitemClass" useGeneratedKeys="true">
+    insert into ${u8name}.dbo.${cclasstable}
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="citemccode != null">
+        cItemCcode,
+      </if>
+      <if test="citemcname != null">
+        cItemCname,
+      </if>
+      <if test="iitemcgrade != null">
+        iItemCgrade,
+      </if>
+      <if test="bitemcend != null">
+        bItemCend,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="citemccode != null">
+        #{citemccode,jdbcType=VARCHAR},
+      </if>
+      <if test="citemcname != null">
+        #{citemcname,jdbcType=VARCHAR},
+      </if>
+      <if test="iitemcgrade != null">
+        #{iitemcgrade,jdbcType=TINYINT},
+      </if>
+      <if test="bitemcend != null">
+        #{bitemcend,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.heda.cy.baseDoc.pojo.FitemClass">
+    update ${u8name}.dbo.${cclasstable}
+    <set>
+      <if test="citemcname != null">
+        cItemCname = #{citemcname,jdbcType=VARCHAR},
+      </if>
+      <if test="iitemcgrade != null">
+        iItemCgrade = #{iitemcgrade,jdbcType=TINYINT},
+      </if>
+      <if test="bitemcend != null">
+        bItemCend = #{bitemcend,jdbcType=BIT},
+      </if>
+    </set>
+    where cItemCcode = #{citemccode}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.heda.cy.baseDoc.pojo.FitemClass">
+    update fitemss00class
+    set cItemCcode = #{citemccode,jdbcType=VARCHAR},
+      cItemCname = #{citemcname,jdbcType=VARCHAR},
+      iItemCgrade = #{iitemcgrade,jdbcType=TINYINT},
+      bItemCend = #{bitemcend,jdbcType=BIT}
+    where i_id = #{iId,jdbcType=INTEGER}
+  </update>
+</mapper>

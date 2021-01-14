@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浙江和达科技股份有限公司</title>
+    <script src="/js/vue.js"></script>
+    <script src="/js/index.js"></script>
+    <script src="/js/axios.min.js"></script>
+    <link rel="stylesheet" href="/css/vue.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+<div id="app">
+    <el-form :inline="true" class="demo-form-inline" size="mini" style="width: 97%; margin: 30px 40px 10px;">
+        <el-form-item label="计量单位名称/编码:">
+            <el-input v-model="computationunit.ccomunitcode" style="width:160px;"></el-input>
+        </el-form-item>
+        <el-form-item label="主账套:">
+            <el-select v-model="computationunit.u8name" placeholder="请选择账套" style="width: 100%;">
+                <el-option   :label="majorZhangtao.zhangtao" :value="majorZhangtao.shujuku">
+                </el-option>
+            </el-select>
+        </el-form-item>
+        <el-form-item>
+            <el-button type="primary" size="mini" round @click="Query">查询</el-button>
+        </el-form-item>
+        <el-form-item label="子账套:">
+            <el-select v-model="minoru8name" placeholder="请选择账套" style="width: 100%;">
+                <el-option v-for="item in minorZhangtao"  :label="item.zhangtao" :value="item.shujuku">
+                </el-option>
+            </el-select>
+        </el-form-item>
+        <el-form-item>
+            <el-button type="primary" size="mini" round @click="Sync">同步</el-button>
+        </el-form-item>
+    </el-form>
+    <el-table :data="computationunitList" tooltip-effect="dark" ref="multipleTable"
+              style="width: 100%;float: left;margin-bottom: 15px"  border size="small"
+              :header-cell-style="{'text-align':'center'}" :cell-style="{'text-align':'center'}" @selection-change="handleSelectionChange" :height="height*0.8">
+        <el-table-column type="selection" width="40"></el-table-column>
+        <el-table-column prop="ccomunitcode" label="计量单位编码"></el-table-column>
+        <el-table-column prop="ccomunitname" label="计量单位名称"></el-table-column>
+        <el-table-column prop="cgroupcode" label="计量单位组编码"></el-table-column>
+    </el-table>
+    <el-col :span="6" :offset="10" >
+        <el-pagination :hide-on-single-page="true" @current-change="handleCurrentChange" small background layout="prev, pager, next" :page-size="page.size" :total="page.total"></el-pagination>
+    </el-col>
+</div>
+</body>
+<script>
+    let vue = new Vue({
+        el: "#app",
+        data: {
+            computationunit:{
+                ccomunitcode: '',
+                u8name: ''
+            },
+            page: {
+                size: 20,
+                total: 0,
+                pages: 1
+            },
+            computationunitList:[],
+            selectedcomputationunitList: [],
+            height: 0,
+            majorZhangtao: {zhangtao: '',shujuku: ''},
+            minoru8name: '',
+            minorZhangtao: []
+        },
+        methods: {
+            Query(){
+                axios.post("/computation/computationunit?size="+this.page.size+'&pages='+this.page.pages,this.computationunit)
+                    .then(response =>{
+                        this.computationunitList = response.data.result;
+                        this.page.total = response.data.total;
+                    }).catch(error => this.dialog("网络错误",1000));
+            },
+            Sync(){
+                if(this.minoru8name === ''){this.dialog("请选择要同步的账套",1000);return;}
+                if(this.selectedcomputationunitList.length === 0){this.dialog("请至少选择一条记录",1000);return;}
+                axios.post("/computation/Synccomputationunit?u8name="+this.minoru8name,this.selectedcomputationunitList).then(response => {
+                    if(response.data.status === 200){
+                        this.dialog("同步成功",1000);
+                        this.$refs.multipleTable.clearSelection();
+                    }else this.dialog(response.data.message,0);
+                }).catch(error => this.dialog("网络错误",1000));
+            },
+            handleSelectionChange(selection){this.selectedcomputationunitList = selection},
+            handleCurrentChange(val) {this.page.pages = val; this.Query();},
+            dialog(msg,time) {this.$notify({title: '提示', message: msg, duration: time});},
+        },
+        created() {
+            this.height = window.innerHeight;
+            axios.get("/zhangtao/majorZhangtao")
+                .then(response => {
+                    this.majorZhangtao = response.data.result;
+                    this.computationunit.u8name = this.majorZhangtao.shujuku;
+                    this.Query();
+                }).catch(error => this.dialog("网络错误",0));
+            axios.get("/zhangtao/minorZhangtao").then(response => {
+                this.minorZhangtao = response.data.result;
+            }).catch(error => this.dialog("网络错误",0));
+        }
+    });
+</script>
+</html>

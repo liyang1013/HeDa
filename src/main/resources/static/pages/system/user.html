@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浙江和达科技股份有限公司</title>
+    <script src="/js/vue.js"></script>
+    <script src="/js/index.js"></script>
+    <script src="/js/axios.min.js"></script>
+    <link rel="stylesheet" href="/css/vue.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+<div id="app">
+    <el-form :inline="true" class="demo-form-inline" size="mini"
+             style="width: 97%; margin: 30px 40px 10px;">
+        <el-form-item label="用户名:">
+            <el-input v-model="username" style="width:200px;"></el-input>
+        </el-form-item>
+        <el-form-item>
+            <el-button type="primary" size="mini" round @click="Query">查询</el-button>
+            <el-button type="success" size="mini" round @click="dialogFormVisible = true;user={usercode: '',username: '',password: '',role: {roleid: '',rolename: ''}}">添加</el-button>
+        </el-form-item>
+    </el-form>
+    <el-table :data="userList" tooltip-effect="dark"  stripe
+              style="width: 100%;float: left;margin-bottom: 15px"  border size="small"
+              :header-cell-style="{'text-align':'center'}" :cell-style="{'text-align':'center'}">
+        <el-table-column prop="usercode" label="用户编码"></el-table-column>
+        <el-table-column prop="username" label="用户名"></el-table-column>
+        <el-table-column prop="role.rolename" label="角色"></el-table-column>
+        <el-table-column prop="password" label="密码"></el-table-column>
+        <el-table-column label="操作">
+            <template slot-scope="scope">
+                <el-button type="primary" icon="el-icon-edit" size="small" @click="show(scope.row,'dialogForm2Visible')"></el-button>
+                <el-button type="danger" slot="reference" icon="el-icon-delete" size="small" @click="show(scope.row,'dialogVisible')" ></el-button>
+            </template>
+        </el-table-column>
+    </el-table>
+    <el-col :span="6" :offset="10" >
+        <el-pagination :hide-on-single-page="true" @current-change="handleCurrentChange" small background layout="prev, pager, next" :page-size="page.size" :total="page.total"></el-pagination>
+    </el-col>
+
+    <!-- Form -->
+    <el-dialog title="添加新用户" :visible.sync="dialogFormVisible"  width="500px" center>
+        <el-form :model="user" size="small" label-position="left" :rules="rules" ref="form">
+            <el-form-item label="用户编码:" label-width="90px" prop="usercode">
+                <el-input  type="text" v-model="user.usercode" width="120px" ></el-input>
+            </el-form-item>
+            <el-form-item label="用户名:" label-width="90px" prop="username">
+                <el-input  type="text" v-model="user.username" width="120px" ></el-input>
+            </el-form-item>
+            <el-form-item label="密码:" label-width="90px" prop="password">
+                <el-input type="password" v-model="user.password" width="120px"></el-input>
+            </el-form-item>
+            <el-form-item label="角色" label-width="90px" prop="role.roleid" >
+                <el-select v-model="user.role.roleid" placeholder="请选择角色" @visible-change="changeValue1($event)">
+                    <el-option v-for="role in roleList" :label="role.rolename" :value="role.roleid"></el-option>
+                </el-select>
+            </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+            <el-button type="primary" @click="add()" size="small">确 定</el-button>
+            <el-button @click="dialogFormVisible = false" size="small">取 消</el-button>
+        </div>
+    </el-dialog>
+    <el-dialog title="编辑" :visible.sync="dialogForm2Visible"  width="500px" center>
+        <el-form :model="user" size="small" label-position="left" :rules="rules" ref="form2">
+            <el-form-item label="用户名:" label-width="90px" prop="username">
+                <el-input  type="text" v-model="user.username" width="120px" ></el-input>
+            </el-form-item>
+            <el-form-item label="密码:" label-width="90px" prop="password">
+                <el-input type="password" v-model="user.password" width="120px"></el-input>
+            </el-form-item>
+            <el-form-item label="角色" label-width="90px" prop="role.roleid">
+                <el-select v-model="user.role.roleid" placeholder="请选择角色" @visible-change="changeValue1($event)">
+                    <el-option v-for="r in roleList" :label="r.rolename" :value="r.roleid"></el-option>
+                </el-select>
+            </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+            <el-button type="primary" @click="edit()" size="small">确 定</el-button>
+            <el-button @click="dialogForm2Visible = false;Query()" size="small">取 消</el-button>
+        </div>
+    </el-dialog>
+
+    <el-dialog title="提示" :visible.sync="dialogVisible" width="400px" center>
+        <span>确定要删除该用户吗？</span>
+        <span slot="footer" class="dialog-footer">
+            <el-button type="primary" @click="del()">确 定</el-button>
+            <el-button @click="dialogVisible = false">取 消</el-button>
+  </span>
+    </el-dialog>
+</div>
+</body>
+<script>
+    let vue = new Vue({
+        el: "#app",
+        data: {
+            username : '',
+            userList: [],
+            roleList: [],
+            height: 0,
+            page: {
+                size: 10,
+                total: 0,
+                pages: 1
+            },
+            user: {
+                usercode: '',
+                username: '',
+                password: '',
+                role: {
+                    roleid: '',
+                    rolename: ''
+                }
+            },
+            rules: {
+                username: [
+                    { required: true, message: '请输入用户名', trigger: 'blur' },
+                    { min: 2, max: 5, message: '长度在 2 到 5 个字符', trigger: 'change' }
+                ],
+                usercode: [
+                    { required: true, message: '请输入用户编码', trigger: 'change' }
+                ],
+                password: [
+                    {  required: true, message: '请输入密码', trigger: 'change' }
+                ],
+                role: {
+                    roleid: [
+                        {required: true, message: '请选择角色', trigger: 'change'}
+                    ]
+                }
+            },
+            dialogFormVisible: false,
+            dialogVisible: false,
+            dialogForm2Visible: false,
+            title: ''
+        },
+        methods: {
+            Query(){
+                axios.get("/user/userList?username="+this.username+"&size="+this.page.size+'&pages='+this.page.pages)
+                    .then(response => {
+                        this.userList = response.data.result;
+                        this.page.total = response.data.total;
+                    }).catch(error => this.dialog("网络错误",1000))
+            },
+            add(){
+                this.$refs.form.validate((valid) => {
+                    if (valid) {
+                        axios.post("/user/add",this.user).then(response =>{
+                            if(response.data.status === 200) {
+                                this.dialog("成功添加新用户",1000);
+                                this.dialogFormVisible = false;
+                                this.Query();
+                            } else this.dialog(response.data.message,0)
+                        }).catch(error=> this.dialog("网络错误",1000));
+                    } else return false;
+                });
+            },
+            show(user,name){
+                this.user = user;
+                if(this.user.role === null) this.user.role = {roleid: '', rolename: ''};
+                this[name] = true;
+                },
+            edit(){
+                this.$refs.form2.validate((valid) => {
+                    if (valid) {
+                        axios.post("/user/update",this.user).then(response =>{
+                            if(response.data.status === 200) {
+                                this.dialog("更新用户成功",1000);
+                                this.dialogForm2Visible = false;
+                                this.Query();
+                            } else this.dialog(response.data.message,0)
+                        }).catch(error=> this.dialog("网络错误",1000));
+                    } else return false;
+                });
+            },
+            del(){
+                axios.post("/user/del",this.user)
+                    .then(response => {
+                        if(response.data.status === 200) {
+                            this.dialog("删除成功",1000);
+                            this.dialogVisible = false;
+                            this.Query();
+                        } else this.dialog(response.data.message,0)
+                    }).catch(error=> this.dialog("网络错误",1000));
+            },
+            changeValue1(flag){
+                if(flag) axios.post("/role/roleList").then(response => this.roleList = response.data.result).catch(error => this.dialog("网络错误",1000));
+            },
+            //改变页码
+            handleCurrentChange(val) {this.page.pages = val; this.Query();},
+            dialog(msg,time) {this.$notify({title: '提示', message: msg, duration: time});}
+        },
+        created(){
+            this.height = window.innerHeight;
+            axios.post("/role/roleList").then(response => this.roleList = response.data.result).catch(error => this.dialog("网络错误",1000));
+            this.Query();
+        }
+    });
+</script>
+</html>

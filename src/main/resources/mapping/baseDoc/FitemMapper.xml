@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.heda.cy.baseDoc.mapper.FitemMapper">
+  <resultMap id="BaseResultMap" type="com.heda.cy.baseDoc.pojo.Fitem">
+    <id column="citem_class" jdbcType="VARCHAR" property="citemClass" />
+    <result column="i_id" jdbcType="INTEGER" property="iId" />
+    <result column="citem_name" jdbcType="VARCHAR" property="citemName" />
+    <result column="citem_text" jdbcType="VARCHAR" property="citemText" />
+    <result column="crule" jdbcType="VARCHAR" property="crule" />
+    <result column="ctable" jdbcType="VARCHAR" property="ctable" />
+    <result column="cClasstable" jdbcType="VARCHAR" property="cclasstable" />
+    <result column="pubufts" jdbcType="BINARY" property="pubufts" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    citem_class, i_id, citem_name, citem_text, crule, ctable, cClasstable, pubufts
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from ${u8name}.dbo.fitem
+    where citem_class = #{citemClass,jdbcType=VARCHAR}
+  </select>
+  <select id="fitem" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from ${u8name}.dbo.fitem
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from fitem
+    where citem_class = #{citemClass,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="citem_class" keyProperty="citemClass" parameterType="com.heda.cy.baseDoc.pojo.Fitem" useGeneratedKeys="true">
+    insert into fitem (i_id, citem_name, citem_text, 
+      crule, ctable, cClasstable, 
+      pubufts)
+    values (#{iId,jdbcType=INTEGER}, #{citemName,jdbcType=VARCHAR}, #{citemText,jdbcType=VARCHAR}, 
+      #{crule,jdbcType=VARCHAR}, #{ctable,jdbcType=VARCHAR}, #{cclasstable,jdbcType=VARCHAR}, 
+      #{pubufts,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="citem_class" keyProperty="citemClass" parameterType="com.heda.cy.baseDoc.pojo.Fitem" useGeneratedKeys="true">
+    insert into fitem
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="iId != null">
+        i_id,
+      </if>
+      <if test="citemName != null">
+        citem_name,
+      </if>
+      <if test="citemText != null">
+        citem_text,
+      </if>
+      <if test="crule != null">
+        crule,
+      </if>
+      <if test="ctable != null">
+        ctable,
+      </if>
+      <if test="cclasstable != null">
+        cClasstable,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="iId != null">
+        #{iId,jdbcType=INTEGER},
+      </if>
+      <if test="citemName != null">
+        #{citemName,jdbcType=VARCHAR},
+      </if>
+      <if test="citemText != null">
+        #{citemText,jdbcType=VARCHAR},
+      </if>
+      <if test="crule != null">
+        #{crule,jdbcType=VARCHAR},
+      </if>
+      <if test="ctable != null">
+        #{ctable,jdbcType=VARCHAR},
+      </if>
+      <if test="cclasstable != null">
+        #{cclasstable,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.heda.cy.baseDoc.pojo.Fitem">
+    update fitem
+    <set>
+      <if test="iId != null">
+        i_id = #{iId,jdbcType=INTEGER},
+      </if>
+      <if test="citemName != null">
+        citem_name = #{citemName,jdbcType=VARCHAR},
+      </if>
+      <if test="citemText != null">
+        citem_text = #{citemText,jdbcType=VARCHAR},
+      </if>
+      <if test="crule != null">
+        crule = #{crule,jdbcType=VARCHAR},
+      </if>
+      <if test="ctable != null">
+        ctable = #{ctable,jdbcType=VARCHAR},
+      </if>
+      <if test="cclasstable != null">
+        cClasstable = #{cclasstable,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where citem_class = #{citemClass,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.heda.cy.baseDoc.pojo.Fitem">
+    update fitem
+    set i_id = #{iId,jdbcType=INTEGER},
+      citem_name = #{citemName,jdbcType=VARCHAR},
+      citem_text = #{citemText,jdbcType=VARCHAR},
+      crule = #{crule,jdbcType=VARCHAR},
+      ctable = #{ctable,jdbcType=VARCHAR},
+      cClasstable = #{cclasstable,jdbcType=VARCHAR},
+      pubufts = #{pubufts,jdbcType=TIMESTAMP}
+    where citem_class = #{citemClass,jdbcType=VARCHAR}
+  </update>
+</mapper>

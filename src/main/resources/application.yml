@@ -1,0 +1,28 @@
+#Tomcat
+server:
+  port: 8080
+# DataSource
+spring:
+  datasource:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://192.168.1.211:1433; DatabaseName=CY_HeDa
+    username: sa
+    password: cs
+    druid:
+      initial-size: 4
+      min-idle: 4
+      max-active: 16
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 30000
+      validation-query: select 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+      filters: stat,wall,log4j
+
+mybatis:
+    type-aliases-package: com.heda.cy.*.pojo
+    mapper-locations: classpath:mapping/*/*Mapper.xml

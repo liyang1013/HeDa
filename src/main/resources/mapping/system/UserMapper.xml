@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.heda.cy.system.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.heda.cy.system.pojo.User">
+    <id column="UserId" jdbcType="INTEGER" property="userid" />
+    <result column="UserCode" jdbcType="VARCHAR" property="usercode" />
+    <result column="UserName" jdbcType="VARCHAR" property="username" />
+    <result column="Password" jdbcType="VARCHAR" property="password" />
+    <result column="UserPwd" jdbcType="VARCHAR" property="userpwd" />
+    <result column="DeCode" jdbcType="VARCHAR" property="decode" />
+    <result column="DeName" jdbcType="VARCHAR" property="dename" />
+    <result column="Jurisdiction" jdbcType="INTEGER" property="jurisdiction" />
+    <result column="IsEnable" jdbcType="BIT" property="isenable" />
+    <result column="HrUserId" jdbcType="VARCHAR" property="hruserid" />
+    <result column="IsLogin" jdbcType="BIT" property="islogin" />
+    <result column="DepId" jdbcType="VARCHAR" property="depid" />
+    <result column="SessionKey" jdbcType="VARCHAR" property="sessionkey" />
+    <result column="WebUser" jdbcType="BIT" property="webuser" />
+    <result column="IsAdmin" jdbcType="BIT" property="isadmin" />
+    <result column="IsSuperPda" jdbcType="INTEGER" property="issuperpda" />
+    <result column="bar" jdbcType="VARCHAR" property="bar" />
+  </resultMap>
+  <resultMap id="UserRole" type="com.heda.cy.system.pojo.User">
+    <id column="UserId" jdbcType="INTEGER" property="userid" />
+    <result column="UserCode" jdbcType="VARCHAR" property="usercode" />
+    <result column="UserName" jdbcType="VARCHAR" property="username" />
+    <result column="Password" jdbcType="VARCHAR" property="password" />
+    <result column="UserPwd" jdbcType="VARCHAR" property="userpwd" />
+    <result column="DeCode" jdbcType="VARCHAR" property="decode" />
+    <result column="DeName" jdbcType="VARCHAR" property="dename" />
+    <result column="Jurisdiction" jdbcType="INTEGER" property="jurisdiction" />
+    <result column="IsEnable" jdbcType="BIT" property="isenable" />
+    <result column="HrUserId" jdbcType="VARCHAR" property="hruserid" />
+    <result column="IsLogin" jdbcType="BIT" property="islogin" />
+    <result column="DepId" jdbcType="VARCHAR" property="depid" />
+    <result column="SessionKey" jdbcType="VARCHAR" property="sessionkey" />
+    <result column="WebUser" jdbcType="BIT" property="webuser" />
+    <result column="IsAdmin" jdbcType="BIT" property="isadmin" />
+    <result column="IsSuperPda" jdbcType="INTEGER" property="issuperpda" />
+    <result column="bar" jdbcType="VARCHAR" property="bar" />
+    <association property="role" resultMap="com.heda.cy.system.mapper.RoleMapper.BaseResultMap"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    UserId, UserCode, UserName, "Password", UserPwd, DeCode, DeName, Jurisdiction, IsEnable, 
+    HrUserId, IsLogin, DepId, SessionKey, WebUser, IsAdmin, IsSuperPda, bar
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from T_User
+    where UserId = #{userid,jdbcType=INTEGER}
+  </select>
+  <select id="login" resultType="com.heda.cy.system.pojo.User">
+    select
+    <include refid="Base_Column_List"></include>
+    from T_User
+    where (username = #{username} or usercode = #{username}) and password = #{password}
+  </select>
+    <select id="userList" resultMap="UserRole">
+      select
+      <include refid="Base_Column_List"></include>,role.*
+      from T_User u
+      left join (select roleid,userid as uid from T_UserRole  )ur on ur.uid = u.userid
+      left join T_Role role on ur.roleid = role.roleid
+      <where>
+        <if test="username != null and username != '' ">
+          and username like '%${username}%'
+        </if>
+      </where>
+      order by userid
+    </select>
+  <select id="selectByUserCode" resultType="com.heda.cy.system.pojo.User">
+    select
+    <include refid="Base_Column_List"></include>
+    from T_User
+    where usercode = #{usercode}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from T_User
+    where UserId = #{userid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="UserId" keyProperty="userid" parameterType="com.heda.cy.system.pojo.User" useGeneratedKeys="true">
+    insert into T_User (UserCode, UserName, "Password", 
+      UserPwd, DeCode, DeName, 
+      Jurisdiction, IsEnable, HrUserId, 
+      IsLogin, DepId, SessionKey, 
+      WebUser, IsAdmin, IsSuperPda, 
+      bar)
+    values (#{usercode,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{userpwd,jdbcType=VARCHAR}, #{decode,jdbcType=VARCHAR}, #{dename,jdbcType=VARCHAR}, 
+      #{jurisdiction,jdbcType=INTEGER}, #{isenable,jdbcType=BIT}, #{hruserid,jdbcType=VARCHAR}, 
+      #{islogin,jdbcType=BIT}, #{depid,jdbcType=VARCHAR}, #{sessionkey,jdbcType=VARCHAR}, 
+      #{webuser,jdbcType=BIT}, #{isadmin,jdbcType=BIT}, #{issuperpda,jdbcType=INTEGER}, 
+      #{bar,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="UserId" keyProperty="userid" parameterType="com.heda.cy.system.pojo.User" useGeneratedKeys="true">
+    insert into T_User
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="usercode != null">
+        UserCode,
+      </if>
+      <if test="username != null">
+        UserName,
+      </if>
+      <if test="password != null">
+        "Password",
+      </if>
+      <if test="userpwd != null">
+        UserPwd,
+      </if>
+      <if test="decode != null">
+        DeCode,
+      </if>
+      <if test="dename != null">
+        DeName,
+      </if>
+      <if test="jurisdiction != null">
+        Jurisdiction,
+      </if>
+      <if test="isenable != null">
+        IsEnable,
+      </if>
+      <if test="hruserid != null">
+        HrUserId,
+      </if>
+      <if test="islogin != null">
+        IsLogin,
+      </if>
+      <if test="depid != null">
+        DepId,
+      </if>
+      <if test="sessionkey != null">
+        SessionKey,
+      </if>
+      <if test="webuser != null">
+        WebUser,
+      </if>
+      <if test="isadmin != null">
+        IsAdmin,
+      </if>
+      <if test="issuperpda != null">
+        IsSuperPda,
+      </if>
+      <if test="bar != null">
+        bar,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="usercode != null">
+        #{usercode,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwd != null">
+        #{userpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="decode != null">
+        #{decode,jdbcType=VARCHAR},
+      </if>
+      <if test="dename != null">
+        #{dename,jdbcType=VARCHAR},
+      </if>
+      <if test="jurisdiction != null">
+        #{jurisdiction,jdbcType=INTEGER},
+      </if>
+      <if test="isenable != null">
+        #{isenable,jdbcType=BIT},
+      </if>
+      <if test="hruserid != null">
+        #{hruserid,jdbcType=VARCHAR},
+      </if>
+      <if test="islogin != null">
+        #{islogin,jdbcType=BIT},
+      </if>
+      <if test="depid != null">
+        #{depid,jdbcType=VARCHAR},
+      </if>
+      <if test="sessionkey != null">
+        #{sessionkey,jdbcType=VARCHAR},
+      </if>
+      <if test="webuser != null">
+        #{webuser,jdbcType=BIT},
+      </if>
+      <if test="isadmin != null">
+        #{isadmin,jdbcType=BIT},
+      </if>
+      <if test="issuperpda != null">
+        #{issuperpda,jdbcType=INTEGER},
+      </if>
+      <if test="bar != null">
+        #{bar,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.heda.cy.system.pojo.User">
+    update T_User
+    <set>
+      <if test="usercode != null">
+        UserCode = #{usercode,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        UserName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        "Password" = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwd != null">
+        UserPwd = #{userpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="decode != null">
+        DeCode = #{decode,jdbcType=VARCHAR},
+      </if>
+      <if test="dename != null">
+        DeName = #{dename,jdbcType=VARCHAR},
+      </if>
+      <if test="jurisdiction != null">
+        Jurisdiction = #{jurisdiction,jdbcType=INTEGER},
+      </if>
+      <if test="isenable != null">
+        IsEnable = #{isenable,jdbcType=BIT},
+      </if>
+      <if test="hruserid != null">
+        HrUserId = #{hruserid,jdbcType=VARCHAR},
+      </if>
+      <if test="islogin != null">
+        IsLogin = #{islogin,jdbcType=BIT},
+      </if>
+      <if test="depid != null">
+        DepId = #{depid,jdbcType=VARCHAR},
+      </if>
+      <if test="sessionkey != null">
+        SessionKey = #{sessionkey,jdbcType=VARCHAR},
+      </if>
+      <if test="webuser != null">
+        WebUser = #{webuser,jdbcType=BIT},
+      </if>
+      <if test="isadmin != null">
+        IsAdmin = #{isadmin,jdbcType=BIT},
+      </if>
+      <if test="issuperpda != null">
+        IsSuperPda = #{issuperpda,jdbcType=INTEGER},
+      </if>
+      <if test="bar != null">
+        bar = #{bar,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where UserId = #{userid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.heda.cy.system.pojo.User">
+    update T_User
+    set UserCode = #{usercode,jdbcType=VARCHAR},
+      UserName = #{username,jdbcType=VARCHAR},
+      "Password" = #{password,jdbcType=VARCHAR},
+      UserPwd = #{userpwd,jdbcType=VARCHAR},
+      DeCode = #{decode,jdbcType=VARCHAR},
+      DeName = #{dename,jdbcType=VARCHAR},
+      Jurisdiction = #{jurisdiction,jdbcType=INTEGER},
+      IsEnable = #{isenable,jdbcType=BIT},
+      HrUserId = #{hruserid,jdbcType=VARCHAR},
+      IsLogin = #{islogin,jdbcType=BIT},
+      DepId = #{depid,jdbcType=VARCHAR},
+      SessionKey = #{sessionkey,jdbcType=VARCHAR},
+      WebUser = #{webuser,jdbcType=BIT},
+      IsAdmin = #{isadmin,jdbcType=BIT},
+      IsSuperPda = #{issuperpda,jdbcType=INTEGER},
+      bar = #{bar,jdbcType=VARCHAR}
+    where UserId = #{userid,jdbcType=INTEGER}
+  </update>
+</mapper>

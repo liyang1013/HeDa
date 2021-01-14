@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.heda.cy.baseDoc.mapper.InventoryclassMapper">
+  <resultMap id="BaseResultMap" type="com.heda.cy.baseDoc.pojo.Inventoryclass">
+    <id column="cInvCCode" jdbcType="VARCHAR" property="cinvccode" />
+    <result column="cInvCName" jdbcType="VARCHAR" property="cinvcname" />
+    <result column="iInvCGrade" jdbcType="TINYINT" property="iinvcgrade" />
+    <result column="bInvCEnd" jdbcType="BIT" property="binvcend" />
+    <result column="cEcoCode" jdbcType="VARCHAR" property="cecocode" />
+    <result column="cBarCode" jdbcType="VARCHAR" property="cbarcode" />
+    <result column="pubufts" jdbcType="BINARY" property="pubufts" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    cInvCCode, cInvCName, iInvCGrade, bInvCEnd, cEcoCode, cBarCode, pubufts
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ${u8name}.dbo.InventoryClass
+    where cInvCCode = #{cinvccode}
+  </select>
+    <select id="inventoryClass" parameterType="com.heda.cy.baseDoc.pojo.Inventoryclass" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List"></include>
+      from ${u8name}.dbo.InventoryClass
+      where cInvCCode like '%${cinvcname}%' or cInvCName like '%${cinvcname}%'
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from InventoryClass
+    where cInvCCode = #{cinvccode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="cInvCCode" keyProperty="cinvccode" parameterType="com.heda.cy.baseDoc.pojo.Inventoryclass" useGeneratedKeys="true">
+    insert into InventoryClass (cInvCName, iInvCGrade, bInvCEnd, 
+      cEcoCode, cBarCode, pubufts
+      )
+    values (#{cinvcname,jdbcType=VARCHAR}, #{iinvcgrade,jdbcType=TINYINT}, #{binvcend,jdbcType=BIT}, 
+      #{cecocode,jdbcType=VARCHAR}, #{cbarcode,jdbcType=VARCHAR}, #{pubufts,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="cInvCCode" keyProperty="cinvccode" parameterType="com.heda.cy.baseDoc.pojo.Inventoryclass" useGeneratedKeys="true">
+    insert into ${u8name}.dbo.InventoryClass
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cinvccode != null">
+        cinvccode,
+      </if>
+      <if test="cinvcname != null">
+        cInvCName,
+      </if>
+      <if test="iinvcgrade != null">
+        iInvCGrade,
+      </if>
+      <if test="binvcend != null">
+        bInvCEnd,
+      </if>
+      <if test="cecocode != null">
+        cEcoCode,
+      </if>
+      <if test="cbarcode != null">
+        cBarCode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cinvccode != null">
+        #{cinvccode,jdbcType=VARCHAR},
+      </if>
+      <if test="cinvcname != null">
+        #{cinvcname,jdbcType=VARCHAR},
+      </if>
+      <if test="iinvcgrade != null">
+        #{iinvcgrade,jdbcType=TINYINT},
+      </if>
+      <if test="binvcend != null">
+        #{binvcend,jdbcType=BIT},
+      </if>
+      <if test="cecocode != null">
+        #{cecocode,jdbcType=VARCHAR},
+      </if>
+      <if test="cbarcode != null">
+        #{cbarcode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.heda.cy.baseDoc.pojo.Inventoryclass">
+    update ${u8name}.dbo.InventoryClass
+    <set>
+      <if test="cinvcname != null">
+        cInvCName = #{cinvcname,jdbcType=VARCHAR},
+      </if>
+      <if test="iinvcgrade != null">
+        iInvCGrade = #{iinvcgrade,jdbcType=TINYINT},
+      </if>
+      <if test="binvcend != null">
+        bInvCEnd = #{binvcend,jdbcType=BIT},
+      </if>
+      <if test="cecocode != null">
+        cEcoCode = #{cecocode,jdbcType=VARCHAR},
+      </if>
+      <if test="cbarcode != null">
+        cBarCode = #{cbarcode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where cInvCCode = #{cinvccode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.heda.cy.baseDoc.pojo.Inventoryclass">
+    update InventoryClass
+    set cInvCName = #{cinvcname,jdbcType=VARCHAR},
+      iInvCGrade = #{iinvcgrade,jdbcType=TINYINT},
+      bInvCEnd = #{binvcend,jdbcType=BIT},
+      cEcoCode = #{cecocode,jdbcType=VARCHAR},
+      cBarCode = #{cbarcode,jdbcType=VARCHAR},
+      pubufts = #{pubufts,jdbcType=TIMESTAMP}
+    where cInvCCode = #{cinvccode,jdbcType=VARCHAR}
+  </update>
+</mapper>
